@@ -1,5 +1,4 @@
 /* pages/bookshelf/bookshelf.wxss */
-/* 书架 */
 .bookshelf {
   border-top: 1px solid #f0f0f0;
   position: relative;
@@ -10,18 +9,4 @@
   top: 50%;
   transform: translateY(-50%);
   right: 0;
-}
-
-.actions {
-  position: absolute;
-  height: 100%;
-  color: #fff;
-  right: -30rpx;
-}
-.actions view {
-  border-left:1px solid #fff ;
-  padding: 0 20rpx;
-  height: 100%;
-  display: inline-flex;
-  align-items: center;
 }

@@ -1,0 +1,10 @@
+<i-swipeout i-class="swipe" unclosable="{{true}}" toggle="{{_toggle}}" operateWidth="{{btnWidth}}">
+  <!-- 内容 -->
+  <view slot="content" class="contentSwp">
+    <slot></slot>
+  </view>
+  <!-- 按钮 -->
+  <view slot="button" class="buttonSwp" style="background-color: {{btncBackground}};" data-obj="{{obj}}" bindtap="delGoods">
+    {{btnText}}
+  </view>
+</i-swipeout>

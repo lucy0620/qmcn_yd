@@ -6,12 +6,11 @@
     <text class="cuIcon-add margin-right-xs"></text>
     <text>新增书单</text>
   </view>
-  <view class="bookshelf padding-tb" wx:for="{{bookshelfs}}">
-    <view class="acea-row row-column row-center ">
-      <text>{{item.name}}</text>
-      <text class="margin-top-xs text-xs text-gray">{{item.count}}本</text>
-      <text class="cuIcon-right"></text>
-    </view>
+  
+  <view wx:for="{{bookshelfs}}" class="bookshelf padding-tb" data-index="{{index}}" data-item="{{item}}" bindtap="goBookshelf_detail">
+    <view>{{item.name}}</view>
+    <view class="margin-top-xs text-xs text-gray">{{item.count}}本</view>
+    <text class="cuIcon-right"></text>
   </view>
 </view>
 

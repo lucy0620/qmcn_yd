@@ -1,0 +1,40 @@
+/* pages/bookshelf/bookshelf_detail.wxss */
+page{
+  background-color: #fff;
+}
+.header{
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+.header .header_del{
+  position: absolute;
+  right: 0;
+  line-height: 44rpx;
+}
+/* 图片模式 */
+.book_item {
+  display: inline-flex;
+  position: relative;
+  width: calc((100vw - (20rpx * 5)) / 4);
+  height: 200rpx;
+  box-shadow: 0px 2rpx 4rpx rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  text-align: center;
+  font-size: 20rpx;
+  border-radius: 6rpx;
+  color: #fff;
+  border: 1px solid #e3e3e3;
+}
+.book_item:nth-of-type(4n) {
+  margin-right: 0;
+}
+.book_item .book_time {
+  position: absolute;
+  bottom: 0;
+  font-size: 16rpx;
+}
+/* 列表模式 */
+.book_itemList {
+  border-top: 1px solid #f0f0f0;
+  position: relative;
+}

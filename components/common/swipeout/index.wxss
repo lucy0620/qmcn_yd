@@ -1,0 +1,15 @@
+/* components/swipeoutL/index.wxss */
+.swipe{
+  border-bottom: 0!important;
+}
+.contentSwp{
+  background-color: #fff;
+}
+.buttonSwp{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: red;
+}

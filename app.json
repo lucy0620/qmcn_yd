@@ -15,7 +15,8 @@
     "pages/book/book",
     "pages/sentence/sentence",
     "pages/book/book_detail/book_detail",
-    "pages/bookshelf/bookshelf"
+    "pages/bookshelf/bookshelf",
+    "pages/bookshelf/bookshelf_detail"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -68,6 +69,8 @@
     "z-button": "/components/common/operatingButton/index",
     "popup": "/components/common/popup/index",
     "submit-bar": "/components/common/submitBar/index",
+    "i-swipeout": "/dist/swipeout/index",
+    "swipeout": "/components/common/swipeout/index",
     "van-action-sheet": "/miniprogram_npm/vant-weapp/action-sheet/index",
     "van-button": "/miniprogram_npm/vant-weapp/button/index",
     "van-cell": "/miniprogram_npm/vant-weapp/cell/index",

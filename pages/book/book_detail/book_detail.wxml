@@ -51,8 +51,8 @@
   </view>
 </submit-bar>
 
-<!-- 选择书架 -->
-<popup show="{{showChooseBookshelf}}" height="50" title="请选择书架" funName="confirmBookshelf" bind:confirmBookshelf="confirmBookshelf">
+<!-- 选择书单 -->
+<popup show="{{showChooseBookshelf}}" height="50" title="请选择书单" funName="confirmBookshelf" bind:confirmBookshelf="confirmBookshelf">
   <van-radio-group value="{{ bookshelfs_checkedId }}" bind:change="chooseBookshelf">
     <view wx:for="{{bookshelfs}}" class="themeItem no_l margin-lr">
       <view class="flexs margin-right" style="position: relative;">

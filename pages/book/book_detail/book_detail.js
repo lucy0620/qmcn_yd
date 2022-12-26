@@ -99,7 +99,7 @@ Page({
       bookshelfs
     })
   },
-  // 打开书架弹窗
+  // 打开书单弹窗
   addBookshelf() {
     let _this = this
     app.handleIsLogin(function () {
@@ -162,7 +162,7 @@ Page({
       _this.setData({
         showChooseBookshelf: false
       })
-      utilShow.showMyMsg('加入书架成功')
+      utilShow.showMyMsg('加入书单成功')
       setTimeout(() => {
         _this.getBookshelfs()
       }, 1500)

@@ -6,8 +6,6 @@ import {
 import * as utilRoute from "../../utils/route"
 import * as utilStorage from "../../utils/storage"
 import * as utilShow from "../../utils/show"
-let strat_x = 0
-let end_x = 0
 Page({
 
   /**
@@ -38,12 +36,12 @@ Page({
     this.getBookshelfs()
   },
 
-  // 获取我的书架
+  // 获取我的书单
   async getBookshelfs() {
     let _this = this
     const res = await request('/getUser_bookshelfs', {
       user_id: _this.data.user_info.id
-    })
+    }, true)
     let bookshelfs = res.data.map(it => {
       let book_ids = it.book_ids ? it.book_ids.split(',') : ''
       return {
@@ -64,7 +62,7 @@ Page({
       success: async (res) => {
         if (res.confirm) {
           if (res.content) {
-            if(res.content.length > 10) {
+            if (res.content.length > 10) {
               utilShow.showMyMsg('书单名称不能大于10个字')
               return
             }
@@ -75,15 +73,22 @@ Page({
             })
             if (_res.code == 200) {
               utilShow.showMyMsg('新增书单成功')
-              setTimeout(()=>{
+              setTimeout(() => {
                 _this.getBookshelfs()
-              },1000)
+              }, 1000)
             }
           }
         }
       },
     })
+  },
 
+  goBookshelf_detail(e) {
+    utilRoute.navigate('/pages/bookshelf/bookshelf_detail', {
+      id: e.currentTarget.dataset.item.id,
+      name: e.currentTarget.dataset.item.name,
+      canEdit: e.currentTarget.dataset.index == 0 ? false : true
+    })
   },
 
   /**
@@ -101,6 +106,7 @@ Page({
       background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
       user_info: utilStorage.getKey('user_info'),
     })
+    this.getBookshelfs()
   },
 
   /**
