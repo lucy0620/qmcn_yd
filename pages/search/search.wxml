@@ -16,8 +16,11 @@
 <!-- 加载底部状态 -->
 <load-more wx:if="{{keyword}}" status="{{status}}" iphoneX="{{app.globalData.isIphoneX}}"></load-more>
 <view wx:else>
-  <view class="themeTitle">搜索记录
+  <view class="themeTitle" wx:if="{{keys && keys.length>0}}">搜索记录
     <text bindtap="clearHis" wx:if="{{keys && keys.length>0}}" class="more"></text>
   </view>
   <view bindtap="searchHis" data-value="{{item}}" class="cu-btn round sm bg-white margin-lr-xs margin-bottom-xs" wx:for="{{keys}}">{{item}}</view>
+  <!-- 热词todo -->
+  <!-- <view class="themeTitle">热门搜索
+  </view> -->
 </view>

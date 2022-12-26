@@ -132,9 +132,16 @@ Page({
     }
     let checked_index = bookshelfs.findIndex(item =>
       item.id == bookshelfs_checkedId)
-    if (checked_index == 0 && !this.data.read_time) {
-      utilShow.showMyMsg('请选择阅读日期')
-      return
+    // 若为默认书单需要选择日期，否则清空日期
+    if (checked_index == 0) {
+      if (!this.data.read_time) {
+        utilShow.showMyMsg('请选择阅读日期')
+        return
+      }
+    } else {
+      _this.setData({
+        read_time: ''
+      })
     }
     // 判断是否已存在
     if (bookshelfs[checked_index].book_ids) {

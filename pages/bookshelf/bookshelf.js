@@ -6,6 +6,8 @@ import {
 import * as utilRoute from "../../utils/route"
 import * as utilStorage from "../../utils/storage"
 import * as utilShow from "../../utils/show"
+let strat_x = 0
+let end_x = 0
 Page({
 
   /**
@@ -15,7 +17,7 @@ Page({
     app,
     isIphoneX: app.globalData.isIphoneX,
     background: '',
-    user_info:'',
+    user_info: '',
     navbarData: {
       type: 1,
       title: '我的书架',
@@ -39,62 +41,49 @@ Page({
   // 获取我的书架
   async getBookshelfs() {
     let _this = this
-    const res = await request('/getUser_bookshelfs_index', {
+    const res = await request('/getUser_bookshelfs', {
       user_id: _this.data.user_info.id
-    }, true)
-    let _data = res.data.map(it => {
-      let imagesStr = it.images ? it.images : ''
+    })
+    let bookshelfs = res.data.map(it => {
+      let book_ids = it.book_ids ? it.book_ids.split(',') : ''
       return {
         ...it,
-        images: imagesStr.substr(imagesStr.indexOf('h'), imagesStr.indexOf('.j') == -1 ? imagesStr.indexOf('.p') : imagesStr.indexOf('.j') + 4)
+        book_ids
       }
     })
     this.setData({
-      bookshelfs: _this.groupList(_data)
-    })
-  },
-  // 数组合并相同项函数
-  groupList(arr) {
-    var beforeData = arr;
-    let tempArr = [];
-    let afterData = [];
-    for (let i = 0; i < beforeData.length; i++) {
-      if (tempArr.indexOf(beforeData[i].id) === -1) {
-        afterData.push({
-          id: beforeData[i].id,
-          name: beforeData[i].name,
-          child: beforeData[i].book_id ? [beforeData[i]] : [] // 过滤掉空
-        });
-        tempArr.push(beforeData[i].id);
-      } else {
-        for (let j = 0; j < afterData.length; j++) {
-          if (afterData[j].id == beforeData[i].id) {
-            afterData[j].child.push(beforeData[i]);
-            break;
-          }
-        }
-      }
-    }
-    return afterData
-  },
-
-  goDetail(e) {
-    utilRoute.navigate('/pages/book/book_detail/book_detail', {
-      id: e.currentTarget.dataset.id
+      bookshelfs
     })
   },
 
   // 新增书单
   async addBookshelf() {
-    let _this = this
-    const res = await request('/add_bookshelf', {
-      user_id: _this.data.user_info.id,
-      name: '测试书单2'
+    wx.showModal({
+      title: '请输入书单名',
+      editable: true,
+      success: async (res) => {
+        if (res.confirm) {
+          if (res.content) {
+            if(res.content.length > 10) {
+              utilShow.showMyMsg('书单名称不能大于10个字')
+              return
+            }
+            let _this = this
+            const _res = await request('/add_bookshelf', {
+              user_id: _this.data.user_info.id,
+              name: res.content
+            })
+            if (_res.code == 200) {
+              utilShow.showMyMsg('新增书单成功')
+              setTimeout(()=>{
+                _this.getBookshelfs()
+              },1000)
+            }
+          }
+        }
+      },
     })
-    if (res.code == 200) {
-      utilShow.showMyMsg('新增书单成功')
-      _this.getBookshelfs()
-    }
+
   },
 
   /**
