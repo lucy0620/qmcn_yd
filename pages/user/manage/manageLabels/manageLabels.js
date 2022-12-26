@@ -13,7 +13,7 @@ Page({
     app,
     navbarData: {
       type: 1,
-      title: '书籍类型管理',
+      title: '书籍标签',
       return: true,
       home: true
     },
@@ -72,6 +72,38 @@ Page({
       }
     } else {
       utilRoute.back()
+    }
+  },
+
+  async moveType(e) {
+    let type = e.currentTarget.dataset.type // 上移或者下移
+    let index = e.currentTarget.dataset.index // 当前选中的下标
+    let label_id = this.data.labels[index].label_id // 当前选中的id
+    let length = this.data.labels.length
+    let wei = 0
+    if (type == 'up') {
+      let topWei = this.data.labels[index - 1].weight
+      if (index == 1) {
+        wei = topWei - 1
+      } else {
+        let toptopWei = this.data.labels[index - 2].weight
+        wei = toptopWei + (topWei - toptopWei) / 2
+      }
+    } else {
+      let botWei = this.data.labels[index + 1].weight
+      if (index == length - 2) {
+        wei = botWei + 1
+      } else {
+        let botbotWei = this.data.labels[index + 2].weight
+        wei = botWei + (botbotWei - botWei) / 2
+      }
+    }
+    let res = await request('/move_label', {
+      label_id,
+      wei
+    })
+    if (res.code == 200) {
+      this.getLabel()
     }
   },
 

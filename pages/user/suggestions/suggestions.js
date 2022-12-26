@@ -8,7 +8,7 @@ Page({
   data: {
     navbarData: {
       type: 1,
-      title: '意见反馈',
+      title: '反馈',
       return: true,
       home: true
     },

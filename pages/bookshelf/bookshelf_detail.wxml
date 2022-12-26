@@ -2,7 +2,7 @@
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
 
 <!-- 头部 -->
-<view class="header padding-sm text-center">
+<view class="header padding-sm text-center bg-white" style="top:{{app.globalData.navHeight}}rpx">
   <view class="header_del" wx:if="{{canEdit == 'true'}}">
     <text class="cuIcon-edit" bindtap="edit"></text>
     <text class="cuIcon-delete margin-sm" bindtap="delete"></text>

@@ -170,6 +170,7 @@ Page({
   },
 
   submitBarTap(e) {
+    let _this = this
     let text = e.currentTarget.dataset.text
     if (text == '编辑') {
       let id = this.data.id
@@ -180,6 +181,15 @@ Page({
     } else if (text == '我的书架') {
       app.handleIsLogin(function () {
         utilRoute.navigate('/pages/bookshelf/bookshelf')
+      })
+    } else if (text == '反馈') {
+      utilShow.showMyMsg('暂未开放')
+      return
+      app.handleIsLogin(function () {
+        utilRoute.navigate('/pages/user/suggestions/suggestions', {
+          id: _this.data.detail.id,
+          name: _this.data.detail.name
+        })
       })
     }
 

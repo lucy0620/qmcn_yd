@@ -15,12 +15,13 @@ Page({
     app,
     navbarData: {
       type: 1,
-      title: '书籍标签管理',
+      title: '书籍类型',
       return: true,
       home: true
     },
     background: '',
     types: [],
+    manage: '' // 是否为管理员编辑模式
   },
 
   /**
@@ -28,6 +29,13 @@ Page({
    */
   onLoad(options) {
     this.getType()
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    if (prevPage.route == 'pages/user/manage/manage') {
+      this.setData({
+        manage: true
+      })
+    }
   },
 
   async getType() {
@@ -38,17 +46,54 @@ Page({
     })
   },
 
+  async moveType(e) {
+    let type = e.currentTarget.dataset.type // 上移或者下移
+    let index = e.currentTarget.dataset.index // 当前选中的下标
+    let type_id = this.data.types[index].type_id // 当前选中的id
+    let length = this.data.types.length
+    let wei = 0
+    if (type == 'up') {
+      let topWei = this.data.types[index - 1].weight
+      if (index == 1) {
+        wei = topWei - 1
+      } else {
+        let toptopWei = this.data.types[index - 2].weight
+        wei = toptopWei + (topWei - toptopWei) / 2
+      }
+    } else {
+      let botWei = this.data.types[index + 1].weight
+      if (index == length - 2) {
+        wei = botWei + 1
+      } else {
+        let botbotWei = this.data.types[index + 2].weight
+        wei = botWei + (botbotWei - botWei) / 2
+      }
+    }
+    let res = await request('/move_type', {
+      type_id,
+      wei
+    })
+    if (res.code == 200) {
+      this.getType()
+    }
+  },
+
   choose(e) {
+    console.log('choss')
     let item = e.currentTarget.dataset.item
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2]; //上一页
-    if(prevPage.route == 'pages/user/manage/manageBook/editBook') {
+    if (prevPage.route == 'pages/user/manage/manageBook/editBook') {
       prevPage.setData({
-        'detail.type_name' : item.name,
-        'detail.type_id' : item.type_id,
+        'detail.type_name': item.name,
+        'detail.type_id': item.type_id,
       })
       utilRoute.back()
     }
+  },
+
+  move() {
+
   },
 
   /**
@@ -71,7 +116,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-    
+
   },
 
   /**
