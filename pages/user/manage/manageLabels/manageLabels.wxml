@@ -1,0 +1,12 @@
+<!--pages/user/manage/manageLabels/manageLabels.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+<view class="list padding-lr">
+  <van-checkbox-group value="{{ label_ids }}" bind:change="editValue">
+    <view class="themeItem" wx:for="{{labels}}">
+      <view style="flex: 1;">{{item.label_name}}</view>
+      <van-checkbox wx-if="{{type == 'edit'}}" checked-color="#000" name="{{item.label_id}}" />
+    </view>
+  </van-checkbox-group>
+</view>
+
+<z-button bind:handleOperation="handleOperation" wx-if="{{type == 'edit'}}" successBackground="{{app.globalData.background}}" disabledBackground="{{app.globalData.background}}" iphoneX="{{app.globalData.isIphoneX}}"></z-button>

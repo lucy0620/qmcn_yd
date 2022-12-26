@@ -1,0 +1,48 @@
+/* components/operatingButton/index.wxss */
+.acea-row {
+  display: flex;
+}
+.flex-nowarp {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.acea-row.row-middle {
+  align-items: center;
+}
+.acea-row.row-center {
+  justify-content: center;
+}
+.acea-row.row-between-wrapper {
+  align-items: center;
+  justify-content: space-between;
+}
+.acea-row.row-center-wrapper {
+  align-items: center;
+  justify-content: center;
+}
+/* 竖向留空自适应左右 */
+.acea-row.row-around {
+  justify-content: space-around;
+}
+
+.fixed-bottom {
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  padding-top: 10px;
+}
+.fixed-bottom-btn{
+  width: 140px;
+  height: 40px;
+  color: #FD7055;
+  border-radius: 5px;
+}
+.fixed-bottom-border{
+  border: 1px solid #FD7055;
+}
+.fixed-bottom-btn-active{
+  color: #fff;
+  background: #FD7055;
+}

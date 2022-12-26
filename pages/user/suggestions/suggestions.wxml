@@ -1,0 +1,1 @@
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>

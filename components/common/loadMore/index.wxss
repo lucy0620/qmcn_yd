@@ -1,0 +1,13 @@
+/* components/common/loadMore/index.wxss */
+
+.loading {
+  width: 750rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  color: #969799;
+  line-height: 20px;
+  font-size: 30rpx;
+}

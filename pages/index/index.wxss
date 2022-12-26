@@ -1,0 +1,74 @@
+/**index.wxss**/
+
+/* 最新入库 */
+.newbooks_item {
+  background: #fff;
+  font-size: 20rpx;
+  box-shadow: 0px 2rpx 4rpx rgba(0, 0, 0, 0.05);
+}
+
+.newbooks_name {
+  width: 300rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.newbooks_labels {
+  display: flex;
+}
+
+.newbooks_labels view {
+  background-color: #f0f0f0;
+  padding: 2rpx 6rpx;
+  border-radius: 4rpx;
+  margin-left: 10rpx;
+}
+
+.newbooks_labels view:last-child {
+  margin-right: 0;
+}
+
+/* 书架 */
+.bookshelf_title .more::before {
+  content: '进入书架';
+}
+
+.bookshelf {
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.bookshelf:last-child {
+  margin-bottom: 0;
+}
+
+.bookshelf_item {
+  position: relative;
+  border-radius: 6rpx;
+  color: #fff;
+  border: 1px solid #e3e3e3;
+  overflow: hidden;
+  font-size: 20rpx;
+  box-shadow: 0px 2rpx 4rpx rgba(0, 0, 0, 0.05);
+  width: 150rpx;
+  height: 200rpx;
+}
+
+.bookshelf_item view {
+  text-align: center;
+}
+
+.bookshelf_item:last-child {
+  margin-right: 20rpx;
+}
+
+.bookshelf_item .bookshelf_time {
+  position: absolute;
+  bottom: 0;
+  font-size: 16rpx;
+}

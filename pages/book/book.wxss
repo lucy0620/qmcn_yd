@@ -1,0 +1,79 @@
+/* pages/book/book.wxss */
+/* 筛选 */
+.filter_wrap {
+  position: sticky;
+  z-index: 999;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05)
+}
+.filter {
+  padding: 10rpx 0 10rpx 24rpx;
+  position: relative;
+  background-color: #fff;
+}
+.filter view{
+  width: max-content;
+  margin-right: 24rpx;
+}
+/* 列表 */
+.newbooks_wrap {
+  display: flex;
+}
+.newbooks_wrap_l {
+  margin-right: 12rpx;
+}
+.newbooks_item {
+  margin: 12rpx 0 0 0;
+  background: #fff;
+  border-radius: 8rpx;
+  overflow: hidden;
+  font-size: 20rpx;
+  box-shadow: 0px 2rpx 4rpx rgba(0, 0, 0, 0.05)
+}
+
+.newbooks_item image {
+  width: 100%;
+  height: 260rpx;
+  vertical-align: top;
+}
+
+.newbooks_item>view {
+  /* width: 320rpx; */
+  width: calc(50vw - 20rpx - 6rpx);
+  padding: 0 10rpx;
+  margin-top: 10rpx;
+}
+
+.newbooks_name {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.newbooks_words {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.newbooks_labels {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.newbooks_labels view {
+  background-color: #f0f0f0;
+  padding: 2rpx 6rpx;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  background: #f0f0f0;
+}
+
+.newbooks_labels view:last-child {
+  margin-right: 0;
+}

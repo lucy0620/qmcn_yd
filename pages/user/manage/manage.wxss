@@ -1,0 +1,19 @@
+/* pages/user/manage/manage.wxss */
+
+.item-wrap {
+  font-size: 30rpx;
+  letter-spacing: 10rpx;
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+}
+
+.item {
+  color: var(--gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #e3e3e3;
+}
+.item:last-of-type {
+  border-bottom: 0rpx;
+}

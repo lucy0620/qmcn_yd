@@ -1,0 +1,96 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/market/market",
+    "pages/user/user",
+    "pages/authorize/authorize",
+    "pages/search/search",
+    "pages/user/suggestions/suggestions",
+    "pages/user/manage/manage",
+    "pages/user/manage/manageLabels/manageLabels",
+    "pages/user/manage/manageType/manageType",
+    "pages/user/manage/manageBook/manageBook",
+    "pages/user/manage/manageBook/editBook",
+    "pages/user/manage/manageLabels/manageDerives",
+    "pages/book/book",
+    "pages/sentence/sentence",
+    "pages/book/book_detail/book_detail",
+    "pages/bookshelf/bookshelf"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "朝秦暮楚",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "selectedColor": "#fff",
+    "color": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/market/market",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/book/book",
+        "text": "书库"
+      },
+      {
+        "pagePath": "pages/sentence/sentence",
+        "text": "名场面"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "usingComponents": {
+    "tab-bar": "/components/common/tabbar/index",
+    "nav-bar": "/components/common/navbar/index",
+    "search": "/components/common/search/index",
+    "cate-view": "/components/common/cateView/index",
+    "z-box": "/components/common/zBox/index",
+    "scroll-xbox": "/components/common/scrollXbox/index",
+    "load-more": "/components/common/loadMore/index",
+    "z-upload": "/components/common/uploader/index",
+    "z-button": "/components/common/operatingButton/index",
+    "popup": "/components/common/popup/index",
+    "submit-bar": "/components/common/submitBar/index",
+    "van-action-sheet": "/miniprogram_npm/vant-weapp/action-sheet/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
+    "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
+    "van-checkbox-group": "/miniprogram_npm/vant-weapp/checkbox-group/index",
+    "van-datetime-picker": "/miniprogram_npm/vant-weapp/datetime-picker/index",
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index",
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
+    "van-notify": "/miniprogram_npm/vant-weapp/notify/index",
+    "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+    "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index",
+    "van-picker": "/miniprogram_npm/vant-weapp/picker/index",
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+    "van-radio": "/miniprogram_npm/vant-weapp/radio/index",
+    "van-radio-group": "/miniprogram_npm/vant-weapp/radio-group/index",
+    "van-steps": "/miniprogram_npm/vant-weapp/steps/index",
+    "van-stepper": "/miniprogram_npm/vant-weapp/stepper/index",
+    "van-search": "/miniprogram_npm/vant-weapp/search/index",
+    "van-toast": "/miniprogram_npm/vant-weapp/toast/index",
+    "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

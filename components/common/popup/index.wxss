@@ -1,0 +1,52 @@
+/* components/selectServerProduct/index.wxss */
+
+.addr-list {
+  position: relative;
+  height: 100%;
+}
+
+.addr-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  position: sticky;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 80rpx;
+  padding: 20rpx;
+  z-index: 10;
+}
+
+.addr-close {
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  font-size: 1rem;
+  background-color: transparent;
+}
+
+/* 中间滑动列表 */
+.addr-scroll {
+  position: relative;
+}
+
+/* 底部按钮 */
+.addr-botton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120rpx;
+}
+
+.addr-submit {
+  border-radius: 10rpx;
+  padding: 20rpx;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+}

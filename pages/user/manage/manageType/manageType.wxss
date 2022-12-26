@@ -1,0 +1,4 @@
+/* pages/user/manage/manageType/manageType.wxss */
+.list {
+  background-color: #fff;
+}

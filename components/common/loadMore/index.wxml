@@ -1,0 +1,16 @@
+<!--components/common/loadMore/index.wxml-->
+  <view class="wrap" style="background: {{bgColor}};">
+    <view wx:if="{{status == 'empty'}}">
+      <view class="empty">
+        <van-empty image="{{type}}"/>
+      </view>
+    </view>
+
+    <view class="loading" wx:else>{{status == 'loadmore' ? loadmoreText : (status == 'loading' ? loadingText : nomoreText)}}</view>
+
+    <view class="loading" wx:if="{{status == 'empty'}}">
+    {{descriptionValue}}
+    </view>
+
+    <view style="width: 100%;height: {{iphoneX? '68rpx':'0'}};"></view>
+</view>

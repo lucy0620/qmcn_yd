@@ -1,0 +1,23 @@
+<!--pages/search/search.wxml-->
+<nav-bar navbarData="{{ navbarData }}"></nav-bar>
+<!-- 搜索 -->
+<view style="position: sticky;top: {{app.globalData.navHeight}}rpx;z-index: 999;">
+  <search inputWidth="750" searchValue="{{keyword}}" placeholder="输入书名,作者,cv姓名" background="{{app.globalData.background}}" bind:onClear="onClear" bind:onSearch="onSearch"></search>
+</view>
+<!-- 列表 -->
+<view class="list padding-lr" wx:if="{{books && books.length>0}}">
+  <view class="themeItem" wx:for="{{books}}" bindtap="goDetail" data-id="{{item.id}}">
+    <text>{{index+1}}.{{item.name}}</text>
+    <text class="padding-lr-xs">-</text>
+    <text>{{item.author}}</text>
+    <text class="text-xs cvName" wx:if="{{item.cvName}}">cv:{{item.cvName}}</text>
+  </view>
+</view>
+<!-- 加载底部状态 -->
+<load-more wx:if="{{keyword}}" status="{{status}}" iphoneX="{{app.globalData.isIphoneX}}"></load-more>
+<view wx:else>
+  <view class="themeTitle">搜索记录
+    <text bindtap="clearHis" wx:if="{{keys && keys.length>0}}" class="more"></text>
+  </view>
+  <view bindtap="searchHis" data-value="{{item}}" class="cu-btn round sm bg-white margin-lr-xs margin-bottom-xs" wx:for="{{keys}}">{{item}}</view>
+</view>

@@ -1,0 +1,22 @@
+<!--pages/user/manage/manageBook/manageBook.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+
+<!-- 搜索 -->
+<view style="position: sticky;top: {{app.globalData.navHeight}}rpx;z-index: 999;">
+  <search inputWidth="750" placeholder="输入书名,作者,cv姓名" background="{{background}}" bind:onClear="onClear" bind:onSearch="onSearch"></search>
+</view>
+<!-- 列表 -->
+<view class="list padding-lr">
+  <view class="themeItem" wx:for="{{books}}" bindtap="edit" data-id="{{item.id}}">
+    <text>{{index+1}}.{{item.name}}</text>
+    <text class="padding-lr-xs">-</text>
+    <text>{{item.author}}</text>
+    <text class="text-xs cvName" wx:if="{{item.cvName}}">cv:{{item.cvName}}</text>
+  </view>
+</view>
+<!-- 添加按钮 -->
+<view class="addBtn" style="color: {{background}};" catchtap="add">
+  <text class="cuIcon-roundadd"></text>
+</view>
+<!-- 加载状态组件 -->
+<load-more status="{{status}}" iphoneX="{{app.globalData.isIphoneX}}"></load-more>

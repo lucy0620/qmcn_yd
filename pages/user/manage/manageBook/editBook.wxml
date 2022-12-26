@@ -1,0 +1,82 @@
+<!--pages/user/manage/manageBook/editBook.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+
+<z-box>
+  <van-field required value="{{detail.name}}" type="text" autosize data-prop="name" clearable label="书名：" placeholder="请输入书名" bindinput="editValue" maxlength="20"/>
+  <van-field required value="{{detail.author}}" type="text" autosize data-prop="author" clearable label="作者：" placeholder="请输入作者" bindinput="editValue" maxlength="20"/>
+  <van-field value="{{detail.words}}" type="number" autosize data-prop="words" clearable label="字数/万字：" placeholder="请输入字数" bindinput="editValue" maxlength="11"/>
+  <van-cell required title="类型：" is-link value="{{detail.type_name ? detail.type_name:'请选择类型'}}" bindtap="chooseType"></van-cell>
+  <van-cell title="标签：" is-link value="{{detail.label_names ? detail.label_names:'请选择标签'}}" bindtap="chooseLabels"></van-cell>
+
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{publish_websites}}">
+    <van-cell title="发布平台：" is-link value="{{detail.publish_website ? detail.publish_website:'请选择发布平台'}}" bindtap="editValue"></van-cell>
+  </picker>
+
+  <picker bindchange="bindPickerChangeTime" value="{{index}}" fields="month" mode='date' end="{{endTime}}" start="2002-01">
+    <van-cell title="发布时间：" is-link value="{{detail.publish_time ? detail.publish_time:'请选择发布时间'}}" bindtap="editValue"></van-cell>
+  </picker>
+
+  <z-upload imageList="{{ detail.images }}" data-prop="images" title="图片：" count="6" height="200" funName="editValue" bind:editValue="editValue" showLimit>
+  </z-upload>
+</z-box>
+
+<z-box>
+  <van-field value="{{detail.top}}" type="text" autosize data-prop="top" clearable label="攻属性：" placeholder="请输入攻属性" bindinput="editValue" maxlength="20"/>
+  <van-field value="{{detail.bottom}}" type="text" autosize data-prop="bottom" clearable label="受属性：" placeholder="请输入受属性" bindinput="editValue" maxlength="20"/>
+  <van-field value="{{detail.cpName}}" type="text" autosize data-prop="cpName" clearable label="主cp：" placeholder="请输入主cp" bindinput="editValue" maxlength="20"/>
+  <van-field value="{{detail.cvName}}" type="text" autosize data-prop="cvName" clearable label="cv名：" placeholder="请输入cv名" bindinput="editValue" maxlength="40"/>
+  <van-cell title="衍生作品：" is-link value="{{detail.derive_names ? detail.derive_names:'请选择衍生作品'}}" bindtap="chooseDerives"></van-cell>
+
+  <van-cell title="文笔评分：">
+    <van-radio-group value="{{detail.scoreWriting}}" bind:change="editRadio" data-prop="scoreWriting">
+      <view style="display: flex;align-items: center;">
+        <view style="margin: 4rpx;">1</view>
+        <van-radio checked-color="#000" name="1" />
+        <view style="margin: 4rpx;">2</view>
+        <van-radio checked-color="#000" name="2" />
+        <view style="margin: 4rpx;">3</view>
+        <van-radio checked-color="#000" name="3" />
+        <view style="margin: 4rpx;">4</view>
+        <van-radio checked-color="#000" name="4" />
+        <view style="margin: 4rpx;">5</view>
+        <van-radio checked-color="#000" name="5" />
+      </view>
+    </van-radio-group>
+  </van-cell>
+
+  <van-cell title="感情评分：">
+    <van-radio-group value="{{ detail.scoreFeeling }}" bind:change="editRadio" data-prop="scoreFeeling">
+      <view style="display: flex;align-items: center;">
+        <view style="margin: 4rpx;">1</view>
+        <van-radio checked-color="#000" name="1" />
+        <view style="margin: 4rpx;">2</view>
+        <van-radio checked-color="#000" name="2" />
+        <view style="margin: 4rpx;">3</view>
+        <van-radio checked-color="#000" name="3" />
+        <view style="margin: 4rpx;">4</view>
+        <van-radio checked-color="#000" name="4" />
+        <view style="margin: 4rpx;">5</view>
+        <van-radio checked-color="#000" name="5" />
+      </view>
+    </van-radio-group>
+  </van-cell>
+
+  <van-cell title="剧情评分：">
+    <van-radio-group value="{{ detail.scorePlot }}" bind:change="editRadio" data-prop="scorePlot">
+      <view style="display: flex;align-items: center;">
+        <view style="margin: 4rpx;">1</view>
+        <van-radio checked-color="#000" name="1" />
+        <view style="margin: 4rpx;">2</view>
+        <van-radio checked-color="#000" name="2" />
+        <view style="margin: 4rpx;">3</view>
+        <van-radio checked-color="#000" name="3" />
+        <view style="margin: 4rpx;">4</view>
+        <van-radio checked-color="#000" name="4" />
+        <view style="margin: 4rpx;">5</view>
+        <van-radio checked-color="#000" name="5" />
+      </view>
+    </van-radio-group>
+  </van-cell>
+</z-box>
+
+<z-button bind:handleOperation="handleOperation" successBackground="{{background}}" disabledBackground="{{background}}" iphoneX="{{app.globalData.isIphoneX}}"></z-button>

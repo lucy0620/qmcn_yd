@@ -1,0 +1,14 @@
+<!--components/operatingButton/index.wxml-->
+<view class="fixed-bottom acea-row row-middle row-around" 
+style="padding-bottom: {{iphoneX? '78rpx':'10px'}};">
+  <view class="fixed-bottom-btn fixed-bottom-border acea-row row-center-wrapper" 
+  style="border-color: {{successBackground}};color: {{successBackground}};"
+  bindtap="handleCancle">{{cancelText}}
+  </view>
+  <view class="fixed-bottom-btn fixed-bottom-btn-active acea-row row-center-wrapper "
+    style="background: {{disabled ? successBackground : disabledBackground}}" bindtap="handleSave">{{successText}}
+  </view>
+</view>
+
+<view style="width: 100%;height: {{ iphoneX ? '188rpx':'120rpx'}};">
+</view>

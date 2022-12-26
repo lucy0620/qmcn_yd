@@ -1,0 +1,35 @@
+/* components/common/cateView/index.wxss */
+.aside {
+  position: fixed;
+  width: 250rpx;
+  left: 0;
+  background-color: #f1f1f1
+}
+.aside .item {
+  width: 100%;
+  font-size: 32rpx;
+  text-align: left;
+  display: flex;
+  padding: 20rpx 0 20rpx 20rpx;
+  justify-content: flex-start;
+  border-left: 12rpx solid transparent;
+}
+.aside .on{
+  font-weight: 600;
+  background-color: #fff;
+}
+/* 商品列表 */
+.conter{
+  margin-left: 250rpx;
+  width: 500rpx;
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  min-height: 100vh;
+}
+.conter .item{
+  background-color: #eee;
+  border-radius: 5px;
+  height: 200rpx;
+}

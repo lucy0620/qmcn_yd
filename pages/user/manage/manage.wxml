@@ -1,0 +1,9 @@
+<!--pages/user/manage/manage.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+
+<view class="item-wrap margin padding-lr-xl padding-tb-sm">
+  <view class="item padding-tb-sm" wx:for="{{ menuList}}" wx:key="item" data-item="{{item}}" bindtap="menuTap">
+    <text>{{ item.title}}</text>
+    <text class="cuIcon-right"></text>
+  </view>
+</view>

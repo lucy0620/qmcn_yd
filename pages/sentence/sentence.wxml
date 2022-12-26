@@ -1,0 +1,4 @@
+<!--pages/sentence/sentence.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+
+<tab-bar active="{{3}}" activeColor="{{ background }}" isIphoneX="{{ isIphoneX }}"></tab-bar>

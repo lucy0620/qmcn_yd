@@ -1,0 +1,12 @@
+<!--components/submitBar/index.wxml-->
+
+<view class="fixation" style="padding-bottom:{{ !isIphoneX ? 0 : '68rpx'}};height: {{height}};">
+    <view class="fixation-left">
+     <slot></slot>
+    </view>
+    <view class="fixation-right">
+      <view wx:for="{{bottomList}}" data-data="{{item.data}}" class="btn" wx:key="index" style="background:{{ item.background }};height: {{height}};line-height: {{height}};" data-funName="{{item.funName}}" bindtap="handleEvent">
+      {{item.text}}
+      </view>
+    </view>
+  </view>

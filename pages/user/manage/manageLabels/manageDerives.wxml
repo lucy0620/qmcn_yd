@@ -1,0 +1,18 @@
+<!--pages/user/manage/manageLabels/manageDerive.wxml-->
+<nav-bar navbarData="{{ navbarData }}"></nav-bar>
+<view class="list padding-lr"
+>
+  <van-checkbox-group value="{{ derive_ids }}" bind:change="editValue">
+    <view class="themeItem" wx:for="{{derives}}">
+      <view style="flex: 1;">{{item.derive_name}}</view>
+      <van-checkbox checked-color="#000" name="{{item.derive_id}}" />
+    </view>
+  </van-checkbox-group>
+</view>
+
+<z-button 
+  bind:handleOperation="handleOperation"
+  successBackground="{{app.globalData.background}}"
+  disabledBackground="{{app.globalData.background}}"
+  iphoneX="{{app.globalData.isIphoneX}}"
+></z-button>

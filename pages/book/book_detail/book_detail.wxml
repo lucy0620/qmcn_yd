@@ -1,0 +1,68 @@
+<!--pages/book/book_detail/book_detail.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+
+<view>
+  <!-- 头部 -->
+  <view class="head text-xs" style="background: linear-gradient({{background}},#fff);">
+    <view class="head_l">
+      <view class="head_name ellipsis padding-top-xs text-xl">
+        {{detail.name}}
+      </view>
+      <view class="padding-top-xs text-sm">
+        by {{detail.author}}
+      </view>
+      <view class="padding-top-xs">
+        {{detail.type_name}} · {{detail.words ? detail.words+'万字' : '暂无字数统计'}}
+      </view>
+      <view class="acea-row flex-warp" wx:if="{{detail.label_names && detail.label_names.length>0}}">
+        <view class="head_label margin-right-xs margin-top-xs" wx:for="{{detail.label_names}}">
+          {{item}}
+        </view>
+      </view>
+      <view wx:if="{{detail.top && detail.bottom}}" class="padding-top-xs">
+        <text class="text-bold">人设：</text>{{detail.top}} x {{detail.bottom}}
+      </view>
+      <view wx:if="{{detail.cvName}}" class="padding-top-xs">
+        <text class="text-bold">配音：</text>{{detail.cvName}}
+      </view>
+      <view class="padding-top-xs">
+        <text class="text-bold">首发：</text>{{detail.publish_website && publish_website != '其他' ? detail.publish_website : '暂无首发平台记录'}} · {{detail.publish_time ? detail.publish_time : '暂无发表时间记录'}}
+      </view>
+      <view class="padding-top-xs" wx:if="{{detail.derive_names && detail.derive_names.length>0}}">
+        <text class="text-bold">衍生作品：</text>
+        <text class="margin-right-xs" wx:for="{{detail.derive_names}}">{{item}}</text>
+      </view>
+
+    </view>
+    <swiper wx:if="{{detail.images && detail.images.length>0 && detail.images[0]}}" class="head_r" indicator-dots indicator-active-color="{{background}}">
+      <swiper-item wx:for="{{detail.images}}">
+        <image src="{{item}}" mode="aspectFill" />
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+
+
+<!-- 底部操作栏 -->
+<submit-bar bind:addBookshelf="addBookshelf" bottomList="{{bottomList}}" isIphoneX="{{app.globalData.isIphoneX}}">
+  <view wx:for="{{bottomListLeft}}" wx:key="index" data-text="{{item.text}}" bindtap="submitBarTap">
+    <text class="cuIcon-{{item.icon}} margin-right-xs"></text>
+    <text class="title">{{item.text}}</text>
+  </view>
+</submit-bar>
+
+<!-- 选择书架 -->
+<popup show="{{showChooseBookshelf}}" height="50" title="请选择书架" funName="confirmBookshelf" bind:confirmBookshelf="confirmBookshelf">
+  <van-radio-group value="{{ bookshelfs_checkedId }}" bind:change="chooseBookshelf">
+    <view wx:for="{{bookshelfs}}" class="themeItem no_l margin-lr">
+      <view class="flexs margin-right" style="position: relative;">
+        <text>{{item.name}}</text>
+        <text class="text-xs margin-lr-xs">{{item.count}}本</text>
+        <picker wx:if="{{bookshelfs && bookshelfs[0] && bookshelfs[0].id && bookshelfs_checkedId == bookshelfs[0].id && index == 0}}" bindchange="bindPickerChangeTime" fields="day" mode='date' end="{{endTime}}">
+          <text class="readTime text-sm text-gray">{{read_time ? read_time:'点击选择阅读日期'}}</text>
+        </picker>
+      </view>
+      <van-radio checked-color="#000" name="{{item.id}}" />
+    </view>
+  </van-radio-group>
+</popup>

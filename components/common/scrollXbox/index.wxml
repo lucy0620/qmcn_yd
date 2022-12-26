@@ -1,0 +1,6 @@
+<!--components/common/scrollX/index.wxml-->
+<scroll-view scroll-x="true">
+  <view style="display: flex;width: max-content;">
+    <slot></slot>
+  </view>
+</scroll-view>

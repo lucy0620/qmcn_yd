@@ -1,0 +1,20 @@
+<!--components/common/zBox/index.wxml-->
+<view class="function-box">
+  <view class="content-box {{customClass}} {{title != null ? 'padding' : ''}}" style="background: {{background}} ">
+    <view class="content-box-title {{title != null && !flex ? 'padding-top' : ''}} acea-row row-between" wx:if="{{title != null}}">
+      <!-- 标题 -->
+      <view style="color :{{color}}; font-size: {{titleSize}}">{{title}}</view>
+      <!-- 跳转链接 -->
+      <view url="{{url}}" wx:if="{{skipText != null && url != null}}" data-url="{{url}}" data-name="{{skipText}}" bindtap="toUrl">
+        <view>
+          <text class="skipText" style="color :{{color}}">{{skipText}}</text>
+          <text class='cuIcon-right' style="font-size: 14px;font-weight: bold;"></text>
+        </view>
+      </view>
+    </view>
+    <view class="{{margin ? 'content-box-info' : ''}} {{flex ? 'acea-row' : ''}}">
+      <!-- 插槽内容 -->
+      <slot></slot>
+    </view>
+  </view>
+</view>

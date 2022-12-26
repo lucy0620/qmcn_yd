@@ -1,0 +1,25 @@
+/* pages/user/manage/manageBook/manageBook.wxss */
+.list {
+  background-color: #fff;
+}
+.themeItem {
+  position: relative;
+}
+.cvName {
+  position: absolute;
+  bottom: 4rpx;
+  right: 0;
+}
+.addBtn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  display: flex;
+  align-items: center;
+  font-size: 3em;
+  border-radius: 50%;
+  text-align: center;
+  background: #fff;
+  box-shadow: 10rpx 10rpx 10rpx rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,40 @@
+/* pages/book/book_detail/book_detail.wxss */
+page{
+  min-height: 100vh;
+  background-color: #fff;
+}
+.head{
+  display: flex;
+  padding:  20rpx;
+}
+.head_l {
+  flex: 1;
+}
+.head_l .head_name {
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}
+.head_l .head_label {
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  padding: 0 6rpx;
+  background: #f0f0f0;
+  border: 1px solid #fff;
+}
+.head_r{
+  margin-left: 20rpx;
+  width: 300rpx;
+  height: 400rpx;
+}
+.head_r image {
+  border-radius: 8rpx;
+  width: 300rpx;
+  height: 400rpx;
+}
+
+.readTime {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -1,0 +1,66 @@
+<!--pages/book/book.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}" bind:searchConfirm="onSearch"></nav-bar>
+
+<!-- 筛选 -->
+<view class="filter_wrap" style="top: {{app.globalData.navHeight}}rpx;">
+  <!-- 类型 -->
+  <view class="filter">
+    <scroll-xbox>
+      <view class="{{active[0] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{-1}}">全部类型</view>
+      <view wx:for="{{types}}" class="{{active[0] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{index}}">{{item.name}}</view>
+    </scroll-xbox>
+  </view>
+  <!-- 平台 -->
+  <view class="filter">
+    <scroll-xbox>
+      <view class="{{active[1] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='publish_website' data-index="{{-1}}">全部平台</view>
+      <view wx:for="{{publish_websites}}" class="{{active[1] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='publish_website' data-index="{{index}}">{{item}}</view>
+    </scroll-xbox>
+  </view>
+</view>
+
+<!-- 列表 -->
+<view class="newbooks_wrap padding-lr-sm">
+  <view class="newbooks_wrap_l">
+    <view class="newbooks_item" bindtap="goDetail" data-id="{{item.id}}" wx:for="{{books_left}}">
+      <image wx:if="{{item.images[0]}}" src="{{item.images[0]}}" mode="aspectFill" />
+      <view class="newbooks_name text-sm">{{item.name}}</view>
+      <view class="newbooks_words">
+        <text wx:if="{{item.words}}" style="color: var(--gray);">{{item.words}}万字</text>
+        <text wx:else style="color: var(--gray);">暂无字数统计</text>
+        <text>by{{item.author}}</text>
+      </view>
+      <view class="newbooks_name" wx:if="{{item.top && item.bottom}}">{{item.top}} x {{item.bottom}}</view>
+      <view class="newbooks_labels">
+        <view>{{item.type_name}}</view>
+        <view wx:for="{{item.labels}}">{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="newbooks_wrap_r">
+    <view class="newbooks_item" bindtap="goDetail" data-id="{{item.id}}" wx:for="{{books_right}}">
+      <image wx:if="{{item.images[0]}}" src="{{item.images[0]}}" mode="aspectFill" />
+      <view class="newbooks_name text-sm">{{item.name}}</view>
+      <view class="newbooks_words">
+        <text wx:if="{{item.words}}" style="color: var(--gray);">{{item.words}}万字</text>
+        <text wx:else style="color: var(--gray);">暂无字数统计</text>
+        <text>by{{item.author}}</text>
+      </view>
+      <view class="newbooks_name" wx:if="{{item.top && item.bottom}}">{{item.top}} x {{item.bottom}}</view>
+      <view class="newbooks_labels">
+        <view>{{item.type_name}}</view>
+        <view wx:for="{{item.labels}}">{{item}}</view>
+      </view>
+    </view>
+  </view>
+
+
+
+</view>
+
+<!-- 加载状态组件 -->
+<load-more status="{{status}}" iphoneX="{{app.globalData.isIphoneX}}"></load-more>
+
+
+
+<tab-bar active="{{2}}" activeColor="{{ background }}" isIphoneX="{{ isIphoneX }}"></tab-bar>

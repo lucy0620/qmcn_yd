@@ -1,0 +1,22 @@
+/* pages/search/search.wxss */
+/* 搜索结果列表 */
+.list {
+  background-color: #fff;
+}
+.themeItem {
+  position: relative;
+}
+.cvName {
+  position: absolute;
+  bottom: 4rpx;
+  right: 0;
+}
+/* 搜索记录 */
+.more::before {
+  content: '全部删除';
+}
+.more::after {
+  content: '';
+  width: 0;
+  height: 0;
+}

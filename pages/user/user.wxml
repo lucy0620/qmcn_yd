@@ -1,0 +1,34 @@
+<!-- 头部信息 -->
+<view class="userinfo">
+  <view class="blur" style="background: {{background}};">
+    <image wx:if="{{user_info.avatarUrl}}" src="{{user_info.avatarUrl}}" mode="aspectFit"></image>
+  </view>
+  <image wx:if="{{user_info.avatarUrl}}" class="avatar" src="{{user_info.avatarUrl}}" mode=""></image>
+  <image wx:else class="avatar" src="/static/default/default_avatar.png" mode=""></image>
+  <view wx:if="{{user_info.nickName}}" class="nickname">{{user_info.nickName}}</view>
+  <view wx:else bindtap="loginTap" class="nickname">点击登录</view>
+</view>
+
+<!-- 设置等 -->
+<view class="item-wrap padding-tb padding-lr-xl" style="bottom: {{ isIphoneX ? '178rpx' : '110rpx'}};">
+  <view class="item padding-tb" wx:for="{{ menuList}}" wx:if="{{item.show}}" wx:key="item" data-item="{{item}}" bindtap="menuTap">
+    <text>{{ item.title}}</text>
+    <text wx:if="{{ item.link}}" class="cuIcon-right"></text>
+  </view>
+</view>
+
+<!-- 主题切换弹窗 -->
+<popup show="{{showBackground}}" showBtn="{{false}}">
+  <van-radio-group value="{{ background }}" bind:change="changeBackground">
+  <view class="acea-row flex-warp">
+    <view wx:for="{{backgrounds}}" class="color_item padding-xs" style="background: {{item.code}};">
+      <text class="ellipsis margin-bottom-sm text-white text-sm">{{item.name}}</text>
+      <van-radio checked-color="#000" name="{{item.code}}" />
+    </view>
+  </view>
+  </van-radio-group>
+</popup>
+<wxs src="./backgrounds.wxs" module="backgrounds"></wxs>
+
+<!-- tabbar -->
+<tab-bar active="{{4}}" activeColor="{{ background }}" isIphoneX="{{ isIphoneX }}"></tab-bar>

@@ -1,0 +1,47 @@
+/* components/common/zBox/index.wxss */
+/* 开启弹性布局 */
+.acea-row {
+  display: flex;
+}
+/* 竖向自适应左右 */
+.acea-row.row-between {
+  justify-content: space-between;
+}
+
+.function-box{
+  margin: 20rpx 20rpx 0;
+}
+
+.content-box {
+  background: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  overflow: hidden;
+  /* box-shadow: 0rpx 2rpx 12rpx 0rpx rgba(173, 173, 173, 0.5); */
+}
+
+.padding{
+  padding: 10px 0;
+}
+.padding-top{
+  padding-top: 20rpx !important;
+}
+
+.content-box-title {
+  padding: 0 20rpx;
+}
+
+.content-box-info {
+  /* height: 90px; */
+  margin: 10px 0;
+}
+
+.content-box-info .item{
+  width: 32.6%;
+  align-items: center;
+}
+
+.skipText{
+  margin-right: 10rpx;
+}
