@@ -14,7 +14,7 @@ Page({
       type: 1,
       return: false,
       home: false,
-      title: '名场面'
+      title: '句子'
     },
   },
 

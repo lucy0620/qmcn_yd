@@ -40,7 +40,7 @@ Component({
       {
         "iconName": 'cuIcon-text',
         "pagePath": "/pages/sentence/sentence",
-        "text": "名场面",
+        "text": "句子",
       },
       {
         "iconName": 'cuIcon-people',

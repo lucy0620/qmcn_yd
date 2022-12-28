@@ -1,0 +1,5 @@
+/* pages/sentence/addSentence/addSentence.wxss */
+.content {
+  width: calc(100vw - 100rpx);
+  border: 1px solid #f0f0f0;
+}

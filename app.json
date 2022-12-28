@@ -16,7 +16,8 @@
     "pages/sentence/sentence",
     "pages/book/book_detail/book_detail",
     "pages/bookshelf/bookshelf",
-    "pages/bookshelf/bookshelf_detail"
+    "pages/bookshelf/bookshelf_detail",
+    "pages/sentence/addSentence/addSentence"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -44,7 +45,7 @@
       },
       {
         "pagePath": "pages/sentence/sentence",
-        "text": "名场面"
+        "text": "句子"
       },
       {
         "pagePath": "pages/user/user",

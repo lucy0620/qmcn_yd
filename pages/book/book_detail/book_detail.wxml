@@ -1,38 +1,44 @@
 <!--pages/book/book_detail/book_detail.wxml-->
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
 
-<view>
+
+
+<view class="padding-sm" style="background: linear-gradient({{background}},#fff);">
   <!-- 头部 -->
-  <view class="head text-xs" style="background: linear-gradient({{background}},#fff);">
+  <view class="head padding-sm text-xs">
     <view class="head_l">
-      <view class="head_name ellipsis padding-top-xs text-xl">
-        {{detail.name}}
-      </view>
-      <view class="padding-top-xs text-sm">
-        by {{detail.author}}
-      </view>
+      <view class="head_name ellipsis text-xl">{{detail.name}}</view>
+      <view class="padding-top-xs text-sm">by {{detail.author}}</view>
       <view class="padding-top-xs">
-        {{detail.type_name}} · {{detail.words ? detail.words+'万字' : '暂无字数统计'}}
+        <text>{{detail.type_name}}</text>
+        <text wx:if="{{detail.words}}"> · {{detail.words+'万字'}}</text>
       </view>
       <view class="acea-row flex-warp" wx:if="{{detail.label_names && detail.label_names.length>0}}">
         <view class="head_label margin-right-xs margin-top-xs" wx:for="{{detail.label_names}}">
           {{item}}
         </view>
       </view>
-      <view wx:if="{{detail.top && detail.bottom}}" class="padding-top-xs">
-        <text class="text-bold">人设：</text>{{detail.top}} x {{detail.bottom}}
+      <view wx:if="{{detail.cpName}}" class="padding-top-xs">
+        <text class="text-bold">主角</text>：
+        <text>{{detail.cpName}}</text>
       </view>
-      <view wx:if="{{detail.cvName}}" class="padding-top-xs">
-        <text class="text-bold">配音：</text>{{detail.cvName}}
-      </view>
-      <view class="padding-top-xs">
-        <text class="text-bold">首发：</text>{{detail.publish_website && publish_website != '其他' ? detail.publish_website : '暂无首发平台记录'}} · {{detail.publish_time ? detail.publish_time : '暂无发表时间记录'}}
-      </view>
-      <view class="padding-top-xs" wx:if="{{detail.derive_names && detail.derive_names.length>0}}">
-        <text class="text-bold">衍生作品：</text>
-        <text class="margin-right-xs" wx:for="{{detail.derive_names}}">{{item}}</text>
+      <view wx:if="{{detail.top && detail.bottom}}" class="acea-row padding-top-xs" style="line-height: 1.6;">
+        <text class="text-bold">人设</text>：
+        <text class="flexs">{{detail.top}} x {{detail.bottom}}</text>
       </view>
 
+      <view wx:if="{{detail.cvName}}" class="acea-row padding-top-xs" style="line-height: 1.6;">
+        <text class="text-bold">配音</text>：
+        <text class="flexs">{{detail.cvName}}</text>
+      </view>
+      <view wx:if="{{detail.publish_website && detail.publish_website != '其他' || detail.publish_time}}" class="padding-top-xs">
+        <text class="text-bold">首发</text>：
+        <text>{{detail.publish_website && detail.publish_website != '其他' ? detail.publish_website : ''}} {{detail.publish_time}}</text>
+      </view>
+      <view class="padding-top-xs" wx:if="{{detail.derive_names && detail.derive_names.length>0}}">
+        <text class="text-bold">衍生作品</text>：
+        <text class="margin-right-xs" wx:for="{{detail.derive_names}}">{{item}}</text>
+      </view>
     </view>
     <swiper wx:if="{{detail.images && detail.images.length>0 && detail.images[0]}}" class="head_r" indicator-dots indicator-active-color="{{background}}">
       <swiper-item wx:for="{{detail.images}}">
@@ -40,11 +46,15 @@
       </swiper-item>
     </swiper>
   </view>
+
+  <view class="themeTitle">推文</view>
 </view>
 
 
+
+
 <!-- 底部操作栏 -->
-<submit-bar bind:addBookshelf="addBookshelf" bottomList="{{bottomList}}" isIphoneX="{{app.globalData.isIphoneX}}">
+<submit-bar bind:addBookshelf="addBookshelf" bind:addSentence="addSentence" bottomList="{{bottomList}}" isIphoneX="{{app.globalData.isIphoneX}}">
   <view wx:for="{{bottomListLeft}}" wx:key="index" data-text="{{item.text}}" bindtap="submitBarTap">
     <text class="cuIcon-{{item.icon}} margin-right-xs"></text>
     <text class="title">{{item.text}}</text>
@@ -62,7 +72,7 @@
           <text class="readTime text-sm text-gray">{{read_time ? read_time:'点击选择阅读日期'}}</text>
         </picker>
       </view>
-      <van-radio checked-color="#000" name="{{item.id}}" />
+      <van-radio checked-color="{{background}}" name="{{item.id}}" />
     </view>
   </van-radio-group>
 </popup>

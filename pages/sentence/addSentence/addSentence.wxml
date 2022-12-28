@@ -1,0 +1,27 @@
+<!--pages/sentence/addSentence/addSentence.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+<z-box>
+  <van-cell title="书名：" value="{{name}}"></van-cell>
+  <van-cell title="类型：" border="{{false}}">
+    <van-radio-group value="{{ type }}" bind:change="editType">
+      <view class="acea-row row-middle" style="justify-content: flex-end;">
+        <text class="margin-right-xs">推文</text>
+        <van-radio checked-color="{{background}}" name="recommend" />
+        <text class="margin-left margin-right-xs">句子</text>
+        <van-radio checked-color="{{background}}" name="sentence" />
+      </view>
+    </van-radio-group>
+  </van-cell>
+</z-box>
+
+<z-box>
+  <van-field wx:if="{{type == 'recommend'}}" titleWidth="max-content;" required value="{{title}}" type="text" autosize data-prop="title" clearable label="推文标题：" placeholder="输入推文标题" bindinput="editValue" maxlength="20" size="20rpx" />
+
+  <van-cell required title="{{type=='sentence'?'句子':'推文内容'}}（{{content.length}} / 140）：" border="{{false}}"></van-cell>
+  <textarea value="{{content}}" class="content margin-left padding-xs" bindinput="editValue" data-prop="content">
+  </textarea>
+
+  <van-cell wx:if="{{type == 'sentence'}}" required title="句子标签：" border="{{false}}"></van-cell>
+</z-box>
+
+<z-button bind:handleOperation="handleOperation" successBackground="{{background}}" disabledBackground="{{background}}" iphoneX="{{app.globalData.isIphoneX}}"></z-button>

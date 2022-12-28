@@ -2,6 +2,12 @@
 @import "./colorui/main.wxss";
 @import "./colorui/icon.wxss";
 
+/* 
+
+灰色 (灰色字体) ：text-gray | --gray | #aaa
+浅灰色（边框线）：#f0f0f0
+
+*/
 /* 统一样式 */
 page {
   box-sizing: border-box;
@@ -28,6 +34,7 @@ page {
   background: #000;
   transform: rotate(45deg);
 }
+
 .no_l.themeItem::before {
   width: 0;
   height: 0;
@@ -46,7 +53,7 @@ page {
 
 .themeTitle::before {
   content: '';
-  margin-right: 1em;
+  margin-right: 20rpx;
   width: .5em;
   height: 1em;
   background-color: #000;
@@ -77,6 +84,7 @@ page {
   border-top: 2rpx solid var(--gray);
   border-right: 2rpx solid var(--gray);
 }
+
 /* 超出隐藏 */
 .ellipsis {
   display: -webkit-box;
@@ -87,6 +95,7 @@ page {
   overflow: hidden;
   white-space: normal;
 }
+
 /* 弹性布局相关 */
 .acea-row {
   display: flex;
@@ -95,10 +104,12 @@ page {
 .flexs {
   flex: 1;
 }
+
 /* 换行 */
 .acea-row.flex-warp {
   flex-wrap: wrap;
 }
+
 /* 不换行 */
 .acea-row.flex-nowarp {
   flex-wrap: nowrap;

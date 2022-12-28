@@ -16,7 +16,5 @@
   content: '全部删除';
 }
 .more::after {
-  content: '';
-  width: 0;
-  height: 0;
+  display: none;
 }

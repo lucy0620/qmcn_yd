@@ -36,7 +36,7 @@ Page({
       background: ''
     }, {
       text: '写记录',
-      funName: 'addBookshelf',
+      funName: 'addSentence',
       background: '#e3e3e3'
     }],
     showChooseBookshelf: false,
@@ -148,7 +148,7 @@ Page({
       let _index = bookshelfs[checked_index].book_ids.findIndex(item =>
         item == _this.data.id)
       if (_index != -1) {
-        utilShow.showMyMsg('该书架已存在此书')
+        utilShow.showMyMsg('该书单已存在此书')
         return
       }
     }
@@ -167,6 +167,15 @@ Page({
         _this.getBookshelfs()
       }, 1500)
     }
+  },
+  addSentence() {
+    let _this = this
+    app.handleIsLogin(function () {
+      utilRoute.navigate('/pages/sentence/addSentence/addSentence', {
+        id: _this.data.detail.id,
+        name: _this.data.detail.name
+      })
+    })
   },
 
   submitBarTap(e) {

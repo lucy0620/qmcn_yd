@@ -21,14 +21,15 @@ export const request = (url, params, noLoading, contentType = 'application/json'
         'Content-type': contentType,
       },
       success(res) {
-        wx.hideLoading();
-        wx.stopPullDownRefresh()
         resolve(res.data);
       },
       fail(err) {
         reject(err);
       },
-      complete(com) {}
+      complete(com) {
+        wx.hideLoading();
+        wx.stopPullDownRefresh()
+      }
     })
   })
 }

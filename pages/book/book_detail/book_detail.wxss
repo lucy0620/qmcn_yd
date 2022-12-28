@@ -1,19 +1,25 @@
 /* pages/book/book_detail/book_detail.wxss */
-page{
+page {
   min-height: 100vh;
   background-color: #fff;
 }
-.head{
+
+.head {
   display: flex;
-  padding:  20rpx;
+  background-color: #fff;
+  border-radius: 4rpx;
 }
+
 .head_l {
   flex: 1;
 }
+
 .head_l .head_name {
+  line-height: 1;
   font-weight: bold;
   letter-spacing: 2rpx;
 }
+
 .head_l .head_label {
   font-size: 20rpx;
   border-radius: 4rpx;
@@ -21,11 +27,22 @@ page{
   background: #f0f0f0;
   border: 1px solid #fff;
 }
-.head_r{
+
+/* 文字两端对齐 */
+.head_l .text-bold {
+  display: inline-block;
+  width: 4em;
+  text-align: justify;
+  text-justify: distribute-all-lines;
+  text-align-last: justify;
+}
+
+.head_r {
   margin-left: 20rpx;
   width: 300rpx;
   height: 400rpx;
 }
+
 .head_r image {
   border-radius: 8rpx;
   width: 300rpx;
