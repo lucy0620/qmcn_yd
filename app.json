@@ -17,7 +17,7 @@
     "pages/book/book_detail/book_detail",
     "pages/bookshelf/bookshelf",
     "pages/bookshelf/bookshelf_detail",
-    "pages/sentence/addSentence/addSentence"
+    "pages/add/add"
   ],
   "window": {
     "navigationStyle": "custom",

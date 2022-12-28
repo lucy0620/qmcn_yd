@@ -45,10 +45,10 @@ page {
 
 .head_r image {
   border-radius: 8rpx;
-  width: 300rpx;
   height: 400rpx;
 }
 
+/* 书架弹窗 */
 .readTime {
   position: absolute;
   right: 0;

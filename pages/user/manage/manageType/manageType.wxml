@@ -3,7 +3,7 @@
 
 <!-- 列表 -->
 <view class="list padding-lr" style="padding-bottom: {{app.globalData.isIphoneX ? '68rpx':''}};">
-  <view class="themeItem" wx:for="{{types}}" bindtap="choose" data-item="{{item}}">
+  <view class="themeItem" wx:for="{{types}}" wx:key="index" bindtap="choose" data-item="{{item}}">
     <text style="min-width: 140rpx;">{{index+1}}.{{item.name}}</text>
     <text wx:if="{{item.describe}}" class="margin-lr-xs">-</text>
     <text class="text-xs flexs">{{item.describe ? item.describe : ''}}</text>

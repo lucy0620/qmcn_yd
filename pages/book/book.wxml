@@ -7,14 +7,14 @@
   <view class="filter">
     <scroll-xbox>
       <view class="{{active[0] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{-1}}">全部类型</view>
-      <view wx:for="{{types}}" class="{{active[0] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{index}}">{{item.name}}</view>
+      <view wx:for="{{types}}" wx:key="index" class="{{active[0] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{index}}">{{item.name}}</view>
     </scroll-xbox>
   </view>
   <!-- 平台 -->
   <view class="filter">
     <scroll-xbox>
       <view class="{{active[1] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='publish_website' data-index="{{-1}}">全部平台</view>
-      <view wx:for="{{publish_websites}}" class="{{active[1] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='publish_website' data-index="{{index}}">{{item}}</view>
+      <view wx:for="{{publish_websites}}" wx:key="index" class="{{active[1] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='publish_website' data-index="{{index}}">{{item}}</view>
     </scroll-xbox>
   </view>
 </view>
@@ -22,7 +22,7 @@
 <!-- 列表 -->
 <view class="newbooks_wrap padding-lr-sm">
   <view class="newbooks_wrap_l">
-    <view class="newbooks_item" bindtap="goDetail" data-id="{{item.id}}" wx:for="{{books_left}}">
+    <view class="newbooks_item" bindtap="goDetail" data-id="{{item.id}}" wx:for="{{books_left}}" wx:key="index">
       <image wx:if="{{item.images[0]}}" src="{{item.images[0]}}" mode="aspectFill" />
       <view class="newbooks_name text-sm">{{item.name}}</view>
       <view class="newbooks_words">
@@ -33,7 +33,7 @@
       <view class="newbooks_name" wx:if="{{item.top && item.bottom}}">{{item.top}} x {{item.bottom}}</view>
       <view class="newbooks_labels">
         <view>{{item.type_name}}</view>
-        <view wx:for="{{item.labels}}">{{item}}</view>
+        <view wx:for="{{item.labels}}" wx:key="index">{{item}}</view>
       </view>
     </view>
   </view>
@@ -49,7 +49,7 @@
       <view class="newbooks_name" wx:if="{{item.top && item.bottom}}">{{item.top}} x {{item.bottom}}</view>
       <view class="newbooks_labels">
         <view>{{item.type_name}}</view>
-        <view wx:for="{{item.labels}}">{{item}}</view>
+        <view wx:for="{{item.labels}}" wx:key="index">{{item}}</view>
       </view>
     </view>
   </view>

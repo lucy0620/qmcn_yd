@@ -17,7 +17,7 @@ App({
     },
     isIphoneX: false, // 是否为苹果X以上：用于设置底部安全距离
     background: '#E8CBC0', // 主题色：用于很多组件颜色配置
-    navHeight: '', // 导航高度：用于自定义顶部导航
+    navHeight: '', // 导航高度：用于自定义顶部导航 数字，使用时需带单位rpx
     /* 请求地址 */
     mp3Url: 'https://mall.gzpgkj.cn/mp3/', // mp3链接地址
     // baseUrl: 'http://localhost:7890',

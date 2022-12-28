@@ -3,7 +3,7 @@
 <view class="list padding-lr"
 >
   <van-checkbox-group value="{{ derive_ids }}" bind:change="editValue">
-    <view class="themeItem" wx:for="{{derives}}">
+    <view class="themeItem" wx:for="{{derives}}" wx:key="index">
       <view style="flex: 1;">{{item.derive_name}}</view>
       <van-checkbox checked-color="{{background}}" name="{{item.derive_id}}" />
     </view>

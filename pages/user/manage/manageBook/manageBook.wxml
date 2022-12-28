@@ -7,7 +7,7 @@
 </view>
 <!-- 列表 -->
 <view class="list padding-lr">
-  <view class="themeItem" wx:for="{{books}}" bindtap="edit" data-id="{{item.id}}">
+  <view class="themeItem" wx:for="{{books}}" wx:key="index" bindtap="edit" data-id="{{item.id}}">
     <text>{{index+1}}.{{item.name}}</text>
     <text class="padding-lr-xs">-</text>
     <text>{{item.author}}</text>

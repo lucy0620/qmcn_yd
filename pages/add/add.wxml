@@ -1,4 +1,4 @@
-<!--pages/sentence/addSentence/addSentence.wxml-->
+<!--pages/add/add.wxml-->
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
 <z-box>
   <van-cell title="书名：" value="{{name}}"></van-cell>
@@ -14,14 +14,24 @@
   </van-cell>
 </z-box>
 
+
+
 <z-box>
   <van-field wx:if="{{type == 'recommend'}}" titleWidth="max-content;" required value="{{title}}" type="text" autosize data-prop="title" clearable label="推文标题：" placeholder="输入推文标题" bindinput="editValue" maxlength="20" size="20rpx" />
 
-  <van-cell required title="{{type=='sentence'?'句子':'推文内容'}}（{{content.length}} / 140）：" border="{{false}}"></van-cell>
-  <textarea value="{{content}}" class="content margin-left padding-xs" bindinput="editValue" data-prop="content">
+  <van-cell required title="{{type=='sentence'?'句子':'推文内容'}}（{{content.length}} / 300）：" border="{{false}}"></van-cell>
+  <textarea maxlength="300" value="{{content}}" class="content margin-left padding-xs" bindinput="editValue" data-prop="content">
   </textarea>
 
-  <van-cell wx:if="{{type == 'sentence'}}" required title="句子标签：" border="{{false}}"></van-cell>
+  <view wx:if="{{type == 'sentence'}}">
+    <van-cell required title="句子标签：" border="{{false}}"></van-cell>
+    <view class="sentence_labels acea-row flex-warp padding-left">
+      <view bindtap="editLabel" data-index="{{index}}" class="margin-right-sm margin-bottom-sm text-sm" style="background-color: {{item.checked? background: '#fff'}};color: {{item.checked? '#fff': background}}; border-color: {{ background}};" wx:for="{{sentence_labels}}" wx:key="index">
+        {{item.label_name}}
+      </view>
+    </view>
+  </view>
+
 </z-box>
 
 <z-button bind:handleOperation="handleOperation" successBackground="{{background}}" disabledBackground="{{background}}" iphoneX="{{app.globalData.isIphoneX}}"></z-button>

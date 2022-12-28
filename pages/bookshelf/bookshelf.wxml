@@ -7,7 +7,7 @@
     <text>新增书单</text>
   </view>
   
-  <view wx:for="{{bookshelfs}}" class="bookshelf padding-tb" data-index="{{index}}" data-item="{{item}}" bindtap="goBookshelf_detail">
+  <view wx:for="{{bookshelfs}}" wx:key="index" class="bookshelf padding-tb" data-index="{{index}}" data-item="{{item}}" bindtap="goBookshelf_detail">
     <view>{{item.name}}</view>
     <view class="margin-top-xs text-xs text-gray">{{item.count}}本</view>
     <text class="cuIcon-right"></text>

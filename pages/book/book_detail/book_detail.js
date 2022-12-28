@@ -36,14 +36,21 @@ Page({
       background: ''
     }, {
       text: '写记录',
-      funName: 'addSentence',
+      funName: 'add',
       background: '#e3e3e3'
     }],
+    // 书单
     showChooseBookshelf: false,
     bookshelfs: [],
     bookshelfs_checkedId: '-1',
     endTime: '',
-    read_time: ''
+    read_time: '',
+    // 推文 句子
+    tabs: ['推文', '句子'],
+    current: 0,
+    sentences: [],
+    recommends: [],
+    height: 150
   },
 
   /**
@@ -71,6 +78,9 @@ Page({
       [data]: _this.data.background,
       [data2]: _this.data.user_info && _this.data.user_info.role == 1 ? '编辑' : '反馈'
     })
+
+    this.getSentences()
+    this.getRecommends()
   },
   async getDetail(id) {
     const res = await request('/getBook_detail', {
@@ -82,6 +92,7 @@ Page({
     this.setData({
       detail: res.data,
     })
+    this.getHeight()
   },
   async getBookshelfs() {
     let _this = this
@@ -168,13 +179,68 @@ Page({
       }, 1500)
     }
   },
-  addSentence() {
+  add(e) {
     let _this = this
+    let {
+      type
+    } = e.currentTarget.dataset
     app.handleIsLogin(function () {
-      utilRoute.navigate('/pages/sentence/addSentence/addSentence', {
+      utilRoute.navigate('/pages/add/add', {
         id: _this.data.detail.id,
-        name: _this.data.detail.name
+        name: _this.data.detail.name,
+        type: type ? type : 'recommend'
       })
+    })
+  },
+
+  // 推文 句子
+  changeTab(e) {
+    let current = e.currentTarget.dataset.index
+    this.setData({
+      current
+    })
+  },
+  changeSwiper(e) {
+    let current = e.detail.current
+    this.setData({
+      current
+    })
+  },
+  getHeight() {
+    let _this = this;
+    var query = wx.createSelectorQuery();
+    query.select(`.headTabs`).boundingClientRect(function (rect) {
+      let num = (rect.height).toFixed(0)
+      _this.setData({
+        height: `calc(100vh - ${num}px - ${app.globalData.navHeight}rpx - 80px - ${app.globalData.isIphoneX?'0rpx' : '68rpx'})`
+      })
+    }).exec();
+  },
+
+  async getRecommends() {
+    let _this = this
+    const res = await request('/getBook_Recommends', {
+      id: _this.data.id
+    })
+    let recommends = res.data
+    this.setData({
+      recommends
+    })
+  },
+
+  async getSentences() {
+    let _this = this
+    const res = await request('/getBook_Sentences', {
+      id: _this.data.id
+    })
+    let sentences = res.data.map(it => {
+      return {
+        ...it,
+        label_names: it.label_names.split(',')
+      }
+    })
+    this.setData({
+      sentences
     })
   },
 

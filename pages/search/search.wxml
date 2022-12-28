@@ -6,7 +6,7 @@
 </view>
 <!-- 列表 -->
 <view class="list padding-lr" wx:if="{{books && books.length>0}}">
-  <view class="themeItem" wx:for="{{books}}" bindtap="goDetail" data-id="{{item.id}}">
+  <view class="themeItem" wx:for="{{books}}" wx:key="index" bindtap="goDetail" data-id="{{item.id}}">
     <text>{{index+1}}.{{item.name}}</text>
     <text class="padding-lr-xs">-</text>
     <text>{{item.author}}</text>
@@ -19,7 +19,7 @@
   <view class="themeTitle" wx:if="{{keys && keys.length>0}}">搜索记录
     <text bindtap="clearHis" wx:if="{{keys && keys.length>0}}" class="more"></text>
   </view>
-  <view bindtap="searchHis" data-value="{{item}}" class="cu-btn round sm bg-white margin-lr-xs margin-bottom-xs" wx:for="{{keys}}">{{item}}</view>
+  <view bindtap="searchHis" data-value="{{item}}" class="cu-btn round sm bg-white margin-lr-xs margin-bottom-xs" wx:for="{{keys}}" wx:key="index">{{item}}</view>
   <!-- 热词todo -->
   <!-- <view class="themeTitle">热门搜索
   </view> -->

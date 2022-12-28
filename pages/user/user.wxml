@@ -21,7 +21,7 @@
 <popup show="{{showBackground}}" showBtn="{{false}}">
   <van-radio-group value="{{ background }}" bind:change="changeBackground">
     <view class="acea-row flex-warp">
-      <view wx:for="{{backgrounds}}" class="color_item padding-xs" style="background: {{item.code}};">
+      <view wx:for="{{backgrounds}}" wx:key="index" class="color_item padding-xs" style="background: {{item.code}};">
         <text class="ellipsis margin-bottom-sm text-white text-sm">{{item.name}}</text>
         <van-radio checked-color="#aaa" name="{{item.code}}" />
       </view>

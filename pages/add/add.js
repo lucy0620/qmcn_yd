@@ -1,12 +1,11 @@
-// pages/sentence/addSentence/addSentence.js
+// pages/add/add.js
 const app = getApp();
 import {
   request
-} from '../../../utils/request'
-import * as utilRoute from "../../../utils/route"
-import * as utilTime from "../../../utils/time"
-import * as utilShow from "../../../utils/show"
-import * as utilStorage from "../../../utils/storage"
+} from '../../utils/request'
+import * as utilRoute from "../../utils/route"
+import * as utilShow from "../../utils/show"
+import * as utilStorage from "../../utils/storage"
 Page({
 
   /**
@@ -26,7 +25,17 @@ Page({
     name: '',
     type: 'recommend', // 推文recommend 句子sentence
     title: '',
-    content: ''
+    content: '',
+    sentence_labels: [{
+      title: '情话',
+      checked: false
+    }, {
+      title: '刀',
+      checked: false
+    }, {
+      title: '糖',
+      checked: true
+    }], //句子标签
   },
 
   /**
@@ -35,13 +44,17 @@ Page({
   onLoad(options) {
     let {
       id,
-      name
+      name,
+      type
     } = options
 
     this.setData({
       id,
-      name
+      name,
+      type
     })
+
+    this.getSentenceLabels()
   },
 
   editType(e) {
@@ -56,40 +69,80 @@ Page({
       [prop]: prop == 'title' ? e.detail : e.detail.value
     })
   },
+  async getSentenceLabels() {
+    let res = await request('/get_SentenceLabels')
+    let sentence_labels = res.data.map(it => {
+      return {
+        ...it,
+        check: false
+      }
+    })
+    this.setData({
+      sentence_labels
+    })
+  },
+
+  editLabel(e) {
+    let {
+      index,
+    } = e.currentTarget.dataset
+    let status = this.data.sentence_labels[index].checked
+    let prop = `sentence_labels[${index}].checked`
+    this.setData({
+      [prop]: !status
+    })
+  },
 
   async handleOperation(e) {
     let {
       type,
       content,
       title,
-      id
+      id,
+      user_info,
     } = this.data
+    let data = {
+      user_id: user_info.id,
+      id,
+      content
+    }
     if (e.detail) {
-      if (type == 'recommend' && !title) {
-        utilShow.showMyMsg('请输入推文标题')
-        return
-      }
-      if (!content) {
-        utilShow.showMyMsg('请输入' + (type == 'recommend' ? '推文' : '句子') + '内容')
-        return
-      }
-
-      let data = {
-        id,
-        content
-      }
       if (type == 'recommend') {
+        if (!title) {
+          utilShow.showMyMsg('请输入推文标题')
+          return
+        }
         data = {
           ...data,
           title
         }
       }
-      console.log(data)
-      return
+      if (!content) {
+        utilShow.showMyMsg('请输入' + (type == 'recommend' ? '推文' : '句子') + '内容')
+        return
+      }
+      if (type == 'sentence') {
+        let temp = []
+        let label_ids = ''
+        this.data.sentence_labels.forEach(it => {
+          if (it.checked) {
+            temp.push(it.label_id)
+          }
+        })
+        label_ids = temp.join(',')
+        if (!label_ids) {
+          utilShow.showMyMsg('请选择句子标签')
+          return
+        }
+        data = {
+          ...data,
+          label_ids
+        }
+      }
       let url = type == 'recommend' ? '/book_add_recommend' : '/book_add_sentence'
       let res = await request(url, data)
       if (res.code == 200) {
-        utilShow.showMyMsg(type == 'add' ? '新增推文成功' : '新增句子成功')
+        utilShow.showMyMsg(type == 'recommend' ? '新增推文成功' : '新增句子成功')
         setTimeout(() => {
           utilRoute.back()
         }, 1500)
@@ -110,7 +163,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    let _this = this
     this.setData({
       background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
       user_info: utilStorage.getKey('user_info'),
