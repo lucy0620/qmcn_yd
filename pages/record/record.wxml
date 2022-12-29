@@ -1,0 +1,56 @@
+<!--pages/record/record.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+
+<view class="head padding-lr">
+  <!-- tbas -->
+  <view class="acea-row row-middle padding-top text-sm">
+    <view wx:for="{{tabs}}" wx:key="index" data-index="{{index}}" bindtap="changeTab" class="padding-lr-xs {{current == index ? 'text-xl' :''}}" style="line-height: 1;">{{item}}</view>
+  </view>
+  <!-- 按钮 -->
+  <view class="grid col-3 text-right text-sm">
+    <view></view>
+    <view></view>
+    <!-- 随机 -->
+    <view bindtap="randomRes">
+      <text class="cuIcon-refresh margin-xs"></text>
+      <text>随机5条</text>
+    </view>
+  </view>
+</view>
+
+
+<swiper class="margin bg-white padding-lr-sm text-xs" style="height: {{height}};" bindchange="changeSwiper" current="{{current}}">
+  <swiper-item wx:for="{{tabs}}" wx:key="index">
+    <view class="padding-lr-sm text-xs" style="height: 100%;overflow-y: scroll;">
+      <!-- 句子 -->
+      <view bindtap="goDetail" data-id="{{it.book_id}}" data-sentence_id="{{it.sentence_id}}" wx:if="{{item == '句子'}}" wx:for="{{sentences}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="padding-tb-sm" style="border-bottom: 1px solid #f0f0f0;">
+        <text user-select>{{it.content}}</text>
+        <view class="padding-top-xs text-right">
+          —— {{it.book_name}}
+        </view>
+        <view class="padding-top-xs acea-row flex-warp row-middle" style="line-height: 1;">
+          <text class="text-gray margin-right-xs" wx:for="{{it.label_names}}" wx:for-item="its" wx:for-index="is" wx:key="is">#{{its}}</text>
+          <text class="flexs cuIcon-like text-right margin-lr-xs"></text>
+          <text class="">{{it.likes}}</text>
+        </view>
+      </view>
+
+      <!-- 推文 -->
+      <view wx:if="{{item == '推文'}}" bindtap="goDetail" data-recommend_id="{{it.recommend_id}}" data-id="{{it.book_id}}" wx:for="{{recommends}}" wx:for-item="it" wx:for-index="i" wx:key="i" class="padding-tb-sm" style="border-bottom: 1px solid #f0f0f0;">
+        <view class="acea-row">
+          <text class="cuIcon-like margin-right-xs"></text>
+          <view>
+            <view class="text-sm padding-bottom-xs" style="line-height: 1;">{{it.title}}</view>
+            <text user-select>{{it.content}}</text>
+          </view>
+        </view>
+        <view class="padding-top text-right">
+          —— {{it.book_name}}
+        </view>
+      </view>
+
+    </view>
+  </swiper-item>
+</swiper>
+
+<tab-bar active="{{3}}" activeColor="{{ background }}" isIphoneX="{{ isIphoneX }}"></tab-bar>

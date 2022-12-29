@@ -1,0 +1,6 @@
+/* 文本域 */
+.content {
+  width: calc(100vw - 100rpx);
+  height: 400rpx;
+  border: 1px solid #f0f0f0;
+}

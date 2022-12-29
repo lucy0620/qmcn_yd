@@ -27,7 +27,8 @@ Page({
     status: 'loadmore',
     types: [],
     publish_websites: ['晋江', '长佩', '海棠', '废文', '爱奇艺', '微博', '其他'],
-    active: [-1, -1],
+    sorts: ['热度最高','收藏最多'],
+    active: [-1, -1 ,-1],
     books_left: [],
     books_right: []
   },
@@ -69,6 +70,9 @@ Page({
     })
   },
   onClear() {
+    wx.pageScrollTo({
+      scrollTop: 0
+    });
     this.setData({
       page: 1,
       status: 'loadmore',
@@ -77,6 +81,9 @@ Page({
     this.getBooks()
   },
   filterTap(e) {
+    wx.pageScrollTo({
+      scrollTop: 0
+    });
     let {
       index,
       prop
@@ -86,6 +93,8 @@ Page({
       _index = 0
     } else if (prop == 'publish_website') {
       _index = 1
+    } else if (prop == 'sort') {
+      _index = 2
     }
     let _arr = `active[${_index}]`
     this.setData({
@@ -106,7 +115,8 @@ Page({
       page: this.data.page,
       count: this.data.count,
       type_id: this.data.active[0] == -1 ? -1 : this.data.types[this.data.active[0]].type_id,
-      publish_website: this.data.active[1] == -1 ? -1 : this.data.publish_websites[this.data.active[1]]
+      publish_website: this.data.active[1] == -1 ? -1 : this.data.publish_websites[this.data.active[1]],
+      sort: this.data.active[2] == -1 ? '' : this.data.active[2] + 1
     }
     let res = await request('/getBooks_filter', data)
     if (res.data.length < this.data.count) {

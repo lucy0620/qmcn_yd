@@ -14,6 +14,10 @@ page {
   color: var(--black);
 }
 
+.text-hide{
+  opacity: 0;
+}
+
 /* 条目样式 */
 .themeItem {
   display: flex;

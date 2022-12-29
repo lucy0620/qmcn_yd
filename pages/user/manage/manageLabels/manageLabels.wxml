@@ -11,4 +11,4 @@
   </van-checkbox-group>
 </view>
 
-<z-button bind:handleOperation="handleOperation" wx-if="{{type == 'edit'}}" successBackground="{{app.globalData.background}}" disabledBackground="{{app.globalData.background}}" iphoneX="{{app.globalData.isIphoneX}}"></z-button>
+<z-button bind:handleOperation="handleOperation" wx-if="{{type == 'edit'}}" successBackground="{{background}}" disabledBackground="{{background}}" iphoneX="{{app.globalData.isIphoneX}}"></z-button>

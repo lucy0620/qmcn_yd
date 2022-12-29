@@ -28,7 +28,7 @@ Page({
       text: '我的书架'
     }, {
       icon: 'post',
-      text: ''
+      text: '' // 反馈/编辑
     }],
     bottomList: [{
       text: '加入书架',
@@ -37,7 +37,7 @@ Page({
     }, {
       text: '写记录',
       funName: 'add',
-      background: '#e3e3e3'
+      background: '#e3e3e3',
     }],
     // 书单
     showChooseBookshelf: false,
@@ -45,22 +45,32 @@ Page({
     bookshelfs_checkedId: '-1',
     endTime: '',
     read_time: '',
-    // 推文 句子
-    tabs: ['推文', '句子'],
+    // 句子 推文
+    tabs: ['句子', '推文'],
     current: 0,
     sentences: [],
     recommends: [],
-    height: 150
+    height: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    let {
+      id,
+      sentence_id,
+      recommend_id,
+    } = options
     this.setData({
-      id: options.id
+      id
     })
-    this.getDetail(options.id)
+    let data = {
+      id,
+      sentence_id,
+      recommend_id,
+    }
+    this.getDetail(data)
     this.setData({
       endTime: utilTime.dateStrToFormat(new Date())
     })
@@ -82,10 +92,8 @@ Page({
     this.getSentences()
     this.getRecommends()
   },
-  async getDetail(id) {
-    const res = await request('/getBook_detail', {
-      id
-    })
+  async getDetail(data) {
+    const res = await request('/getBook_detail', data)
     res.data.label_names = res.data.label_names != null ? res.data.label_names.split(',') : [];
     res.data.images = res.data.images != null ? res.data.images.split(',') : [];
     res.data.derive_names = res.data.derive_names != null ? res.data.derive_names.split(',') : [];
@@ -188,7 +196,7 @@ Page({
       utilRoute.navigate('/pages/add/add', {
         id: _this.data.detail.id,
         name: _this.data.detail.name,
-        type: type ? type : 'recommend'
+        type: type ? type : _this.data.current == 0 ? 'sentence' : 'recommend'
       })
     })
   },
@@ -258,8 +266,6 @@ Page({
         utilRoute.navigate('/pages/bookshelf/bookshelf')
       })
     } else if (text == '反馈') {
-      utilShow.showMyMsg('暂未开放')
-      return
       app.handleIsLogin(function () {
         utilRoute.navigate('/pages/user/suggestions/suggestions', {
           id: _this.data.detail.id,

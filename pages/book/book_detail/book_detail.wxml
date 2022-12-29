@@ -1,9 +1,7 @@
 <!--pages/book/book_detail/book_detail.wxml-->
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
 
-
-
-<view class="headTabs padding-lr-sm padding-top-sm" style="background: linear-gradient({{background}},#fff);">
+<view class="headTabs padding-lr-sm padding-top-xs" style="background: linear-gradient({{background}},#fff);">
   <!-- 头部 -->
   <view class="head padding-sm text-xs">
     <view class="head_l">
@@ -19,28 +17,36 @@
         </view>
       </view>
       <view wx:if="{{detail.cpName}}" class="acea-row padding-top-xs">
-        <text class="text-bold">主角</text>
+        <text class="text-bold">主</text>
+        <text class="text-hide">占位</text>
+        <text class="text-bold">角</text>
         <text>：</text>
         <text class="flexs">{{detail.cpName}}</text>
       </view>
       <view wx:if="{{detail.top && detail.bottom}}" class="acea-row padding-top-xs" style="line-height: 1.6;">
-        <text class="text-bold">人设</text>：
+        <text class="text-bold">人</text>
+        <text class="text-hide">占位</text>
+        <text class="text-bold">设</text>：
         <text class="flexs">{{detail.top}} x {{detail.bottom}}</text>
       </view>
       <view wx:if="{{detail.cvName}}" class="acea-row padding-top-xs" style="line-height: 1.6;">
-        <text class="text-bold">配音</text>：
+        <text class="text-bold">配</text>
+        <text class="text-hide">占位</text>
+        <text class="text-bold">音</text>：
         <text class="flexs">{{detail.cvName}}</text>
       </view>
       <view wx:if="{{detail.publish_website && detail.publish_website != '其他' || detail.publish_time}}" class="acea-row padding-top-xs">
-        <text class="text-bold">首发</text>：
-        <text class="flexs">{{detail.publish_website && detail.publish_website != '其他' ? detail.publish_website : ''}} {{detail.publish_time}}</text>
+        <text class="text-bold">首</text>
+        <text class="text-hide">占位</text>
+        <text class="text-bold">发</text>：
+        <text class="flexs">{{detail.publish_website && detail.publish_website != '其他' ? detail.publish_website : ''}} {{detail.publish_time ? detail.publish_time : ''}}</text>
       </view>
       <view class="acea-row padding-top-xs" wx:if="{{detail.derive_names && detail.derive_names.length>0}}">
         <text class="text-bold">衍生作品</text>：
         <text class="margin-right-xs" wx:for="{{detail.derive_names}}" wx:key="index">{{item}}</text>
       </view>
     </view>
-    <swiper wx:if="{{detail.images && detail.images.length>0 && detail.images[0]}}" class="head_r" indicator-dots indicator-active-color="{{background}}">
+    <swiper wx:if="{{detail.images && detail.images.length>0 && detail.images[0]}}" class="head_r" indicator-dots autoplay indicator-active-color="{{background}}">
       <swiper-item wx:for="{{detail.images}}" wx:key="index">
         <image src="{{item}}" mode="aspectFill" />
       </swiper-item>
@@ -52,13 +58,20 @@
   </view>
 </view>
 
-
 <swiper class="padding-lr-sm padding-bottom-sm" style="height: {{height}};" bindchange="changeSwiper" current="{{current}}">
-
   <swiper-item wx:for="{{tabs}}" wx:key="index">
-    <view class="swiper_item padding-lr-sm text-xs" style="height: 100%;overflow-y: scroll;">
+    <view class="padding-lr-sm text-xs" style="height: 100%;overflow-y: scroll;">
+
+      <!-- 句子 -->
+      <view wx:if="{{item == '句子'}}" wx:for="{{sentences}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="margin-bottom-sm" style="border-bottom: 1px solid #f0f0f0;">
+        <text user-select>{{it.content}}</text>
+        <view class="padding-bottom-sm padding-top-xs text-right">
+          <text class="text-gray margin-left-xs" wx:for="{{it.label_names}}" wx:for-item="its" wx:for-index="is" wx:key="is">#{{its}}</text>
+        </view>
+      </view>
+
       <!-- 推文 -->
-      <view wx:if="{{index==0}}" wx:for="{{recommends}}" wx:for-item="it" wx:for-index="i" wx:key="i" class="margin-bottom-sm padding-bottom-sm" style="border-bottom: 1px solid #f0f0f0;">
+      <view wx:if="{{item == '推文'}}" wx:for="{{recommends}}" wx:for-item="it" wx:for-index="i" wx:key="i" class="margin-bottom-sm padding-bottom-sm" style="border-bottom: 1px solid #f0f0f0;">
         <view class="acea-row">
           <text class="cuIcon-like margin-right-xs"></text>
           <view>
@@ -68,27 +81,17 @@
         </view>
       </view>
 
-      <!-- 句子 -->
-      <view wx:if="{{index==1}}" wx:for="{{sentences}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="margin-bottom-sm" style="border-bottom: 1px solid #f0f0f0;">
-        <text user-select>{{it.content}}</text>
-        <view class="padding-bottom-sm padding-top-xs text-right">
-          <text class="text-gray margin-left-xs" wx:for="{{it.label_names}}" wx:for-item="its" wx:for-index="is" wx:key="is">#{{its}}</text>
-        </view>
-      </view>
-
-      <view wx:if="{{index==0 && recommends && recommends.length == 0 || index==1&&sentences && sentences.length == 0}}" class="text-center" style="padding-top: 100rpx;">
-        <view>该文章暂无{{item}}</view>
+      <view wx:if="{{ item=='句子'&&sentences && sentences.length == 0|| item == '推文' && recommends && recommends.length == 0 }}" class="text-center" style="padding-top: 100rpx;">
+        <view>该文暂无{{item}}</view>
         <text bindtap="add" data-type="{{item == '推文' ? 'recommend' : 'sentence'}}" class="cu-btn sm shadow text-white margin" style="background: {{background}};">去添加</text>
       </view>
 
-
     </view>
   </swiper-item>
-
 </swiper>
 
 <!-- 底部操作栏 -->
-<submit-bar bind:addBookshelf="addBookshelf" bind:add="add" bottomList="{{bottomList}}" isIphoneX="{{app.globalData.isIphoneX}}">
+<submit-bar bind:addBookshelf="addBookshelf" bind:add="add" data-type="{{type}}" bottomList="{{bottomList}}" isIphoneX="{{app.globalData.isIphoneX}}">
   <view wx:for="{{bottomListLeft}}" wx:key="index" data-text="{{item.text}}" bindtap="submitBarTap">
     <text class="cuIcon-{{item.icon}} margin-right-xs"></text>
     <text class="title">{{item.text}}</text>
@@ -96,7 +99,7 @@
 </submit-bar>
 
 <!-- 选择书单 -->
-<popup show="{{showChooseBookshelf}}" height="50" title="请选择书单" funName="confirmBookshelf" bind:confirmBookshelf="confirmBookshelf">
+<popup background="{{background}}" show="{{showChooseBookshelf}}" height="50" title="请选择书单" funName="confirmBookshelf" bind:confirmBookshelf="confirmBookshelf">
   <van-radio-group value="{{ bookshelfs_checkedId }}" bind:change="chooseBookshelf">
     <view wx:for="{{bookshelfs}}" wx:key="index" class="themeItem no_l margin-lr">
       <view class="flexs margin-right" style="position: relative;">

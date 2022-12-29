@@ -12,7 +12,7 @@
 
 <z-button 
   bind:handleOperation="handleOperation"
-  successBackground="{{app.globalData.background}}"
-  disabledBackground="{{app.globalData.background}}"
+  successBackground="{{background}}"
+  disabledBackground="{{background}}"
   iphoneX="{{app.globalData.isIphoneX}}"
 ></z-button>

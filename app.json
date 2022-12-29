@@ -13,7 +13,7 @@
     "pages/user/manage/manageBook/editBook",
     "pages/user/manage/manageLabels/manageDerives",
     "pages/book/book",
-    "pages/sentence/sentence",
+    "pages/record/record",
     "pages/book/book_detail/book_detail",
     "pages/bookshelf/bookshelf",
     "pages/bookshelf/bookshelf_detail",
@@ -37,15 +37,15 @@
       },
       {
         "pagePath": "pages/market/market",
-        "text": "分类"
+        "text": "热门"
       },
       {
         "pagePath": "pages/book/book",
         "text": "书库"
       },
       {
-        "pagePath": "pages/sentence/sentence",
-        "text": "句子"
+        "pagePath": "pages/record/record",
+        "text": "随机"
       },
       {
         "pagePath": "pages/user/user",

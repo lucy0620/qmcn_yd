@@ -5,10 +5,10 @@
   <van-cell title="类型：" border="{{false}}">
     <van-radio-group value="{{ type }}" bind:change="editType">
       <view class="acea-row row-middle" style="justify-content: flex-end;">
-        <text class="margin-right-xs">推文</text>
-        <van-radio checked-color="{{background}}" name="recommend" />
-        <text class="margin-left margin-right-xs">句子</text>
+        <text class="margin-right-xs">句子</text>
         <van-radio checked-color="{{background}}" name="sentence" />
+        <text class="margin-left margin-right-xs">推文</text>
+        <van-radio checked-color="{{background}}" name="recommend" />
       </view>
     </van-radio-group>
   </van-cell>
@@ -20,8 +20,10 @@
   <van-field wx:if="{{type == 'recommend'}}" titleWidth="max-content;" required value="{{title}}" type="text" autosize data-prop="title" clearable label="推文标题：" placeholder="输入推文标题" bindinput="editValue" maxlength="20" size="20rpx" />
 
   <van-cell required title="{{type=='sentence'?'句子':'推文内容'}}（{{content.length}} / 300）：" border="{{false}}"></van-cell>
-  <textarea maxlength="300" value="{{content}}" class="content margin-left padding-xs" bindinput="editValue" data-prop="content">
+  <textarea maxlength="300" value="{{content}}" class="content margin-left padding-xs" bindinput="editValue" data-prop="content" placeholder="{{type=='sentence'?'输入句子':'输入推文内容'}}">
   </textarea>
+  <view wx:if="{{type == 'recommend'}}" style="height: 20rpx;">
+  </view>
 
   <view wx:if="{{type == 'sentence'}}">
     <van-cell required title="句子标签：" border="{{false}}"></van-cell>

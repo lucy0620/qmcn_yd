@@ -20,11 +20,11 @@ module.exports = [{
     code: '#ed987b',
     name: '杏仁饼、牛轧糖、蒙特利马尔'
   }, {
-    code: '#f28a63',
-    name: '巧克力马卡龙'
-  }, {
     code: '#ff9b6a',
     name: '牛奶咖啡马卡龙'
+  }, {
+    code: '#E8CBC0',
+    name: '莫兰迪粉'
   }, {
     code: '#f1ccb8',
     name: '盐焦糖杏仁饼'
@@ -41,13 +41,11 @@ module.exports = [{
     code: '#f3d751',
     name: '杏仁饼，柚子'
   },
+  // {
+  //   code: '#f1f1b8',
+  //   name: '杏仁饼黄'
+  // },
   {
-    code: '#f1f1b8',
-    name: '杏仁饼黄'
-  }, {
-    code: '#E8CBC0',
-    name: '莫兰迪粉'
-  }, {
     code: '#b8d38f',
     name: '马卡龙抹茶奶霜'
   }, {

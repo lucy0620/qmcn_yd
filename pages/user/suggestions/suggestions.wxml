@@ -1,1 +1,14 @@
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+<z-box wx:if="{{type == 'report'}}">
+  <van-cell title="书名：" border="{{false}}" value="{{name}}"></van-cell>
+</z-box>
+
+<z-box>
+  <van-cell required title="{{type=='report'?'反馈内容':'意见'}}（{{content.length}} / 300）：" border="{{false}}"></van-cell>
+  <textarea maxlength="300" value="{{content}}" class="content margin-left padding-xs" bindinput="editValue" data-prop="content" placeholder="{{type=='report'?'输入书籍信息修改意见或违规内容':'输入小程序修改意见或未完善功能'}}">
+  </textarea>
+
+  <van-field border="{{false}}" titleWidth="max-content;" value="{{title}}" type="text" autosize data-prop="contact" clearable label="联系方式：" placeholder="输入您的QQ,微信" bindinput="editValue" maxlength="20" size="20rpx" />
+</z-box>
+
+<z-button bind:handleOperation="handleOperation" successBackground="{{background}}" disabledBackground="{{background}}" iphoneX="{{app.globalData.isIphoneX}}"></z-button>

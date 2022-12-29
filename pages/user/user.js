@@ -23,7 +23,7 @@ Page({
       link: true,
       show: true
     }, {
-      title: '反馈',
+      title: '意见反馈',
       link: true,
       url: '/pages/user/suggestions/suggestions',
       auth: true,
@@ -55,10 +55,6 @@ Page({
   // 点击菜单
   menuTap(e) {
     let item = e.currentTarget.dataset.item
-    if (item.title == '反馈') {
-      utilShow.showMyMsg('暂未开放')
-      return
-    }
     if (item.url) {
       if (item.auth) {
         app.handleIsLogin(function () {

@@ -1,7 +1,8 @@
 /* pages/book/book.wxss */
 /* 筛选 */
 .filter_wrap {
-  position: sticky;
+  position: fixed;
+  width: 100%;
   z-index: 999;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05)
 }
@@ -62,13 +63,14 @@
 .newbooks_labels {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 0!important;
 }
 
 .newbooks_labels view {
   background-color: #f0f0f0;
   padding: 2rpx 6rpx;
   margin-right: 10rpx;
-  margin-bottom: 10rpx;
+  margin-top: 10rpx;
   font-size: 20rpx;
   border-radius: 4rpx;
   background: #f0f0f0;

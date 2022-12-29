@@ -26,7 +26,7 @@
   </view>
   <view class="bookshelf padding-left-sm" wx:for="{{bookshelfs}}" wx:key="index">
     <view class="padding-tb-xs padding-right text-sm">
-      <text class="text-xs">共{{item.child.length}}本</text>
+      <text class="text-xs">{{item.child.length}}本</text>
       <text class="margin-lr-xs">/</text>
       <text>{{item.name}}</text>
     </view>

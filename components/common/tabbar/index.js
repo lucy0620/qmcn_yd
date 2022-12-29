@@ -39,8 +39,8 @@ Component({
       },
       {
         "iconName": 'cuIcon-text',
-        "pagePath": "/pages/sentence/sentence",
-        "text": "句子",
+        "pagePath": "/pages/record/record",
+        "text": "随机找文",
       },
       {
         "iconName": 'cuIcon-people',

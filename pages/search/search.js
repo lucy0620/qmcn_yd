@@ -17,6 +17,7 @@ Page({
       home: true,
       return: true
     },
+    background: '',
     books: [],
     page: 1,
     count: 15,
@@ -122,7 +123,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+    })
   },
 
   /**
