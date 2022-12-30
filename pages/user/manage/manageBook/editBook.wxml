@@ -7,10 +7,10 @@
   <van-field value="{{detail.words}}" type="number" autosize data-prop="words" clearable label="字数/万字：" placeholder="请输入字数" bindinput="editValue" maxlength="11" />
   <van-cell required title="类型：" is-link value="{{detail.type_name ? detail.type_name:'请选择类型'}}" bindtap="chooseType"></van-cell>
   <van-cell title="标签：" is-link value="{{detail.label_names ? detail.label_names:'请选择标签'}}" bindtap="chooseLabels"></van-cell>
-  <van-cell title="发布平台：" is-link value="{{detail.website_name ? detail.website_name:'请选择发布平台'}}" bindtap="chooseWebsite"></van-cell>
+  <van-cell title="首发平台：" is-link value="{{detail.website_name ? detail.website_name:'请选择首发平台'}}" bindtap="chooseWebsite"></van-cell>
 
   <picker bindchange="bindPickerChangeTime" value="{{index}}" fields="month" mode='date' end="{{endTime}}" start="2002-01">
-    <van-cell title="发布时间：" is-link value="{{detail.publish_time ? detail.publish_time:'请选择发布时间'}}" bindtap="editValue"></van-cell>
+    <van-cell title="首发时间：" is-link value="{{detail.publish_time ? detail.publish_time:'请选择首发时间'}}" bindtap="editValue"></van-cell>
   </picker>
 
   <z-upload imageList="{{ detail.images }}" data-prop="images" title="图片：" count="6" height="200" funName="editValue" bind:editValue="editValue" showLimit>

@@ -14,7 +14,7 @@ Page({
     app,
     navbarData: {
       type: 1,
-      title: '书籍类型',
+      title: '首发平台',
       return: true,
       home: true
     },

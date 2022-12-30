@@ -1,0 +1,14 @@
+/*
+  数据两行排列时，根据第一行index，总长度length
+  获取第二行的对应下标
+
+  若数据为5个                
+  0 1 2
+  3 4
+  若数据为6个                 
+  0 1 2
+  3 4 5
+*/
+module.exports = function (index, length) {
+  return length % 2 == 1 ? (length + 1) / 2 + index : length / 2 + index
+}

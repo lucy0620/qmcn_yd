@@ -7,7 +7,12 @@
   <view class="filter">
     <scroll-xbox>
       <view class="{{active[0] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{-1}}">全部类型</view>
-      <view wx:for="{{types}}" wx:key="index" class="{{active[0] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{index}}">{{item.type_name}}</view>
+      <wxs src="./getReverse.wxs" module="getReverse"></wxs>
+
+      <view wx:for="{{types}}" wx:key="index" wx:if="{{index< types.length / 2}}" style="margin-right:0;">
+        <view class="{{active[0] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{index}}">{{item.type_name}}</view>
+        <view style="margin-top: 14rpx;" class="{{active[0] == getReverse(index,types.length) ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{getReverse(index,types.length)}}">{{types[getReverse(index,types.length)].type_name}}</view>
+      </view>
     </scroll-xbox>
   </view>
   <!-- 平台 -->
@@ -27,7 +32,7 @@
 </view>
 
 <!-- 筛选占位 -->
-<view style="height:calc((1rem + 28rpx) * {{active.length}}) ;">
+<view style="height:calc((1em + 28rpx) * {{active.length}} + 1em + 14rpx) ;">
 </view>
 
 <!-- 列表 -->

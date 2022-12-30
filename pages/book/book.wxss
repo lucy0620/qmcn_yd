@@ -4,14 +4,12 @@
   position: fixed;
   width: 100%;
   z-index: 999;
+  background-color: #fff;
 }
 .filter {
   padding: 14rpx 0 14rpx 20rpx;
-  position: relative;
-  background-color: #fff;
 }
 .filter view{
-  width: max-content;
   line-height: 1;
   margin-right: 20rpx;
 }

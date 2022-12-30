@@ -1,4 +1,11 @@
 /* pages/user/manage/manageType/manageType.wxss */
-.list {
+page {
   background-color: #fff;
+}
+.themeItem{
+  position: relative;
+}
+.text-xs{
+  position: absolute;
+  bottom: 0;
 }

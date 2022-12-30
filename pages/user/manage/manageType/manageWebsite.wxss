@@ -1,4 +1,4 @@
 /* pages/user/manage/manageType/manageWebsite.wxss */
-.list {
+page {
   background-color: #fff;
 }

@@ -1,5 +1,5 @@
 /* pages/user/manage/manageLabels/manageLabels.wxss */
-.list {
+page {
   background-color: #fff;
 }
 .themeItem {

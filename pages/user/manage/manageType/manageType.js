@@ -74,7 +74,7 @@ Page({
       wei
     })
     if (res.code == 200) {
-      this.Types()
+      this.getTypes()
     }
   },
 
@@ -90,10 +90,6 @@ Page({
       })
       utilRoute.back()
     }
-  },
-
-  move() {
-
   },
 
   /**

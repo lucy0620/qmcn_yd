@@ -1,9 +1,9 @@
 <!--pages/user/manage/manageLabels/manageLabels.wxml-->
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
-<view class="list padding-lr" style="padding-bottom: {{app.globalData.isIphoneX && type != 'edit' ? '68rpx':''}};">
+<view class="padding-lr" style="padding-bottom: {{app.globalData.isIphoneX && type != 'edit' ? '68rpx':''}};">
   <van-checkbox-group class="acea-row flex-warp" value="{{ label_ids }}" bind:change="editValue">
     <view class="themeItem" wx:for="{{labels}}" wx:key="index">
-      <view style="flex: 1;">{{item.label_name}}</view>
+      <view class="flexs">{{item.label_name}}</view>
       <text wx:if="{{type != 'edit' && index != 0}}" class="cuIcon-fold margin-lr-xs" catchtap="moveType" data-type="up" data-index="{{index}}"></text>
       <text wx:if="{{type != 'edit' && index != labels.length-1}}" class="cuIcon-unfold margin-lr-xs" catchtap="moveType" data-type="down" data-index="{{index}}"></text>
       <van-checkbox wx-if="{{type == 'edit'}}" checked-color="{{background}}" name="{{item.label_id}}" />

@@ -27,7 +27,6 @@ Page({
     status: 'loadmore',
     types: [],
     websites: [],
-    publish_websites: ['晋江', '长佩', '海棠', '废文', '爱奇艺', '微博', '其他'],
     sorts: ['热度最高','收藏最多'],
     active: [-1, -1 ,-1],
     books_left: [],
