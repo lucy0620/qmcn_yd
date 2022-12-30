@@ -17,7 +17,8 @@
     "pages/book/book_detail/book_detail",
     "pages/bookshelf/bookshelf",
     "pages/bookshelf/bookshelf_detail",
-    "pages/add/add"
+    "pages/add/add",
+    "pages/user/manage/manageType/manageWebsite"
   ],
   "window": {
     "navigationStyle": "custom",

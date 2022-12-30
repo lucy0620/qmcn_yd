@@ -1,5 +1,5 @@
 <!--pages/user/manage/manageLabels/manageDerive.wxml-->
-<nav-bar navbarData="{{ navbarData }}"></nav-bar>
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
 <view class="list padding-lr"
 >
   <van-checkbox-group value="{{ derive_ids }}" bind:change="editValue">

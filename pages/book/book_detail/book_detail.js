@@ -174,7 +174,7 @@ Page({
     const res = await request('/bookshelfs_addBook', {
       user_id: _this.data.user_info.id,
       book_id: _this.data.id,
-      read_time: _this.data.read_time,
+      read_time: checked_index == 0 ? _this.data.read_time : '',
       id: bookshelfs_checkedId
     })
     if (res.code == 200) {

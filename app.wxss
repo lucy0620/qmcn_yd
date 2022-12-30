@@ -5,8 +5,8 @@
 /* 
 
 灰色 (灰色字体) ：text-gray | --gray | #aaa
-浅灰色（边框线）：#f0f0f0
-
+浅灰色（边框线）：#e3e3e3 一般浅
+浅灰色（边框线）：#f0f0f0 最浅
 */
 /* 统一样式 */
 page {
@@ -16,6 +16,15 @@ page {
 
 .text-hide{
   opacity: 0;
+}
+/* 阴影      右偏移量 下偏移量 模糊长度 颜色 */
+/* 图片小盒子/卡片阴影 */
+.box-shadow-s {
+  box-shadow: 0px 2rpx 4rpx rgba(0, 0, 0, 0.06)
+}
+/* 吸顶大盒子阴影 */
+.box-shadow-l {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06)
 }
 
 /* 条目样式 */
@@ -30,47 +39,39 @@ page {
   border-bottom: 0rpx;
 }
 
-.themeItem::before {
+/* .themeItem::before {
   content: "";
   width: 16rpx;
   height: 16rpx;
   margin: 0 20rpx;
   background: #000;
   transform: rotate(45deg);
-}
-
-.no_l.themeItem::before {
-  width: 0;
-  height: 0;
-  margin: 0;
-}
+} */
 
 /* 小节标题 */
 .themeTitle {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 24rpx 0;
-  font-weight: bold;
+  padding: 30rpx 20rpx;
+  /* font-weight: bold; */
   line-height: 100%;
 }
 
-.themeTitle::before {
+/* .themeTitle::before {
   content: '';
   margin-right: 20rpx;
   width: .5em;
   height: 1em;
   background-color: #000;
-}
+} */
 
 /* 更多 */
 .more {
   position: absolute;
-  right: 24rpx;
-  bottom: 0;
+  right: 20rpx;
   display: flex;
   align-items: center;
-  padding: 24rpx 0;
   color: var(--gray);
   font-size: .8em;
 }

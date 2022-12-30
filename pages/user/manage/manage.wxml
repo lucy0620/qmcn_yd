@@ -2,7 +2,14 @@
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
 
 <view class="item-wrap margin padding-lr-xl padding-tb-sm">
-  <view class="item padding-tb-sm" wx:for="{{ menuList}}" wx:key="item" data-item="{{item}}" bindtap="menuTap">
+  <view class="item padding-tb-sm" wx:for="{{ menuList_book}}" wx:key="item" data-item="{{item}}" bindtap="menuTap">
+    <text>{{ item.title}}</text>
+    <text class="cuIcon-right"></text>
+  </view>
+</view>
+
+<view class="item-wrap margin padding-lr-xl padding-tb-sm">
+  <view class="item padding-tb-sm" wx:for="{{ menuList_sentence}}" wx:key="item" data-item="{{item}}" bindtap="menuTap">
     <text>{{ item.title}}</text>
     <text class="cuIcon-right"></text>
   </view>

@@ -9,6 +9,7 @@
   position: absolute;
   bottom: 4rpx;
   right: 0;
+  font-size: 20rpx;
 }
 .addBtn {
   position: fixed;

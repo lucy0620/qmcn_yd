@@ -37,14 +37,14 @@ Component({
       value: false
     },
 
-    // 其他状态文字提示
+    // 其他状态文字提示 哼😕~我也是有底线的哈！~
     nomoreText: {
       type: String,
-      value: '哼😕~我也是有底线的哈！~'
+      value: '没有更多了'
     },
     loadingText: {
       type: String,
-      value: '正在加载中~'
+      value: '正在加载中'
     },
     loadmoreText: {
       type: String,

@@ -1794,7 +1794,7 @@ button.icon.lg {
 	left: 0;
 	right: 0;
 	margin: auto;
-	box-shadow: 0 -3rpx 8rpx rgba(0, 0, 0, 0.08);
+	box-shadow: 0 -3rpx 8rpx rgba(0, 0, 0, 0.06);
 	border-radius: 50rpx;
 	background-color: inherit;
 	z-index: 0;

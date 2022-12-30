@@ -13,7 +13,7 @@
     <!-- 随机 -->
     <view bindtap="randomRes">
       <text class="cuIcon-refresh margin-xs"></text>
-      <text>随机5条</text>
+      <text>换一换</text>
     </view>
   </view>
 </view>

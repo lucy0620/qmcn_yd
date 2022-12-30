@@ -1,4 +1,3 @@
-// pages/user/manage/manageType/manageType.js
 const app = getApp();
 import {
   request
@@ -20,7 +19,7 @@ Page({
       home: true
     },
     background: '',
-    types: [],
+    websites: [],
     manage: '' // 是否为管理员编辑模式
   },
 
@@ -28,7 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getTypes()
+    this.getWebsites()
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     if (prevPage.route == 'pages/user/manage/manage') {
@@ -38,43 +37,43 @@ Page({
     }
   },
 
-  async getTypes() {
-    let res = await request('/getBook_type')
-    let types = res.data
+  async getWebsites() {
+    let res = await request('/getBook_website')
+    let websites = res.data
     this.setData({
-      types
+      websites
     })
   },
 
   async moveType(e) {
     let type = e.currentTarget.dataset.type // 上移或者下移
     let index = e.currentTarget.dataset.index // 当前选中的下标
-    let type_id = this.data.types[index].type_id // 当前选中的id
-    let length = this.data.types.length
+    let website_id = this.data.websites[index].website_id // 当前选中的id
+    let length = this.data.websites.length
     let wei = 0
     if (type == 'up') {
-      let topWei = this.data.types[index - 1].weight
+      let topWei = this.data.websites[index - 1].weight
       if (index == 1) {
         wei = topWei - 1
       } else {
-        let toptopWei = this.data.types[index - 2].weight
+        let toptopWei = this.data.websites[index - 2].weight
         wei = toptopWei + (topWei - toptopWei) / 2
       }
     } else {
-      let botWei = this.data.types[index + 1].weight
+      let botWei = this.data.websites[index + 1].weight
       if (index == length - 2) {
         wei = botWei + 1
       } else {
-        let botbotWei = this.data.types[index + 2].weight
+        let botbotWei = this.data.websites[index + 2].weight
         wei = botWei + (botbotWei - botWei) / 2
       }
     }
-    let res = await request('/move_type', {
-      type_id,
+    let res = await request('/move_website', {
+      website_id,
       wei
     })
     if (res.code == 200) {
-      this.Types()
+      this.getWebsites()
     }
   },
 
@@ -85,8 +84,8 @@ Page({
     let prevPage = pages[pages.length - 2]; //上一页
     if (prevPage.route == 'pages/user/manage/manageBook/editBook') {
       prevPage.setData({
-        'detail.type_name': item.type_name,
-        'detail.type_id': item.type_id,
+        'detail.website_name': item.website_name,
+        'detail.website_id': item.website_id,
       })
       utilRoute.back()
     }

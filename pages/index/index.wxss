@@ -4,7 +4,6 @@
 .newbooks_item {
   background: #fff;
   font-size: 20rpx;
-  box-shadow: 0px 2rpx 4rpx rgba(0, 0, 0, 0.05);
 }
 
 .newbooks_name {
@@ -43,10 +42,6 @@
   border-bottom: 1px solid #f0f0f0;
 }
 
-.bookshelf:last-child {
-  margin-bottom: 0;
-}
-
 .bookshelf_item {
   position: relative;
   border-radius: 6rpx;
@@ -54,7 +49,6 @@
   border: 1px solid #e3e3e3;
   overflow: hidden;
   font-size: 20rpx;
-  box-shadow: 0px 2rpx 4rpx rgba(0, 0, 0, 0.05);
   width: 150rpx;
   height: 200rpx;
 }

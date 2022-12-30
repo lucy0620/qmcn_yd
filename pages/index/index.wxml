@@ -7,9 +7,9 @@
   最新入库
   <view class="more" bindtap="goMore"></view>
 </view>
-<view class="newbooks_item acea-row padding-lr-sm padding-top-xs {{index == newbooks.length - 1 ? 'padding-bottom-xs':''}}" bindtap="goDetail" data-id="{{item.id}}" wx:for="{{newbooks}}" wx:key="index">
+<view class="newbooks_item box-shadow-s acea-row padding-lr-sm padding-top-xs {{index == newbooks.length - 1 ? 'padding-bottom-xs':''}}" bindtap="goDetail" data-id="{{item.id}}" wx:for="{{newbooks}}" wx:key="index">
   <view class="newbooks_name text-sm">
-    <text>{{newbooks.length - index}}.{{item.name}}</text>
+    <text>{{index+1}}.{{item.name}}</text>
     <text class="margin-lr-xs">-</text>
     <text>{{item.author}}</text>
   </view>
@@ -24,14 +24,14 @@
     我的书架
     <view class="more" bindtap="goBookshelf"></view>
   </view>
-  <view class="bookshelf padding-left-sm" wx:for="{{bookshelfs}}" wx:key="index">
-    <view class="padding-tb-xs padding-right text-sm">
-      <text class="text-xs">{{item.child.length}}本</text>
-      <text class="margin-lr-xs">/</text>
+  <view class="bookshelf box-shadow-s padding-left-sm" wx:for="{{bookshelfs}}" wx:key="index">
+    <view class="padding-tb-xs padding-right text-sm" style="line-height: 1;">
       <text>{{item.name}}</text>
+      <text class="margin-lr-xs">/</text>
+      <text class="text-xs">{{item.child.length}}</text>
     </view>
     <scroll-xbox wx:if="{{item.child && item.child.length>0}}">
-      <view class="bookshelf_item acea-row row-column row-between-wrapper padding-sm margin-right-xs margin-bottom-sm bg-img bg-mask" wx:for="{{item.child}}" wx:for-item="it" wx:for-index="i" wx:key="i" style="background-image: url({{it.images}});background-color: {{background}};" bindtap="goDetail" data-id="{{it.book_id}}">
+      <view class="bookshelf_item box-shadow-s acea-row row-column row-between-wrapper padding-sm margin-right-xs margin-bottom-sm bg-img bg-mask" wx:for="{{item.child}}" wx:for-item="it" wx:for-index="i" wx:key="i" style="background-image: url({{it.images}});background-color: {{background}};" bindtap="goDetail" data-id="{{it.book_id}}">
         <view class="text-sm">{{it.book_name}}</view>
         <view>{{it.type_name}}</view>
         <view class="bookshelf_time">{{it.read_time}}</view>

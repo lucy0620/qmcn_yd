@@ -109,7 +109,7 @@ Page({
     if (e.detail) {
       if (type == 'recommend') {
         if (!title) {
-          utilShow.showMyMsg('请输入推文标题')
+          utilShow.showMyMsg('请输入标题')
           return
         }
         data = {
@@ -118,7 +118,7 @@ Page({
         }
       }
       if (!content) {
-        utilShow.showMyMsg('请输入' + (type == 'recommend' ? '推文' : '句子') + '内容')
+        utilShow.showMyMsg('请输入' + (type == 'recommend' ? '内容' : '句子'))
         return
       }
       if (type == 'sentence') {

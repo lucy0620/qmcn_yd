@@ -26,6 +26,7 @@ Page({
     count: 20,
     status: 'loadmore',
     types: [],
+    websites: [],
     publish_websites: ['晋江', '长佩', '海棠', '废文', '爱奇艺', '微博', '其他'],
     sorts: ['热度最高','收藏最多'],
     active: [-1, -1 ,-1],
@@ -38,6 +39,7 @@ Page({
    */
   onLoad(options) {
     this.getTypes()
+    this.getWebsites()
     this.getBooks()
   },
 
@@ -109,13 +111,20 @@ Page({
       types
     })
   },
+  async getWebsites() {
+    let res = await request('/getBook_website')
+    let websites = res.data
+    this.setData({
+      websites
+    })
+  },
   async getBooks() {
     let status = this.data.status
     let data = {
       page: this.data.page,
       count: this.data.count,
       type_id: this.data.active[0] == -1 ? -1 : this.data.types[this.data.active[0]].type_id,
-      publish_website: this.data.active[1] == -1 ? -1 : this.data.publish_websites[this.data.active[1]],
+      website_id: this.data.active[1] == -1 ? -1 : this.data.websites[this.data.active[1]].website_id,
       sort: this.data.active[2] == -1 ? '' : this.data.active[2] + 1
     }
     let res = await request('/getBooks_filter', data)

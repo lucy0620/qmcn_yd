@@ -4,6 +4,7 @@ import {
   request
 } from '../../../../utils/request'
 import * as utilRoute from "../../../../utils/route"
+import * as utilStorage from "../../../../utils/storage"
 Page({
   /**
    * 页面的初始数据
@@ -16,6 +17,7 @@ Page({
       return: true,
       home: true
     },
+    background: '',
     derive: [],
     derive_ids: []
   },
@@ -80,7 +82,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+    })
   },
 
   /**

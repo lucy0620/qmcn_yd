@@ -10,6 +10,7 @@
   position: absolute;
   bottom: 4rpx;
   right: 0;
+  font-size: 20rpx;
 }
 /* 搜索记录 */
 .more::before {

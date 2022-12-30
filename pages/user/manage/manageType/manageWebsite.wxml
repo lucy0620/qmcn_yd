@@ -1,0 +1,11 @@
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+
+<!-- 列表 -->
+<view class="list padding-lr" style="padding-bottom: {{app.globalData.isIphoneX ? '68rpx':''}};">
+  <view class="themeItem" wx:for="{{websites}}" wx:key="index" bindtap="choose" data-item="{{item}}">
+    <text style="min-width: 140rpx;">{{index+1}}.{{item.website_name}}</text>
+    <text wx:if="{{manage && index != 0}}" class="cuIcon-fold margin-lr-xs" catchtap="moveType" data-type="up" data-index="{{index}}"></text>
+    <text wx:if="{{manage && index != websites.length-1}}" class="cuIcon-unfold margin-lr-xs" catchtap="moveType" data-type="down" data-index="{{index}}"></text>
+  </view>
+</view>
+

@@ -24,8 +24,6 @@ Page({
     detail: {
       images: []
     },
-    publish_websites: ['晋江', '长佩', '海棠', '废文', '爱奇艺','微博','其他'],
-    publish_Index: 0,
     endTime: ''
   },
 
@@ -68,13 +66,6 @@ Page({
     })
   },
 
-  bindPickerChange(e) {
-    let index = e.detail.value
-    let publish_website = this.data.publish_websites[index]
-    this.setData({
-      'detail.publish_website': publish_website
-    })
-  },
 
   bindPickerChangeTime(e) {
     let time = e.detail.value
@@ -113,6 +104,10 @@ Page({
     utilRoute.navigate('/pages/user/manage/manageLabels/manageDerives', obj)
   },
 
+  chooseWebsite() {
+    utilRoute.navigate('/pages/user/manage/manageType/manageWebsite')
+  },
+
   // 更改评分
   editRadio(e) {
     let prop = e.currentTarget.dataset.prop
@@ -147,13 +142,13 @@ Page({
       this.data.detail.images = this.data.detail.images.join(',')
       let data = this.data.detail
       let url = this.data.type == 'add' ? '/addBook' : '/editBook'
-      
+
       let res = await request(url, data)
-      if(res.code == 200) {
+      if (res.code == 200) {
         utilShow.showMyMsg(this.data.type == 'add' ? '新增成功' : '编辑成功')
-        setTimeout(()=>{
+        setTimeout(() => {
           utilRoute.back()
-        },1500)
+        }, 1500)
       }
     } else {
       utilRoute.back()

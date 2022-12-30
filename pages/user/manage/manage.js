@@ -15,15 +15,31 @@ Page({
       home: true
     },
     background: '',
-    menuList: [{
-      title: '书籍类型管理',
-      url: '/pages/user/manage/manageType/manageType',
-    },{
-      title: '书籍标签管理',
-      url: '/pages/user/manage/manageLabels/manageLabels',
-    },{
-      title: '书籍管理',
-      url: '/pages/user/manage/manageBook/manageBook',
+    menuList_book: [{
+        title: '书籍管理',
+        url: '/pages/user/manage/manageBook/manageBook',
+      },
+      {
+        title: '书籍类型管理',
+        url: '/pages/user/manage/manageType/manageType',
+      },
+      {
+        title: '书籍标签管理',
+        url: '/pages/user/manage/manageLabels/manageLabels',
+      },
+      // {
+      //   title: '书籍衍生管理',
+      //   url: '/pages/user/manage/manageLabels/manageDerives',
+      // },
+      {
+        title: '书籍平台管理',
+        url: '/pages/user/manage/manageType/manageWebsite',
+      },
+
+    ],
+    menuList_sentence: [{
+      title: '句子标签管理',
+      url: '/pages/user/manage/manageSentence/manageSentence',
     }]
   },
 

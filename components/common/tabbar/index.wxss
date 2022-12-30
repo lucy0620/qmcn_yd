@@ -10,7 +10,7 @@
   background: #F6F6F7;
   display: flex;
   z-index: 999;
-  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.06);
 }
 .section_item {
   flex: 1;
@@ -32,7 +32,7 @@
   left: 50%;
   top: -70rpx;
   transform: translateX(-50%);
-  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.06);
   font-size: 3em;
 }
 .section_item .section_iconView .section_icon {

@@ -6,7 +6,7 @@
   <view class="head padding-sm text-xs">
     <view class="head_l">
       <view class="head_name ellipsis text-xl">{{detail.name}}</view>
-      <view class="padding-top-xs text-sm">by {{detail.author}}</view>
+      <view class="padding-top-xs text-sm">{{detail.author}}</view>
       <view class="padding-top-xs">
         <text>{{detail.type_name}}</text>
         <text wx:if="{{detail.words}}"> · {{detail.words+'万字'}}</text>
@@ -35,11 +35,11 @@
         <text class="text-bold">音</text>：
         <text class="flexs">{{detail.cvName}}</text>
       </view>
-      <view wx:if="{{detail.publish_website && detail.publish_website != '其他' || detail.publish_time}}" class="acea-row padding-top-xs">
+      <view wx:if="{{detail.website_name || detail.publish_time}}" class="acea-row padding-top-xs">
         <text class="text-bold">首</text>
         <text class="text-hide">占位</text>
         <text class="text-bold">发</text>：
-        <text class="flexs">{{detail.publish_website && detail.publish_website != '其他' ? detail.publish_website : ''}} {{detail.publish_time ? detail.publish_time : ''}}</text>
+        <text class="flexs">{{detail.website_name}} {{detail.publish_time}}</text>
       </view>
       <view class="acea-row padding-top-xs" wx:if="{{detail.derive_names && detail.derive_names.length>0}}">
         <text class="text-bold">衍生作品</text>：
@@ -101,7 +101,7 @@
 <!-- 选择书单 -->
 <popup background="{{background}}" show="{{showChooseBookshelf}}" height="50" title="请选择书单" funName="confirmBookshelf" bind:confirmBookshelf="confirmBookshelf">
   <van-radio-group value="{{ bookshelfs_checkedId }}" bind:change="chooseBookshelf">
-    <view wx:for="{{bookshelfs}}" wx:key="index" class="themeItem no_l margin-lr">
+    <view wx:for="{{bookshelfs}}" wx:key="index" class="themeItem margin-lr">
       <view class="flexs margin-right" style="position: relative;">
         <text>{{item.name}}</text>
         <text class="text-xs margin-lr-xs">{{item.count}}本</text>

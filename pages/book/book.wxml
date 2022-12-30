@@ -1,88 +1,80 @@
 <!--pages/book/book.wxml-->
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}" bind:searchConfirm="onSearch"></nav-bar>
 
-<view>
-  <!-- 筛选 -->
-  <view class="filter_wrap" style="top: {{app.globalData.navHeight}}rpx;">
-    <!-- 类型 -->
-    <view class="filter">
-      <scroll-xbox>
-        <view class="{{active[0] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{-1}}">全部类型</view>
-        <view wx:for="{{types}}" wx:key="index" class="{{active[0] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{index}}">{{item.name}}</view>
-      </scroll-xbox>
-    </view>
-    <!-- 平台 -->
-    <view class="filter">
-      <scroll-xbox>
-        <view class="{{active[1] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='publish_website' data-index="{{-1}}">全部平台</view>
-        <view wx:for="{{publish_websites}}" wx:key="index" class="{{active[1] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='publish_website' data-index="{{index}}">{{item}}</view>
-      </scroll-xbox>
-    </view>
-    <!-- 顺序 -->
-    <view class="filter">
-      <scroll-xbox>
-        <view class="{{active[2] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='sort' data-index="{{-1}}">默认排序</view>
-        <view wx:for="{{sorts}}" wx:key="index" class="{{active[2] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='sort' data-index="{{index}}">{{item}}</view>
-      </scroll-xbox>
-    </view>
+<!-- 筛选 -->
+<view class="filter_wrap box-shadow-l" style="top: {{app.globalData.navHeight}}rpx;">
+  <!-- 类型 -->
+  <view class="filter">
+    <scroll-xbox>
+      <view class="{{active[0] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{-1}}">全部类型</view>
+      <view wx:for="{{types}}" wx:key="index" class="{{active[0] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{index}}">{{item.type_name}}</view>
+    </scroll-xbox>
   </view>
+  <!-- 平台 -->
+  <view class="filter">
+    <scroll-xbox>
+      <view class="{{active[1] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='publish_website' data-index="{{-1}}">全部平台</view>
+      <view wx:for="{{websites}}" wx:key="index" class="{{active[1] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='publish_website' data-index="{{index}}">{{item.website_name}}</view>
+    </scroll-xbox>
+  </view>
+  <!-- 顺序 -->
+  <view class="filter">
+    <scroll-xbox>
+      <view class="{{active[2] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='sort' data-index="{{-1}}">默认排序</view>
+      <view wx:for="{{sorts}}" wx:key="index" class="{{active[2] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='sort' data-index="{{index}}">{{item}}</view>
+    </scroll-xbox>
+  </view>
+</view>
 
-  <!-- 筛选占位 -->
-  <view style="height: 87px;">
-  </view>
+<!-- 筛选占位 -->
+<view style="height:calc((1rem + 28rpx) * {{active.length}}) ;">
 </view>
 
 <!-- 列表 -->
 <view class="newbooks_wrap padding-lr-sm">
   <view class="newbooks_wrap_l">
-    <view class="newbooks_item" bindtap="goDetail" data-id="{{item.id}}" wx:for="{{books_left}}" wx:key="index">
+    <view class="newbooks_item box-shadow-s" bindtap="goDetail" data-id="{{item.id}}" wx:for="{{books_left}}" wx:key="index">
       <image wx:if="{{item.images[0]}}" src="{{item.images[0]}}" mode="aspectFill" />
       <view class="newbooks_name text-sm">{{item.name}}</view>
       <view class="newbooks_words">
         <text wx:if="{{item.words}}" style="color: var(--gray);">{{item.words}}万字</text>
         <text wx:else style="color: var(--gray);">暂无字数统计</text>
-        <text>by{{item.author}}</text>
+        <text>{{item.author}}</text>
       </view>
       <view class="newbooks_name" wx:if="{{item.top && item.bottom}}">{{item.top}} x {{item.bottom}}</view>
       <view class="newbooks_labels">
         <view>{{item.type_name}}</view>
         <view wx:for="{{item.labels}}" wx:key="index">{{item}}</view>
       </view>
-      <view class="margin-bottom-xs grid col-5">
-        <view></view>
-        <view></view>
-        <view></view>
+      <view class="margin-bottom-xs acea-row" style="justify-content: flex-end;">
         <view class="cuIcon-like text-right">
           {{item.likes}}
         </view>
-        <view class="cuIcon-favor text-right">
+        <view class="cuIcon-favor text-right margin-left-xs">
           {{item.collect}}
         </view>
       </view>
     </view>
   </view>
   <view class="newbooks_wrap_r">
-    <view class="newbooks_item" bindtap="goDetail" data-id="{{item.id}}" wx:for="{{books_right}}">
+    <view class="newbooks_item box-shadow-s" bindtap="goDetail" data-id="{{item.id}}" wx:for="{{books_right}}" wx:key="index">
       <image wx:if="{{item.images[0]}}" src="{{item.images[0]}}" mode="aspectFill" />
       <view class="newbooks_name text-sm">{{item.name}}</view>
       <view class="newbooks_words">
         <text wx:if="{{item.words}}" style="color: var(--gray);">{{item.words}}万字</text>
         <text wx:else style="color: var(--gray);">暂无字数统计</text>
-        <text>by{{item.author}}</text>
+        <text>{{item.author}}</text>
       </view>
       <view class="newbooks_name" wx:if="{{item.top && item.bottom}}">{{item.top}} x {{item.bottom}}</view>
       <view class="newbooks_labels">
         <view>{{item.type_name}}</view>
         <view wx:for="{{item.labels}}" wx:key="index">{{item}}</view>
       </view>
-      <view class="margin-bottom-xs grid col-5">
-        <view></view>
-        <view></view>
-        <view></view>
+      <view class="margin-bottom-xs acea-row" style="justify-content: flex-end;">
         <view class="cuIcon-like text-right">
           {{item.likes}}
         </view>
-        <view class="cuIcon-favor text-right">
+        <view class="cuIcon-favor text-right margin-left-xs">
           {{item.collect}}
         </view>
       </view>
