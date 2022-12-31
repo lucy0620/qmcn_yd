@@ -21,6 +21,10 @@ Component({
       type: String,
       value: ''
     },
+    ClosefunName: {
+      type: String,
+      value: ''
+    },
     // 占窗口高度百分比
     height: {
       type: Number,
@@ -63,9 +67,13 @@ Component({
       this.setData({
         show: false
       })
+      this.triggerEvent(this.properties.ClosefunName)
     },
-    onSubmit (){
+    onSubmit() {
       this.triggerEvent(this.properties.funName)
-    }
+    },
+    onmove() {
+
+    },
   }
 })

@@ -1,6 +1,6 @@
 <!--pages/user/manage/manageLabels/manageLabels.wxml-->
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
-<view class="padding-lr" style="padding-bottom: {{app.globalData.isIphoneX && type != 'edit' ? '68rpx':''}};">
+<!-- <view class="padding-lr">
   <van-checkbox-group class="acea-row flex-warp" value="{{ label_ids }}" bind:change="editValue">
     <view class="themeItem" wx:for="{{labels}}" wx:key="index">
       <view class="flexs">{{item.label_name}}</view>
@@ -9,6 +9,39 @@
       <van-checkbox wx-if="{{type == 'edit'}}" checked-color="{{background}}" name="{{item.label_id}}" />
     </view>
   </van-checkbox-group>
+</view> -->
+
+<!-- <view class="padding-lr" style="padding-bottom: {{app.globalData.isIphoneX && type != 'edit' ? '68rpx':''}};">
+  <van-checkbox-group class="acea-row flex-warp" value="{{ label_ids }}" bind:change="editValue">
+    <view class="themeItem" wx:for="{{labels}}" wx:key="index">
+      <view class="flexs">{{item.label_name}}</view>
+     
+      <van-checkbox wx-if="{{type == 'edit'}}" checked-color="{{background}}" name="{{item.label_id}}" />
+    </view>
+  </van-checkbox-group>
+</view> -->
+
+<view class="padding-left-sm">
+  <view wx:for="{{labels}}" wx:key="index">
+    <view class="text-left padding-tb-sm">
+      {{item.label_type_name}}
+    </view>
+    <view class="grid col-4">
+      <view class="padding-right-sm" wx:for="{{item.child}}" wx:for-item="it" wx:for-index="i" wx:key="i">
+        <view bindtap="checkedItem" data-it="{{it}}" data-index="{{index}}" data-i="{{i}}" class="text-center margin-bottom-sm bg-gray padding-tb-xs round text-sm" style="width: 100%;border: 1px solid {{it.checked ? background : '#f0f0f0'}};color: {{it.checked ? '#fff' : ''}};background: {{it.checked ? background : ''}}; ">
+          <view>{{it.label_name}}</view>
+          <view wx:if="{{type != 'edit'}}">
+            <text wx:if=" {{i !=0}}" class="cuIcon-fold padding" catchtap="moveType" data-type="up" data-i="{{i}}" data-index="{{index}}"></text>
+            <text wx:if="{{i != item.child.length-1}}" class="cuIcon-unfold padding" catchtap="moveType" data-type="down" data-index="{{index}}" data-i="{{i}}"></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
 
+
+
+<view style="padding-bottom: {{app.globalData.isIphoneX && type != 'edit' ? '68rpx':''}};">
+</view>
 <z-button bind:handleOperation="handleOperation" wx-if="{{type == 'edit'}}" successBackground="{{background}}" disabledBackground="{{background}}" iphoneX="{{app.globalData.isIphoneX}}"></z-button>

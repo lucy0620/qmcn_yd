@@ -91,9 +91,12 @@ Page({
 
     this.getSentences()
     this.getRecommends()
+    this.getDetail({
+      id: this.data.id
+    })
   },
   async getDetail(data) {
-    const res = await request('/getBook_detail', data)
+    const res = await request('/getBook_detail', data, true)
     res.data.label_names = res.data.label_names != null ? res.data.label_names.split(',') : [];
     res.data.images = res.data.images != null ? res.data.images.split(',') : [];
     res.data.derive_names = res.data.derive_names != null ? res.data.derive_names.split(',') : [];
@@ -106,7 +109,7 @@ Page({
     let _this = this
     const res = await request('/getUser_bookshelfs', {
       user_id: _this.data.user_info.id
-    })
+    }, true)
     let bookshelfs = res.data.map(it => {
       let book_ids = it.book_ids ? it.book_ids.split(',') : ''
       return {
@@ -229,7 +232,7 @@ Page({
     let _this = this
     const res = await request('/getBook_Recommends', {
       id: _this.data.id
-    })
+    },true)
     let recommends = res.data
     this.setData({
       recommends
@@ -240,7 +243,7 @@ Page({
     let _this = this
     const res = await request('/getBook_Sentences', {
       id: _this.data.id
-    })
+    }, true)
     let sentences = res.data.map(it => {
       return {
         ...it,

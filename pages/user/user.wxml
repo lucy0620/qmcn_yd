@@ -18,7 +18,7 @@
 </view>
 
 <!-- 主题切换弹窗 -->
-<popup show="{{showBackground}}" showBtn="{{false}}">
+<popup show="{{showBackground}}" title="选择主题色" showBtn="{{false}}">
   <van-radio-group value="{{ background }}" bind:change="changeBackground">
     <view class="acea-row flex-warp">
       <view wx:for="{{backgrounds}}" wx:key="index" class="color_item padding-xs" style="background: {{item.code}};">

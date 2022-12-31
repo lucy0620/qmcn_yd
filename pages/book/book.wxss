@@ -3,7 +3,7 @@
 .filter_wrap {
   position: fixed;
   width: 100%;
-  z-index: 999;
+  z-index: 99;
   background-color: #fff;
 }
 .filter {
@@ -12,6 +12,16 @@
 .filter view{
   line-height: 1;
   margin-right: 20rpx;
+}
+/* 精准筛选 */
+.filter_ex{
+  position: absolute;
+  bottom: 14rpx;
+  right: 0;
+  font-size: 25rpx;
+  width: 50vw;
+  justify-content: flex-end;
+  margin-right: 0!important;
 }
 /* 列表 */
 .newbooks_wrap {

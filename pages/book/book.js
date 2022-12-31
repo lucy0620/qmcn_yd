@@ -27,10 +27,14 @@ Page({
     status: 'loadmore',
     types: [],
     websites: [],
-    sorts: ['热度最高','收藏最多'],
-    active: [-1, -1 ,-1],
+    labels: [],
+    label_idsStr: '', //选中的字符串
+    showLabels: false,
+    sorts: ['热度最高', '收藏最多'],
+    active: [-1, -1, -1], //选中的下标
     books_left: [],
-    books_right: []
+    books_right: [],
+    scrollTop: 0
   },
 
   /**
@@ -39,24 +43,10 @@ Page({
   onLoad(options) {
     this.getTypes()
     this.getWebsites()
+    this.getLabels()
     this.getBooks()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-    })
-  },
   onSearch(e) {
     if (!e.detail) {
       return
@@ -70,10 +60,40 @@ Page({
       id: e.currentTarget.dataset.id
     })
   },
+  /* 
+    说明：
+    重置所有筛选结果 
+  */
+  onReset() {
+    this.setData({
+      active: ['-1', '-1', '-1'],
+      label_idsStr: ''
+    })
+    let labels = this.data.labels
+    labels.map(it => {
+      it.child.filter(its => {
+        if (its.checked) {
+          its.checked = false
+        }
+      })
+    })
+    this.setData({
+      labels
+    })
+    this.onClear()
+  },
+  /* 
+    说明：
+    进行任意筛选条件/下拉 只重置分页以及之前的搜索结果
+    (新版页面改为禁止滚动以便适用于弹窗，下拉暂时关闭)
+  */
   onClear() {
-    wx.pageScrollTo({
+    // wx.pageScrollTo({
+    //   scrollTop: 0
+    // });
+    this.setData({
       scrollTop: 0
-    });
+    })
     this.setData({
       page: 1,
       status: 'loadmore',
@@ -82,9 +102,6 @@ Page({
     this.getBooks()
   },
   filterTap(e) {
-    wx.pageScrollTo({
-      scrollTop: 0
-    });
     let {
       index,
       prop
@@ -117,14 +134,90 @@ Page({
       websites
     })
   },
+  async getLabels() {
+    let _this = this
+    let res = await request('/getBook_label')
+    let arr_after = res.data.map(it => {
+      return {
+        ...it,
+        checked: false
+      }
+    })
+    let labels = _this.groupList(arr_after)
+    this.setData({
+      labels
+    })
+  },
+  // 数组合并相同项函数
+  groupList(arr) {
+    var beforeData = arr;
+    let tempArr = [];
+    let afterData = [];
+    for (let i = 0; i < beforeData.length; i++) {
+      if (tempArr.indexOf(beforeData[i].label_type_id) === -1) {
+        afterData.push({
+          label_type_id: beforeData[i].label_type_id,
+          label_type_name: beforeData[i].label_type_name,
+          child: [beforeData[i]]
+        });
+        tempArr.push(beforeData[i].label_type_id);
+      } else {
+        for (let j = 0; j < afterData.length; j++) {
+          if (afterData[j].label_type_id == beforeData[i].label_type_id) {
+            afterData[j].child.push(beforeData[i]);
+            break;
+          }
+        }
+      }
+    }
+    return afterData
+  },
+  openLabels() {
+    this.setData({
+      showLabels: true
+    })
+  },
+  checkedItem(e) {
+    let it = e.currentTarget.dataset.it
+    let index = e.currentTarget.dataset.index
+    let i = e.currentTarget.dataset.i
+    let status = it.checked
+    this.setData({
+      [`labels[${index}].child[${i}].checked`]: !status
+    })
+  },
+  confirmLabels() {
+    let label_ids = []
+    this.data.labels.map(it => {
+      it.child.filter(its => {
+        if (its.checked) {
+          label_ids.push(its.label_id)
+        }
+      })
+    })
+    let label_idsStr = label_ids.join(',')
+    this.setData({
+      label_idsStr,
+      showLabels: false
+    })
+    this.onClear()
+  },
+  closeLabels() {
+    this.setData({
+      showLabels: false
+    })
+  },
+
   async getBooks() {
+    let label_idsStr = this.data.label_idsStr
     let status = this.data.status
     let data = {
       page: this.data.page,
       count: this.data.count,
       type_id: this.data.active[0] == -1 ? -1 : this.data.types[this.data.active[0]].type_id,
       website_id: this.data.active[1] == -1 ? -1 : this.data.websites[this.data.active[1]].website_id,
-      sort: this.data.active[2] == -1 ? '' : this.data.active[2] + 1
+      sort: this.data.active[2] == -1 ? '' : this.data.active[2] + 1,
+      label_ids: label_idsStr
     }
     let res = await request('/getBooks_filter', data)
     if (res.data.length < this.data.count) {
@@ -185,6 +278,23 @@ Page({
       books_right: right,
     })
   },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -201,6 +311,7 @@ Page({
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
+   * (新版本页面改为禁止滚动以便适用于弹窗，下拉暂时关闭)
    */
   onPullDownRefresh() {
     this.onClear();
