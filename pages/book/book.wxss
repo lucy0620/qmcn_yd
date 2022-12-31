@@ -1,11 +1,5 @@
 /* pages/book/book.wxss */
 /* 筛选 */
-.filter_wrap {
-  position: fixed;
-  width: 100%;
-  z-index: 99;
-  background-color: #fff;
-}
 .filter {
   padding: 14rpx 0 14rpx 20rpx;
 }
@@ -13,6 +7,9 @@
   line-height: 1;
   margin-right: 20rpx;
 }
+/* .filter:last-child {
+  border-bottom: 1px solid #f0f0f0;
+} */
 /* 精准筛选 */
 .filter_ex{
   position: absolute;

@@ -1,11 +1,11 @@
-// pages/add/add.js
+// pages/book/book_addRecord/book_addRecord.js
 const app = getApp();
 import {
   request
-} from '../../utils/request'
-import * as utilRoute from "../../utils/route"
-import * as utilShow from "../../utils/show"
-import * as utilStorage from "../../utils/storage"
+} from '../../../utils/request'
+import * as utilRoute from "../../../utils/route"
+import * as utilShow from "../../../utils/show"
+import * as utilStorage from "../../../utils/storage"
 Page({
 
   /**

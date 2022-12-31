@@ -7,10 +7,9 @@
 }
 .aside .item {
   width: 100%;
-  font-size: 32rpx;
   text-align: left;
   display: flex;
-  padding: 20rpx 0 20rpx 20rpx;
+  padding: 20rpx 20rpx 20rpx 20rpx;
   justify-content: flex-start;
   border-left: 12rpx solid transparent;
 }
@@ -20,8 +19,6 @@
 }
 /* 商品列表 */
 .conter{
-  margin-left: 200rpx;
-  width: 550rpx;
   padding-top: 20rpx;
   padding-left: 20rpx;
   box-sizing: border-box;

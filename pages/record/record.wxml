@@ -24,7 +24,7 @@
     <view class="padding-lr-sm text-xs" style="height: 100%;overflow-y: scroll;">
       <!-- 句子 -->
       <view bindtap="goDetail" data-id="{{it.book_id}}" data-sentence_id="{{it.sentence_id}}" wx:if="{{item == '句子'}}" wx:for="{{sentences}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="padding-tb-sm" style="border-bottom: 1px solid #f0f0f0;">
-        <text user-select>{{it.content}}</text>
+        <text>{{it.content}}</text>
         <view class="padding-top-xs text-right">
           —— {{it.book_name}}
         </view>
@@ -41,7 +41,7 @@
           <text class="cuIcon-evaluate margin-right-xs"></text>
           <view>
             <view class="text-sm padding-bottom-xs" style="line-height: 1;">{{it.title}}</view>
-            <text user-select>{{it.content}}</text>
+            <text>{{it.content}}</text>
           </view>
         </view>
         <view class="padding-top text-right">

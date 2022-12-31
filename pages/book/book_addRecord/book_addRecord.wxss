@@ -1,4 +1,4 @@
-/* pages/add/add.wxss */
+/* pages/book/book_addRecord/book_addRecord.wxss */
 /* 文本域 */
 .content {
   width: calc(100vw - 100rpx);

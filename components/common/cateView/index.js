@@ -19,6 +19,11 @@ Component({
     color: {
       type: String,
       value: 'red'
+    }, 
+    // 左侧宽度
+    width: {
+      type: String,
+      value: '200rpx'
     }
   },
 
@@ -29,7 +34,7 @@ Component({
     _height: 0, // 列表视图高度
     _rightList: []
   },
-  attached () {
+  attached() {
     let that = this
     wx.getSystemInfo({
       success: function (res) {
@@ -49,7 +54,9 @@ Component({
       this.setData({
         active: e.currentTarget.dataset.index
       })
-      this.triggerEvent('changeCate', { ...e.currentTarget.dataset.obj})
+      this.triggerEvent('changeCate', {
+        ...e.currentTarget.dataset.obj
+      })
     }
   }
 })

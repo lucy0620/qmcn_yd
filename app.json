@@ -12,13 +12,14 @@
     "pages/user/manage/manageBook/manageBook",
     "pages/user/manage/manageBook/editBook",
     "pages/user/manage/manageLabels/manageDerives",
+    "pages/user/manage/manageType/manageWebsite",
     "pages/book/book",
-    "pages/record/record",
     "pages/book/book_detail/book_detail",
+    "pages/book/book_addRecord/book_addRecord",
+    "pages/record/record",
     "pages/bookshelf/bookshelf",
     "pages/bookshelf/bookshelf_detail",
-    "pages/add/add",
-    "pages/user/manage/manageType/manageWebsite"
+    "pages/user/manage/manageSentencelabels/manageSentencelabels"
   ],
   "window": {
     "navigationStyle": "custom",

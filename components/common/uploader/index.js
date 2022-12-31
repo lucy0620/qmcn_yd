@@ -96,7 +96,11 @@ Component({
     showLimit: {
       type: Boolean,
       value: false
-    }
+    },
+    background: {
+      type: String,
+      value: app.globalData.background
+    },
   },
 
   // 组件的生命周期

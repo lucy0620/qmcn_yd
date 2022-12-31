@@ -2,7 +2,9 @@ const app = getApp()
 import * as utilStorage from '../../utils/storage'
 import * as utilRoute from '../../utils/route'
 import * as utilShow from '../../utils/show'
-
+import {
+  request
+} from '../../utils/request'
 Page({
   /**
    * 页面的初始数据
@@ -92,29 +94,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let user_info = utilStorage.getKey('user_info');
-    let index_exit = this.data.menuList.findIndex(item =>
-      item.title == '退出')
-    let index_book = this.data.menuList.findIndex(item =>
-      item.title == '管理员录入')
-    let menu_exit = `menuList[${index_exit}].show`
-    let menu_book = `menuList[${index_book}].show`
-    if (user_info) {
-      this.setData({
-        user_info,
-        [menu_exit]: true,
-        [menu_book]: user_info.role == 1 ? true : false
-      })
-    } else {
-      this.setData({
-        user_info,
-        [menu_exit]: false,
-        [menu_book]: false
-      })
-    }
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-    })
+    this.onPullDownRefresh()
   },
 
   /**
@@ -134,7 +114,39 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {},
+  onPullDownRefresh: async function () {
+    let user_info = utilStorage.getKey('user_info');
+    let index_exit = this.data.menuList.findIndex(item =>
+      item.title == '退出')
+    let index_book = this.data.menuList.findIndex(item =>
+      item.title == '管理员录入')
+    let menu_exit = `menuList[${index_exit}].show`
+    let menu_book = `menuList[${index_book}].show`
+    if (user_info) {
+      let res = await request('/refresh_get_UserInfo', {
+        id: user_info.id
+      },true)
+      if (res.data) {
+        user_info = res.data
+      }
+      this.setData({
+        user_info,
+        [menu_exit]: true,
+        [menu_book]: user_info.role == 1 ? true : false
+      })
+      utilStorage.setKey('user_info', user_info)
+    } else {
+      this.setData({
+        user_info,
+        [menu_exit]: false,
+        [menu_book]: false
+      })
+    }
+
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+    })
+  },
 
   /**
    * 页面上拉触底事件的处理函数

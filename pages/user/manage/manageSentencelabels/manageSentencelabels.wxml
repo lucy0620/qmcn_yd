@@ -1,0 +1,31 @@
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+
+<!-- 提示 -->
+
+
+<!-- 列表 -->
+<view class="grid col-3 padding-right-sm text-sm">
+  <!-- <view class="padding-left-sm">
+    <view class="text-center padding-sm round bg-gray  margin-top-sm">
+      自己创建
+    </view>
+  </view>
+  <view class="padding-left-sm">
+    <view class="text-center padding-sm round bg-gray margin-top-sm">
+      其他用户创建
+    </view>
+  </view>
+  <view>
+  </view> -->
+
+  <view class="padding-left-sm" wx:for="{{sentence_labels}}" wx:key="index" data-item="{{item}}">
+    <view class="acea-row padding-sm round bg-gray  margin-top-sm">
+      <text class="flexs">{{item.label_name}}</text>
+      <text class="cuIcon-fold margin-lr-xs" catchtap="moveType" data-type="up" data-index="{{index}}"></text>
+      <text class="cuIcon-unfold margin-lr-xs" catchtap="moveType" data-type="down" data-index="{{index}}"></text>
+    </view>
+  </view>
+</view>
+
+<view style="padding-bottom: {{app.globalData.isIphoneX ? '68rpx':''}};">
+</view>

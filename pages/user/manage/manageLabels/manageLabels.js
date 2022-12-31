@@ -66,7 +66,6 @@ Page({
     let afterData = [];
     for (let i = 0; i < beforeData.length; i++) {
       if (tempArr.indexOf(beforeData[i].label_type_id) === -1) {
-        console.log(1)
         afterData.push({
           label_type_id: beforeData[i].label_type_id,
           label_type_name: beforeData[i].label_type_name,

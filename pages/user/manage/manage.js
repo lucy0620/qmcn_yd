@@ -39,8 +39,8 @@ Page({
     ],
     menuList_sentence: [{
       title: '句子标签管理',
-      url: '/pages/user/manage/manageSentence/manageSentence',
-    }]
+      url: '/pages/user/manage/manageSentencelabels/manageSentencelabels',
+    }],
   },
 
   /**

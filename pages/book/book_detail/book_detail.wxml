@@ -83,7 +83,7 @@
 
       <view wx:if="{{ item=='句子'&&sentences && sentences.length == 0|| item == '推文' && recommends && recommends.length == 0 }}" class="text-center" style="padding-top: 100rpx;">
         <view>该文暂无{{item}}</view>
-        <text bindtap="add" data-type="{{item == '推文' ? 'recommend' : 'sentence'}}" class="cu-btn sm shadow text-white margin" style="background: {{background}};">去添加</text>
+        <text bindtap="addRecord" data-type="{{item == '推文' ? 'recommend' : 'sentence'}}" class="cu-btn sm shadow text-white margin" style="background: {{background}};">去添加</text>
       </view>
 
     </view>
@@ -91,7 +91,7 @@
 </swiper>
 
 <!-- 底部操作栏 -->
-<submit-bar bind:addBookshelf="addBookshelf" bind:add="add" data-type="{{type}}" bottomList="{{bottomList}}" isIphoneX="{{app.globalData.isIphoneX}}">
+<submit-bar bind:openBookshelf="openBookshelf" bind:addRecord="addRecord" data-type="{{type}}" bottomList="{{bottomList}}" isIphoneX="{{app.globalData.isIphoneX}}">
   <view wx:for="{{bottomListLeft}}" wx:key="index" data-text="{{item.text}}" bindtap="submitBarTap">
     <text class="cuIcon-{{item.icon}} margin-right-xs"></text>
     <text class="title">{{item.text}}</text>
@@ -100,13 +100,17 @@
 
 <!-- 选择书单 -->
 <popup background="{{background}}" show="{{showChooseBookshelf}}" height="50" title="选择书单" funName="confirmBookshelf" bind:confirmBookshelf="confirmBookshelf">
+  <view class="padding-bottom padding-left text-sm" style="color: {{background}};" bindtap="addBookshelf">
+    <text class="cuIcon-add margin-right-xs"></text>
+    <text>新增书单</text>
+  </view>
   <van-radio-group value="{{ bookshelfs_checkedId }}" bind:change="chooseBookshelf">
-    <view wx:for="{{bookshelfs}}" wx:key="index" class="themeItem margin-lr">
+    <view wx:for="{{bookshelfs}}" wx:key="index" class="themeItem margin-lr" style="border-top: 1px solid #e3e3e3;border-bottom: 0;">
       <view class="flexs margin-right" style="position: relative;">
         <text>{{item.name}}</text>
         <text class="text-xs margin-lr-xs">{{item.count}}本</text>
         <picker wx:if="{{bookshelfs && bookshelfs[0] && bookshelfs[0].id && bookshelfs_checkedId == bookshelfs[0].id && index == 0}}" bindchange="bindPickerChangeTime" fields="day" mode='date' end="{{endTime}}">
-          <text class="readTime text-sm text-gray">{{read_time ? read_time:'点击选择阅读日期'}}</text>
+          <text class="readTime text-sm text-gray">{{read_time ? read_time:'选择阅读日期'}}</text>
         </picker>
       </view>
       <van-radio checked-color="{{background}}" name="{{item.id}}" />

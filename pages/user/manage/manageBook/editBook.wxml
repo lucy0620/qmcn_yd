@@ -13,7 +13,7 @@
     <van-cell title="首发时间：" is-link value="{{detail.publish_time ? detail.publish_time:'请选择首发时间'}}" bindtap="editValue"></van-cell>
   </picker>
 
-  <z-upload imageList="{{ detail.images }}" data-prop="images" title="图片：" count="6" height="200" funName="editValue" bind:editValue="editValue" showLimit>
+  <z-upload imageList="{{ detail.images }}" data-prop="images" title="图片：" count="6" height="200" funName="editValue" bind:editValue="editValue" background="{{background}}" showLimit>
   </z-upload>
 </z-box>
 

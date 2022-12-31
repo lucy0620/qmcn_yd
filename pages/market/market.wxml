@@ -1,5 +1,5 @@
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
 
-<cate-view list="{{ cateList }}" color="{{ background}}"></cate-view>
+<cate-view width="calc(52rpx + 5em)" list="{{ cateList }}" color="{{ background}}"></cate-view>
 
 <tab-bar active="{{1}}" activeColor="{{ background }}" isIphoneX="{{ isIphoneX }}"></tab-bar>

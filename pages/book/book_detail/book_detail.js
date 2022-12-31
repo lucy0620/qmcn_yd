@@ -32,11 +32,11 @@ Page({
     }],
     bottomList: [{
       text: '加入书架',
-      funName: 'addBookshelf',
+      funName: 'openBookshelf',
       background: ''
     }, {
       text: '写记录',
-      funName: 'add',
+      funName: 'addRecord',
       background: '#e3e3e3',
     }],
     // 书单
@@ -105,6 +105,7 @@ Page({
     })
     this.getHeight()
   },
+  // 获取用户书单
   async getBookshelfs() {
     let _this = this
     const res = await request('/getUser_bookshelfs', {
@@ -122,7 +123,7 @@ Page({
     })
   },
   // 打开书单弹窗
-  addBookshelf() {
+  openBookshelf() {
     let _this = this
     app.handleIsLogin(function () {
       _this.getBookshelfs()
@@ -190,13 +191,42 @@ Page({
       }, 1500)
     }
   },
-  add(e) {
+  // 新增书单
+  async addBookshelf() {
+    wx.showModal({
+      title: '请输入书单名',
+      editable: true,
+      success: async (res) => {
+        if (res.confirm) {
+          if (res.content) {
+            if (res.content.length > 10) {
+              utilShow.showMyMsg('书单名称不能大于10个字')
+              return
+            }
+            let _this = this
+            const _res = await request('/add_bookshelf', {
+              user_id: _this.data.user_info.id,
+              name: res.content
+            })
+            if (_res.code == 200) {
+              utilShow.showMyMsg('新增书单成功')
+              setTimeout(() => {
+                _this.getBookshelfs()
+              }, 1000)
+            }
+          }
+        }
+      },
+    })
+  },
+  // 去记录
+  addRecord(e) {
     let _this = this
     let {
       type
     } = e.currentTarget.dataset
     app.handleIsLogin(function () {
-      utilRoute.navigate('/pages/add/add', {
+      utilRoute.navigate('/pages/book/book_addRecord/book_addRecord', {
         id: _this.data.detail.id,
         name: _this.data.detail.name,
         type: type ? type : _this.data.current == 0 ? 'sentence' : 'recommend'

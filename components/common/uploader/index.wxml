@@ -29,7 +29,7 @@
         </view>
         <view style="width:{{width}}rpx" class="image-item image-item-temp" wx:if="{{imageList.length%3==1}}"></view>
       </view>
-      <movable-view class="movable-view" style="width:{{width}}rpx;height:{{width}}rpx" hidden="{{hidden}}" x="{{x}}"
+      <movable-view class="movable-view" style="width:{{width}}rpx;height:{{width}}rpx;border-color: {{background}};" hidden="{{hidden}}" x="{{x}}"
         y="{{y}}" direction="all" damping="{{5000}}" friction="{{1}}">
         <image src="{{currentImg}}" wx:if="{{currentImg.length>0}}"></image>
       </movable-view>

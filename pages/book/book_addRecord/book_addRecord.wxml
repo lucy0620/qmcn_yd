@@ -1,4 +1,4 @@
-<!--pages/add/add.wxml-->
+<!--pages/book/book_addRecord/book_addRecord.wxml-->
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
 <z-box>
   <van-cell title="书名：" value="{{name}}"></van-cell>

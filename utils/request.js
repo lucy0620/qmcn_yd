@@ -27,6 +27,7 @@ export const request = (url, params, noLoading, contentType = 'application/json'
         reject(err);
         wx.showToast({
           title: '加载失败',
+          icon: 'none'
         })
       },
       complete(com) {
