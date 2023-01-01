@@ -33,8 +33,8 @@ Page({
    */
   onLoad(options) {
     this.getHeight()
-    this.getSentences()
     this.getRecommends()
+    this.getSentences()
   },
   getHeight() {
     let _this = this;

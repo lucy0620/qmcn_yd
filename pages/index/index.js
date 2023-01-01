@@ -120,9 +120,9 @@ Page({
     let params = this.getParams('pages/dd/ss?ll=1&pp=2')
     console.log(params)
     return {
-      path: '/pages/search/index?' + 'id=' + 1,
-      title: "给你分享了商品",
-      desc: '彩色蛋糕',
+      path: '/pages/index/index?' + 'id=' + 1,
+      title: "给你分享了叁仟院",
+      desc: '找文推文/句子/心得记录',
       success: (ev) => {
         console.log(ev)
       }

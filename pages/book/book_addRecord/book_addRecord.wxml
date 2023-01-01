@@ -28,8 +28,10 @@
   <view wx:if="{{type == 'sentence'}}">
     <van-cell required title="句子标签：" border="{{false}}"></van-cell>
     <view class="sentence_labels acea-row flex-warp padding-left">
-      <view bindtap="editLabel" data-index="{{index}}" class="margin-right-sm margin-bottom-sm text-sm" style="background-color: {{item.checked? background: '#fff'}};color: {{item.checked? '#fff': background}}; border-color: {{ background}};" wx:for="{{sentence_labels}}" wx:key="index">
+      <view bindtap="onLabel" data-index="{{index}}" class="margin-right-sm padding-lr margin-bottom-sm text-sm" style="background-color: {{item.checked? background: '#fff'}};color: {{item.checked? '#fff': background}}; border-color: {{ background}};" wx:for="{{sentence_labels}}" wx:key="index">
         {{item.label_name}}
+      </view>
+      <view bindtap="addLabel" class="cuIcon-add margin-right-sm margin-bottom-sm text-sm bg-white padding-lr" style="color: {{background}};border-color: {{background}};">
       </view>
     </view>
   </view>

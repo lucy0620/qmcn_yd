@@ -26,16 +26,8 @@ Page({
     type: 'recommend', // 推文recommend 句子sentence
     title: '',
     content: '',
-    sentence_labels: [{
-      title: '情话',
-      checked: false
-    }, {
-      title: '刀',
-      checked: false
-    }, {
-      title: '糖',
-      checked: true
-    }], //句子标签
+    sentence_labels: [], //句子标签
+    weight: 0
   },
 
   /**
@@ -70,19 +62,22 @@ Page({
     })
   },
   async getSentenceLabels() {
+    let weight = this.data.weight
     let res = await request('/get_SentenceLabels')
     let sentence_labels = res.data.map(it => {
+      weight = it.weight > weight ? it.weight : weight
       return {
         ...it,
         check: false
       }
     })
     this.setData({
-      sentence_labels
+      sentence_labels,
+      weight
     })
   },
 
-  editLabel(e) {
+  onLabel(e) {
     let {
       index,
     } = e.currentTarget.dataset
@@ -130,10 +125,10 @@ Page({
           }
         })
         label_ids = temp.join(',')
-        if (!label_ids) {
-          utilShow.showMyMsg('请选择句子标签')
-          return
-        }
+        // if (!label_ids) {
+        //   utilShow.showMyMsg('请选择句子标签')
+        //   return
+        // }
         data = {
           ...data,
           label_ids
@@ -150,6 +145,30 @@ Page({
     } else {
       utilRoute.back()
     }
+  },
+
+  addLabel() {
+    let _this = this
+    wx.showModal({
+      title: '请输入标签名',
+      editable: true,
+      success: async (res) => {
+        if (res.confirm) {
+          if (res.content) {
+            if (res.content.length > 5) {
+              utilShow.showMyMsg('标签名称不能大于5个字')
+              return
+            }
+            let data = {
+              label_name: res.content,
+              weight: _this.data.weight + 1
+            }
+            await request('/add_sentence_label', data)
+            _this.getSentenceLabels()
+          }
+        }
+      },
+    })
   },
 
   /**
@@ -197,10 +216,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

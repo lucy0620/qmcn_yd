@@ -21,14 +21,22 @@ export const request = (url, params, noLoading, contentType = 'application/json'
         'Content-type': contentType,
       },
       success(res) {
-        resolve(res.data);
+        if (res.data.code == 200) {
+          resolve(res.data);
+        } else {
+          wx.showToast({
+            title: res.data.errMsg,
+            icon: 'none'
+          })
+          // reject(res);
+        }
       },
       fail(err) {
-        reject(err);
         wx.showToast({
-          title: '加载失败',
+          title: '请求服务器失败',
           icon: 'none'
         })
+        // reject(err);
       },
       complete(com) {
         wx.hideLoading();

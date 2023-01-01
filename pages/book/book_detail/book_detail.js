@@ -277,7 +277,7 @@ Page({
     let sentences = res.data.map(it => {
       return {
         ...it,
-        label_names: it.label_names.split(',')
+        label_names: it.label_names != null ? it.label_names.split(',') : []
       }
     })
     this.setData({

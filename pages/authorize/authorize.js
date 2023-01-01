@@ -71,14 +71,14 @@ Page({
           data,
           success: (res) => {
             that.setData({
-              user_info: res.data.user_info
+              user_info: res.data.data
             })
-            utilStorage.setKey('user_info', res.data.user_info)
-            // app.globalData.user_info = res.data.user_info //存这个好像没有意义
+            utilStorage.setKey('user_info', res.data.data)
+            // app.globalData.user_info = res.data.data //存这个好像没有意义
             // 先不做手机号授权了，登录完成直接返回吧
             that.backPage()
             // 这个用户没绑手机号 todo
-            if (!res.data.user_info.phone) {
+            if (!res.data.data.phone) {
               that.setData({
                 isGetPhone: true
               })

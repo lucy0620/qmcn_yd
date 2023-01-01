@@ -35,6 +35,15 @@ Page({
       link: true,
       show: ''
     }],
+    fastMenuList:[{
+      icon: 'text',
+      title: '我的发布',
+      url: ''
+    },{
+      icon: 'read',
+      title: '我的书架',
+      url: '/pages/bookshelf/bookshelf'
+    }],
     background: '',
     user_info: '',
     showBackground: false,
@@ -59,7 +68,7 @@ Page({
     let item = e.currentTarget.dataset.item
     if (item.url) {
       if (item.auth) {
-        app.handleIsLogin(function () {
+        app.handleIsLogin( () =>{
           utilRoute.navigate(item.url)
         })
       } else {

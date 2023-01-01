@@ -1,12 +1,22 @@
 <!-- 头部信息 -->
 <view class="userinfo">
   <view class="blur" style="background: {{background}};">
-    <image wx:if="{{user_info.avatarUrl}}" src="{{user_info.avatarUrl}}" mode="aspectFit"></image>
+    <image wx:if="{{user_info.avatarUrl}}" src="{{user_info.avatarUrl}}" mode="widthFix"></image>
   </view>
   <image wx:if="{{user_info.avatarUrl}}" class="avatar" src="{{user_info.avatarUrl}}" mode=""></image>
   <image wx:else class="avatar" src="/static/default/default_avatar.png" mode=""></image>
   <view wx:if="{{user_info.nickName}}" class="nickname">{{user_info.nickName}}</view>
   <view wx:else bindtap="loginTap" class="nickname">点击登录</view>
+
+  <view class="grid col-4 text-gray" wx:if="{{user_info}}">
+    <view class="text-center text-xl padding-lr-sm padding-bottom-sm" wx:for="{{fastMenuList}}" wx:key="item" data-item="{{item}}" bindtap="menuTap">
+      <view class="cuIcon-{{item.icon}}">
+      </view>
+      <view class="text-sm">
+        {{item.title}}
+      </view>
+    </view>
+  </view>
 </view>
 
 <!-- 设置等 -->

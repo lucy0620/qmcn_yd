@@ -8,6 +8,5 @@
 /* 句子标签 */
 .sentence_labels view{
   border-radius: 4rpx;
-  padding: 0 16rpx;
   border: 1px solid #fff;
 }

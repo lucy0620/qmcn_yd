@@ -18,7 +18,6 @@
   position: absolute;
   top: -33%;
   width: 750rpx;
-  height: 750rpx;
   filter: blur(10rpx);
   -webkit-filter: blur(10rpx);
   -moz-filter: blur(10rpx);

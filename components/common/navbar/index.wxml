@@ -28,4 +28,4 @@
       </view>
    </view>
 </view>
-<view style='height:{{height}}rpx;'></view>
+<view style='height:{{height}}rpx;background:{{backgroundColor}}'></view>
