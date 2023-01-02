@@ -32,6 +32,9 @@ Page({
       user_info: utilStorage.getKey('user_info'),
       background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
     })
+    wx.setBackgroundColor({
+      backgroundColor: this.data.background
+    })
     this.getBookshelfs()
   },
 

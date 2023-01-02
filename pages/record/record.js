@@ -67,12 +67,12 @@ Page({
   },
   async getSentences() {
     const res = await request('/getBook_Sentences', {
-      random: this.data.random
+      random: this.data.random,
     })
     let sentences = res.data.map(it => {
       return {
         ...it,
-        label_names: it.label_names.split(',')
+        label_names: it.label_names ? it.label_names.split(',') : []
       }
     })
     this.setData({
@@ -115,6 +115,9 @@ Page({
     this.setData({
       background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
     })
+    wx.setBackgroundColor({
+      backgroundColor: this.data.background
+    })
   },
 
   /**
@@ -135,7 +138,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    this.randomRes()
   },
 
   /**

@@ -31,9 +31,9 @@ Page({
    */
   onLoad(options) {
     this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
       user_info: utilStorage.getKey('user_info'),
     })
-    this.getBookshelfs()
   },
 
   // 获取我的书单
@@ -102,10 +102,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-      user_info: utilStorage.getKey('user_info'),
-    })
     this.getBookshelfs()
   },
 

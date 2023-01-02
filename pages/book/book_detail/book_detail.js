@@ -57,6 +57,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+      user_info: utilStorage.getKey('user_info'),
+    })
+    wx.setBackgroundColor({
+      backgroundColor: this.data.background
+    })
+    // 更改底部组件配置
+    let data1 = `bottomList[0].background`
+    let data2 = `bottomListLeft[1].text`
+    this.setData({
+      [data1]: this.data.background,
+      [data2]: this.data.user_info && this.data.user_info.role == 1 ? '编辑' : '反馈'
+    })
     let {
       id,
       sentence_id,
@@ -76,19 +90,6 @@ Page({
     })
   },
   onShow() {
-    let _this = this
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-      user_info: utilStorage.getKey('user_info'),
-    })
-    // 更改底部组件配置
-    let data = `bottomList[0].background`
-    let data2 = `bottomListLeft[1].text`
-    this.setData({
-      [data]: _this.data.background,
-      [data2]: _this.data.user_info && _this.data.user_info.role == 1 ? '编辑' : '反馈'
-    })
-
     this.getSentences()
     this.getRecommends()
     this.getDetail({

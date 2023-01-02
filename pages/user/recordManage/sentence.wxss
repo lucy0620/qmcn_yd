@@ -1,0 +1,4 @@
+/* pages/user/recordManage/sentence.wxss */
+page{
+  background-color: #fff;
+}

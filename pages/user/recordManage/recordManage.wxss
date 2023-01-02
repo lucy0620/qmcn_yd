@@ -1,0 +1,17 @@
+/* pages/user/recordManage/recordManage.wxss */
+page{
+  background-color: #fff;
+}
+
+/* 按钮 */
+.topBtn {
+  line-height: 1;
+  position: fixed;
+  right: 10rpx;
+  bottom: 400rpx;
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+  border-radius: 50%;
+  text-align: center;
+}

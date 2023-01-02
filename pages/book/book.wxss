@@ -82,3 +82,18 @@
 .newbooks_labels view:last-child {
   margin-right: 0;
 }
+
+/* 添加按钮 */
+.addBtn {
+  line-height: 1;
+  position: fixed;
+  left: 10rpx;
+  bottom: 400rpx;
+  display: flex;
+  align-items: center;
+  font-size: 3em;
+  border-radius: 50%;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.4);
+}

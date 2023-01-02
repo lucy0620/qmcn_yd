@@ -5,6 +5,8 @@ import {
 } from '../../../../utils/request'
 import * as utilRoute from "../../../../utils/route"
 import * as utilStorage from "../../../../utils/storage"
+import * as utilShow from "../../../../utils/show"
+
 Page({
 
   /**
@@ -31,6 +33,9 @@ Page({
    */
   onLoad(options) {
     this.getBooks()
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+    })
   },
 
   /**
@@ -44,9 +49,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-    })
+
   },
   onClear() {
     this.setData({
@@ -72,6 +75,7 @@ Page({
       page: this.data.page,
       count: this.data.count,
       keyword: this.data.keyword,
+      sort: 0
     }
     let res = await request('/getBooks', data)
     if (res.data.length < this.data.count) {
@@ -102,6 +106,24 @@ Page({
     utilRoute.navigate('/pages/user/manage/manageBook/editBook', {
       type: 'add'
     })
+  },
+
+
+  del(e) {
+    let id = e.currentTarget.dataset.id
+    let _this = this
+    utilShow.showMyModal('确认删除此书?', '', true, () => {
+      _this.deleteRequest(id)
+    })
+  },
+  async deleteRequest(id) {
+    const res = await request('/del_book', {
+      id
+    })
+    if (res.code == 200) {
+      utilShow.showMyMsg('已删除')
+      this.onClear()
+    }
   },
 
   /**

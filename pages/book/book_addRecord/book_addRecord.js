@@ -34,6 +34,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+      user_info: utilStorage.getKey('user_info'),
+    })
     let {
       id,
       name,
@@ -45,7 +49,6 @@ Page({
       name,
       type
     })
-
     this.getSentenceLabels()
   },
 
@@ -182,10 +185,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-      user_info: utilStorage.getKey('user_info'),
-    })
+    
   },
 
   /**

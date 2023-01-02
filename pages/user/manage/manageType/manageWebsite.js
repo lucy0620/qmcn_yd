@@ -35,6 +35,9 @@ Page({
         manage: true
       })
     }
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+    })
   },
 
   async getWebsites() {
@@ -106,9 +109,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-    })
+    
   },
 
   /**

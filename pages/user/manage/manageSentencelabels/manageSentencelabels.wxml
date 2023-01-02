@@ -4,25 +4,23 @@
 
 
 <!-- 列表 -->
-<view class="grid col-3 padding-right-sm text-sm">
-  <!-- <view class="padding-left-sm">
-    <view class="text-center padding-sm round bg-gray  margin-top-sm">
-      自己创建
-    </view>
-  </view>
-  <view class="padding-left-sm">
-    <view class="text-center padding-sm round bg-gray margin-top-sm">
-      其他用户创建
-    </view>
-  </view>
-  <view>
+<view class="padding-lr-sm text-sm">
+  <!-- <view class="margin-top-sm">
+    <text class="bg-gray cu-btn sm cuIcon-add">新增</text>
   </view> -->
-
-  <view class="padding-left-sm" wx:for="{{sentence_labels}}" wx:key="index" data-item="{{item}}">
-    <view class="acea-row padding-sm round bg-gray  margin-top-sm">
-      <text class="flexs">{{item.label_name}}</text>
-      <text class="cuIcon-fold margin-lr-xs" catchtap="moveType" data-type="up" data-index="{{index}}"></text>
-      <text class="cuIcon-unfold margin-lr-xs" catchtap="moveType" data-type="down" data-index="{{index}}"></text>
+  <view class="acea-row row-middle margin-top-sm" wx:for="{{sentence_labels}}" wx:key="index" data-item="{{item}}">
+    <text class="flexs">{{item.label_name}}</text>
+    <!-- <view class="cu-btn sm round bg-gray text-xs margin-lr-xs">
+      编辑
+    </view>
+    <view class="cu-btn sm round bg-gray text-xs margin-lr-xs">
+      删除
+    </view> -->
+    <view class="cu-btn sm round bg-gray text-xs margin-lr-xs" catchtap="moveType" data-type="up" data-index="{{index}}">
+      上移
+    </view>
+    <view class="cu-btn sm round bg-gray text-xs margin-lr-xs" catchtap="moveType" data-type="down" data-index="{{index}}">
+      下移
     </view>
   </view>
 </view>

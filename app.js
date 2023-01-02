@@ -20,8 +20,8 @@ App({
     navHeight: '', // 导航高度：用于自定义顶部导航 数字，使用时需带单位rpx
     /* 请求地址 */
     mp3Url: 'https://mall.gzpgkj.cn/mp3/', // mp3链接地址
-    baseUrl: 'http://localhost:7890',
-    // baseUrl: 'https://www.lucy0612.asia',
+    // baseUrl: 'http://localhost:7890',
+    baseUrl: 'https://www.lucy0612.asia',
   },
   onLaunch() {
     let that = this

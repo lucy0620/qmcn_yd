@@ -19,7 +19,9 @@
     "pages/record/record",
     "pages/bookshelf/bookshelf",
     "pages/bookshelf/bookshelf_detail",
-    "pages/user/manage/manageSentencelabels/manageSentencelabels"
+    "pages/user/manage/manageSentencelabels/manageSentencelabels",
+    "pages/user/recordManage/recordManage",
+    "pages/user/recordManage/sentence"
   ],
   "window": {
     "navigationStyle": "custom",

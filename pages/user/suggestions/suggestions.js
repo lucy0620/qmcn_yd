@@ -40,6 +40,11 @@ Page({
       id,
       name,
     })
+
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+      user_info: utilStorage.getKey('user_info'),
+    })
   },
   editValue(e) {
     let prop = e.currentTarget.dataset.prop
@@ -101,10 +106,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-      user_info: utilStorage.getKey('user_info'),
-    })
+    
   },
 
   /**

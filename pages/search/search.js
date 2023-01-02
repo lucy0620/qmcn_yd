@@ -30,6 +30,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+    })
+    wx.setBackgroundColor({
+      backgroundColor: this.data.background
+    })
     let keys = utilStorage.getKey('search')
     keys = keys ? JSON.parse(keys) : []
     this.setData({
@@ -123,9 +129,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-    })
+    
   },
 
   /**

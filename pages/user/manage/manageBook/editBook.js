@@ -15,7 +15,7 @@ Page({
     app,
     navbarData: {
       type: 1,
-      title: '编辑',
+      title: '编辑书籍',
       return: true,
       home: true
     },
@@ -31,6 +31,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+    })
     let {
       type
     } = options
@@ -41,10 +44,9 @@ Page({
       this.getDetail(options.id)
     } else {
       this.setData({
-        'navbarData.title': '添加'
+        'navbarData.title': '添加书籍'
       })
     }
-
     this.setData({
       endTime: utilTime.getYearMonth(new Date())
     })
@@ -61,9 +63,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-    })
+    
   },
 
 
@@ -182,11 +182,4 @@ Page({
   onReachBottom() {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

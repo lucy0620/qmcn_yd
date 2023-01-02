@@ -11,7 +11,8 @@
     <text>{{index+1}}.{{item.name}}</text>
     <text class="padding-lr-xs">-</text>
     <text>{{item.author}}</text>
-    <text class=" cvName cuIcon-github" wx:if="{{item.cvName}}"> {{item.cvName}}</text>
+    <text catchtap="del" data-id="{{item.id}}" class="cvName cuIcon-delete" style="top: 10rpx;font-size: 30rpx!important;"></text>
+    <text class="cvName cuIcon-github" wx:if="{{item.cvName}}"> {{item.cvName}}</text>
   </view>
 </view>
 <!-- 添加按钮 -->

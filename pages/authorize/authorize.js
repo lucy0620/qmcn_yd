@@ -15,7 +15,7 @@ Page({
     isGetPhone: false, // 是否需要获取手机号码
   },
 
-  onShow() {
+  onLoad() {
     this.setData({
       background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
     })

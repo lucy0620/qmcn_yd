@@ -36,9 +36,17 @@ Page({
       show: ''
     }],
     fastMenuList:[{
+      icon: 'like',
+      title: '我的句子',
+      url: '/pages/user/recordManage/sentence'
+    },{
+      icon: 'text',
+      title: '我的推文',
+      url: '/pages/user/recordManage/recordManage'
+    },{
       icon: 'text',
       title: '我的发布',
-      url: ''
+      url: '/pages/user/recordManage/recordManage'
     },{
       icon: 'read',
       title: '我的书架',

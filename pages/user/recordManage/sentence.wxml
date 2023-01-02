@@ -1,0 +1,56 @@
+<!--pages/user/recordManage/sentence.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+
+
+
+<!-- 时间 -->
+<view wx:if="{{timeline && timeline.length>0}}" style="position: sticky;top: {{app.globalData.navHeight}}rpx;z-index:10">
+  <view class="acea-row row-middle box-shadow-l padding-top padding-bottom-xs">
+    <view class="padding-lr text-center" style="width: 110rpx;line-height: 2rem;height: 2rem;color:{{background}}">
+      <text>{{timeline[currentT].count < 10 ?'0'+timeline[currentT].count:timeline[currentT].count}}</text>
+    </view>
+    <swiper next-margin="110rpx" display-multiple-items="{{timeCount}}" style="height: 2rem;flex: 1;" current="{{currentT}}" bindchange="changeSwiper">
+      <swiper-item wx:for="{{timeline}}" wx:key="index">
+        <view bindtap="onTimeline" data-index="{{index}}" class="text-cenater" style="line-height: 2rem;color: {{currentT == index ? background : '#e3e3e3'}};font-weight: {{currentT == index ? 'bold' : ''}};">
+          <text class="text-xl">{{item.month}}</text>
+          <text class="margin-xs">/</text>
+          <text class="">{{item.year}}</text>
+        </view>
+      </swiper-item>
+      <swiper-item wx:for="{{timeCount-1}}" wx:key="index" style="line-height: 2rem;">
+        <view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+
+<view wx:else>
+  <load-more status="empty"></load-more>
+</view>
+
+<swiper class="padding-right" style="height:calc(100vh - {{app.globalData.navHeight}}rpx - 52px);" current="{{currentT}}" bindchange="changeSwiper">
+  <swiper-item wx:for="{{timeline}}" wx:key="index" style="overflow-y: scroll;">
+    <view wx:for="{{timeline[currentT].child}}" wx:for-item="it" wx:for-index="i" wx:key="i" data-id="{{it.book_id}}" bindtap="goDetail" class="padding-top-sm" style="padding-bottom: {{ i == (timeline[currentT].count - 1) ? app.globalData.isIphoneX ? '68rpx' : '30rpx' : 0}}">
+      <!-- 标题 -->
+      <view class="acea-row row-middle text-sm">
+        <view class="cuIcon-like text-center text-bold" style="width: 110rpx;line-height: 1;">
+        </view>
+        <view class="cuIcon-close flexs text-right" catchtap="delete" data-id="{{it.sentence_id}}">
+        </view>
+      </view>
+      <!-- 时间 -->
+      <view class="text-center text-xs padding-tb-sm color-gray" style="width: 110rpx;line-height: 1;">
+        <view>{{it.day}} - {{it.hour}}</view>
+      </view>
+
+      <!-- 内容 - 书名 -->
+      <view class="text-sm" style="margin-left: calc(110rpx / 2); padding-left: calc(110rpx / 2);border-left: 1px solid #e3e3e3;">
+        <text user-select>{{it.content}}</text>
+        <view class="text-xs text-right margin-top-xs">
+          {{it.book_name}}
+        </view>
+      </view>
+    </view>
+  </swiper-item>
+</swiper>

@@ -2,7 +2,7 @@
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}" bind:searchConfirm="onSearch"></nav-bar>
 
 <!-- 筛选 -->
-<view class="box-shadow-l bg-white" style="top: {{app.globalData.navHeight}}rpx;">
+<view class="filter_wrap box-shadow-l bg-white">
   <!-- 类型 -->
   <view class="filter">
     <scroll-xbox>
@@ -40,7 +40,7 @@
   </view>
 </view>
 
-<scroll-view scroll-y style="height:calc(100vh - {{app.globalData.navHeight}}rpx - (1em + 28rpx) * {{active.length}} - 1em - 14rpx - {{app.globalData.isIphoneX ? '178rpx' : '110rpx'}});" enable-back-to-top bindscrolltolower="onReachBottom" scroll-top="{{scrollTop}}" scroll-with-animation>
+<scroll-view scroll-y style="height: {{height}};" enable-back-to-top bindscrolltolower="onReachBottom" scroll-top="{{scrollTop}}" scroll-with-animation refresher-enabled bindrefresherrefresh="onReset" refresher-triggered="{{triggered}}">
   <!-- 列表 -->
   <view class="newbooks_wrap padding-lr-sm">
     <view class="newbooks_wrap_l">
@@ -95,12 +95,17 @@
 
 
   </view>
-  
+
   <!-- 加载状态组件(tabbar组件写了占位view，所以不用传iphoneX) -->
   <load-more status="{{status}}"></load-more>
   <!-- tabbr为奇数时，按钮挡住了状态文字,所以加这个 -->
   <view style="height: 60rpx;"></view>
 </scroll-view>
+
+<!-- 添加按钮 -->
+<view class="addBtn" style="color: {{background}};" catchtap="add">
+  <text class="cuIcon-roundadd"></text>
+</view>
 
 <!-- 选择书籍标签弹窗 -->
 <popup show="{{showLabels}}" background="{{background}}" title="选择书籍标签" funName="confirmLabels" bind:confirmLabels="confirmLabels" bind:closeLabels="closeLabels" ClosefunName="closeLabels">

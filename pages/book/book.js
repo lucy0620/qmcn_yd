@@ -21,6 +21,7 @@ Page({
         disabled: false,
       }
     },
+    height: '',
     books: [],
     page: 1,
     count: 20,
@@ -34,7 +35,8 @@ Page({
     active: [-1, -1, -1], //选中的下标
     books_left: [],
     books_right: [],
-    scrollTop: 0
+    scrollTop: 0,
+    triggered: false
   },
 
   /**
@@ -45,6 +47,17 @@ Page({
     this.getWebsites()
     this.getLabels()
     this.getBooks()
+  },
+
+  getHeight() {
+    let _this = this;
+    var query = wx.createSelectorQuery();
+    query.select(`.filter_wrap`).boundingClientRect(function (rect) {
+      let num = (rect.height).toFixed(0)
+      _this.setData({
+        height: `calc(100vh - ${app.globalData.navHeight}rpx - ${num}px - ${app.globalData.isIphoneX?'178rpx' : '110rpx'})`
+      })
+    }).exec();
   },
 
   onSearch(e) {
@@ -62,7 +75,7 @@ Page({
   },
   /* 
     说明：
-    重置所有筛选结果 
+    点击重置/下拉 重置所有筛选结果 
   */
   onReset() {
     this.setData({
@@ -84,8 +97,7 @@ Page({
   },
   /* 
     说明：
-    进行任意筛选条件/下拉 只重置分页以及之前的搜索结果
-    (新版页面改为禁止滚动以便适用于弹窗，下拉暂时关闭)
+    进行任意筛选条件 只重置分页以及之前的搜索结果
   */
   onClear() {
     // wx.pageScrollTo({
@@ -126,6 +138,7 @@ Page({
     this.setData({
       types
     })
+    this.getHeight()
   },
   async getWebsites() {
     let res = await request('/getBook_website')
@@ -277,6 +290,18 @@ Page({
       books_left: left,
       books_right: right,
     })
+    this.setData({
+      triggered: false,
+    })
+  },
+
+  add() {
+    app.handleIsLogin(() => {
+      utilRoute.navigate('/pages/user/manage/manageBook/editBook', {
+        type: 'add'
+      })
+    })
+
   },
 
   /**
@@ -311,11 +336,8 @@ Page({
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
-   * (新版本页面改为禁止滚动以便适用于弹窗，下拉暂时关闭)
    */
-  onPullDownRefresh() {
-    this.onClear();
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
