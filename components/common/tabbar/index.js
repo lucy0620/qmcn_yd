@@ -28,9 +28,9 @@ Component({
         "text": "首页",
       },
       {
-        "iconName": 'cuIcon-hot',
+        "iconName": 'cuIcon-game',
         "pagePath": "/pages/market/market",
-        "text": "小工具",
+        "text": "爱好园",
       },
       {
         "iconName": 'cuIcon-similar',

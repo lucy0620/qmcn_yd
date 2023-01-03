@@ -25,10 +25,9 @@ export const request = (url, params, noLoading, contentType = 'application/json'
           resolve(res.data);
         } else {
           wx.showToast({
-            title: res.data.errMsg,
+            title: res.data.errMsg ? res.data.errMsg : '未知错误',
             icon: 'none'
           })
-          // reject(res);
         }
       },
       fail(err) {
@@ -36,7 +35,7 @@ export const request = (url, params, noLoading, contentType = 'application/json'
           title: '请求服务器失败',
           icon: 'none'
         })
-        // reject(err);
+        // reject(err); todo
       },
       complete(com) {
         wx.hideLoading();

@@ -50,7 +50,7 @@
       <view class="text-sm margin-top-sm" style="margin-left: calc(110rpx / 2); padding-left: calc(110rpx / 2);border-left: 1px solid #e3e3e3;">
         <text user-select>{{it.content}}</text>
         <!-- <image src="{{it.images}}" mode=""/> -->
-        <view class="text-xs text-right margin-tb" style="text-decoration: underline;">
+        <view class="text-xs text-right margin-tb text-into">
           <text data-id="{{it.book_id}}" bindtap="goDetail">{{it.name}}</text>
         </view>
       </view>

@@ -55,7 +55,8 @@ Component({
         active: e.currentTarget.dataset.index
       })
       this.triggerEvent('changeCate', {
-        ...e.currentTarget.dataset.obj
+        ...e.currentTarget.dataset.obj,
+        active:e.currentTarget.dataset.index
       })
     }
   }

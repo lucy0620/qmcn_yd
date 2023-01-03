@@ -34,6 +34,10 @@ Component({
       type: String,
       value: app.globalData.background
     },
+    blankColor: {
+      type: String,
+      value: ''
+    },
     // 字体颜色
     color: {
       type: String,

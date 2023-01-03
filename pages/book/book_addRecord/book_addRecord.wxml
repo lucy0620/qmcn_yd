@@ -1,7 +1,7 @@
 <!--pages/book/book_addRecord/book_addRecord.wxml-->
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
 <z-box>
-  <van-cell title="书名：" value="{{name}}"></van-cell>
+  <van-cell title="书名：" value="{{name && name!='undefined' ? name : '当前'}}"></van-cell>
   <van-cell title="类型：" border="{{false}}">
     <van-radio-group value="{{ type }}" bind:change="editType">
       <view class="acea-row row-middle" style="justify-content: flex-end;">

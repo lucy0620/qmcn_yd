@@ -19,14 +19,14 @@
 }
 /* 商品列表 */
 .conter{
-  padding-top: 20rpx;
-  padding-left: 20rpx;
+  /* padding-top: 20rpx; */
+  /* padding-left: 20rpx; */
   box-sizing: border-box;
   background-color: #fff;
   min-height: 100vh;
 }
-.conter .item{
+/* .conter .item{
   background-color: #eee;
   border-radius: 5px;
   height: 200rpx;
-}
+} */

@@ -1,5 +1,21 @@
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
 
-<cate-view width="calc(52rpx + 5em)" list="{{ cateList }}" color="{{ background}}"></cate-view>
+<cate-view width="calc(52rpx + 5em)" list="{{ cateList }}" color="{{ background}}" bind:changeCate="changeCate">
+  <!-- 只遍历active项 -->
+  <view class="item_contain padding-top-sm padding-lr-sm" wx:for="{{cateList[active].child}}" wx:key="index">
+    <view class="item_bg box-shadow-l padding-lr">
+      <view class="item padding-top-xl padding-bottom-xs text-sm text-gray acea-row row-column row-between">
+        <text>{{item.desc}}</text>
+        <view class="text-xl text-right text-into" style="color:{{background}};">{{item.title}}</view>
+      </view>
+    </view>
+  </view>
+  <view style="padding-bottom: 20rpx;">
+
+  </view>
+  <!-- tabar占位 -->
+  <view style="padding-bottom: 60rpx;">
+  </view>
+</cate-view>
 
 <tab-bar active="{{1}}" activeColor="{{ background }}" isIphoneX="{{ isIphoneX }}"></tab-bar>

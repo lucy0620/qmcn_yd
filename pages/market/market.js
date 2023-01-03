@@ -14,40 +14,115 @@ Page({
       type: 1,
       return: false,
       home: false,
-      title: '小工具'
+      title: '爱好园'
     },
-    
-    cateList: [
-      {
-      name: '入坑必看'
+    // cateList: [{
+    //   name: '入坑必看'
+    // }, {
+    //   name: '新文速递'
+    // }, {
+    //   name: '冷门佳作',
+    // }, {
+    //   name: '精品广播剧'
+    // }, {
+    //   name: '清冷受'
+    // }, {
+    //   name: '禁欲攻'
+    // }],
+    cateList: [{
+      name: '逆水暖暖',
+      child: [{
+        title: '捏脸',
+        desc: '各职业体型 宝宝捏脸',
+        path: '/'
+      }, {
+        title: '衣服',
+        desc: '',
+        path: '/'
+      }, {
+        title: '发型'
+      }, {
+        title: '坐骑'
+      }, {
+        title: '庄园'
+      }, {
+        title: '捏图'
+      }, {
+        title: '映画'
+      }]
     }, {
-      name: '新文速递'
-    },{
-      name: '冷门佳作',
-    },{
-      name: '精品广播剧'
-    },  {
-      name: '清冷受'
+      name: '无期徒刑',
+      child: [{
+        title: '诫典',
+        desc: '',
+        path: '/'
+      }, {
+        title: '共享',
+        desc: '',
+        path: '/'
+      }]
     }, {
-      name: '禁欲攻'
-    }
-  ],
-  cateList: [
-      {
-      name: '逆水暖暖'
-    }, 
-  ],
+      name: '花果山捞月',
+      child: [{
+        title: '花昭录',
+        desc: '',
+        path: '/'
+      }, {
+        title: '共享',
+        desc: '',
+        path: '/'
+      }]
+    }, {
+      name: '灵猫传',
+      child: [{
+        title: '花箴',
+        desc: '尚京四美',
+        path: '/'
+      }, {
+        title: '共享',
+        desc: '我在古代当店长',
+        path: '/'
+      }]
+    }, {
+      name: '三国杀',
+      child: [{
+        title: '天牢',
+        desc: '有空来坐坐',
+        path: '/'
+      }]
+    }, {
+      name: '食之契约',
+      child: [{
+        title: '食谱',
+        desc: '飨灵录',
+        path: '/'
+      }, {
+        title: '共享',
+        desc: '',
+        path: '/'
+      }]
+    }, {
+      name: '食物语'
+    }, {
+      name: '忘川风华录'
+    }, {
+      name: '芋泥'
+    }],
+    active: 0
+  },
 
-  },
-  // 导航搜索
-  search(e) {
-    utilRoute.navigate('/pages/search/index?search=' + e.detail)
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
+  },
+
+  changeCate(e) {
+    console.log(e.detail)
+    this.setData({
+      active: e.detail.active
+    })
   },
 
   /**

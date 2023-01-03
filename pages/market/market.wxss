@@ -1,1 +1,19 @@
 /* pages/market/market.wxss */
+page{
+  background-color: #fff;
+}
+
+.item_contain {
+  height: 220rpx;
+}
+
+.item_bg {
+  height: 100%;
+  border-radius: 4rpx;
+  border: 1px solid #f0f0f0;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.item {
+  height: 100%;
+}

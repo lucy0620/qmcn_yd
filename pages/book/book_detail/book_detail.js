@@ -22,7 +22,7 @@ Page({
     user_info: '',
     background: '',
     id: '',
-    detail: {},
+    detail: '',
     bottomListLeft: [{
       icon: 'read',
       text: '我的书架'
@@ -228,7 +228,7 @@ Page({
     } = e.currentTarget.dataset
     app.handleIsLogin(function () {
       utilRoute.navigate('/pages/book/book_addRecord/book_addRecord', {
-        id: _this.data.detail.id,
+        id: _this.data.id,
         name: _this.data.detail.name,
         type: type ? type : _this.data.current == 0 ? 'sentence' : 'recommend'
       })

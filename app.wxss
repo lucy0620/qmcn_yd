@@ -17,6 +17,9 @@ page {
 .text-hide{
   opacity: 0;
 }
+.text-into{
+  text-decoration: underline;
+}
 /* 阴影      右偏移量 下偏移量 模糊长度 颜色 */
 /* 图片小盒子/卡片阴影 */
 .box-shadow-s {

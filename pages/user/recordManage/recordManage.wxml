@@ -19,7 +19,7 @@
       <text class="cuIcon-delete padding-tb" catchtap="delete" data-id="{{it.sentence_id}}"></text>
     </view>
     <text user-select>{{it.content}}</text>
-    <view class="padding-tb text-right" style="text-decoration: underline;">
+    <view class="padding-tb text-right text-into">
       <text bindtap="goDetail" data-id="{{it.book_id}}">{{it.book_name}}</text>
     </view>
     <view class="padding-top-xs acea-row flex-warp row-middle" style="line-height: 1;">
@@ -43,7 +43,7 @@
     </view>
     <view class="padding-tb-xs text-df">{{it.title}}</view>
     <text user-select>{{it.content}}</text>
-    <view class="padding-tb text-right" style="text-decoration: underline;">
+    <view class="padding-tb text-right text-into">
       <text bindtap="goDetail" data-id="{{it.book_id}}">{{it.book_name}}</text>
     </view>
     <view class="text-right">
