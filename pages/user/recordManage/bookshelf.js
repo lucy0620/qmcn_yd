@@ -25,6 +25,7 @@ Page({
     timeline: [],
     timeCount: 3, // 显示几个
     currentT: 0,
+    status: 'loading'
   },
 
   /**
@@ -38,7 +39,7 @@ Page({
       background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
       user_info: utilStorage.getKey('user_info'),
     })
-    this.getSentencesTimeline()
+    this.getBookshelfTimeline()
   },
 
   goDetail(e) {
@@ -64,7 +65,10 @@ Page({
     })
   },
 
-  async getSentencesTimeline() {
+  async getBookshelfTimeline() {
+    this.setData({
+      status: 'loading'
+    })
     const res = await request('/getUser_bookshelf_timeline', {
       id: this.data.id
     })
@@ -83,7 +87,8 @@ Page({
       }
     })
     this.setData({
-      timeline: _data
+      timeline: _data,
+      status: 'empty'
     })
   },
 
@@ -103,7 +108,7 @@ Page({
     })
     if (res.code == 200) {
       utilShow.showMyMsg('已删除')
-      this.getSentencesTimeline()
+      this.getBookshelfTimeline()
     }
   },
 

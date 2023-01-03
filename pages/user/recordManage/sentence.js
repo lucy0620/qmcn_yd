@@ -24,6 +24,7 @@ Page({
     timeline: [],
     timeCount: 3, // 显示几个
     currentT: 0,
+    status: 'loading'
   },
 
   /**
@@ -61,12 +62,16 @@ Page({
   },
 
   async getSentencesTimeline() {
+    this.setData({
+      status: 'loading'
+    })
     const res = await request('/getUser_Sentences_timeline', {
       user_id: this.data.user_info.id
     })
     let timeline = res.data
     this.setData({
-      timeline
+      timeline,
+      status: 'empty'
     })
   },
 

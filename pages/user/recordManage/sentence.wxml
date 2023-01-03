@@ -31,7 +31,7 @@
 </view>
 
 <view wx:else>
-  <load-more status="empty"></load-more>
+  <load-more status="{{status}}"></load-more>
 </view>
 
 <swiper class="padding-right" style="height:calc(100vh - {{app.globalData.navHeight}}rpx - 52px);" current="{{currentT}}" bindchange="changeSwiper">

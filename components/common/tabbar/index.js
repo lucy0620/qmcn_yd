@@ -30,7 +30,7 @@ Component({
       {
         "iconName": 'cuIcon-hot',
         "pagePath": "/pages/market/market",
-        "text": "精选合集",
+        "text": "小工具",
       },
       {
         "iconName": 'cuIcon-similar',

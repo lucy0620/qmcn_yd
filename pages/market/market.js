@@ -14,24 +14,29 @@ Page({
       type: 1,
       return: false,
       home: false,
-      title: '精选合集'
+      title: '小工具'
     },
     
     cateList: [
-    //   {
-    //   name: '入坑必看'
-    // }, {
-    //   name: '新文速递'
-    // },{
-    //   name: '冷门佳作',
-    // },{
-    //   name: '精品广播剧'
-    // },  {
-    //   name: '清冷受'
-    // }, {
-    //   name: '禁欲攻'
-    // }
-  ]
+      {
+      name: '入坑必看'
+    }, {
+      name: '新文速递'
+    },{
+      name: '冷门佳作',
+    },{
+      name: '精品广播剧'
+    },  {
+      name: '清冷受'
+    }, {
+      name: '禁欲攻'
+    }
+  ],
+  cateList: [
+      {
+      name: '逆水暖暖'
+    }, 
+  ],
 
   },
   // 导航搜索

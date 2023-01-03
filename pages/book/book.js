@@ -229,7 +229,7 @@ Page({
       count: this.data.count,
       type_id: this.data.active[0] == -1 ? -1 : this.data.types[this.data.active[0]].type_id,
       website_id: this.data.active[1] == -1 ? -1 : this.data.websites[this.data.active[1]].website_id,
-      sort: this.data.active[2] == -1 ? '' : this.data.active[2] + 1,
+      sort: this.data.active[2] == -1 ? -1 : this.data.active[2] + 1,
       label_ids: label_idsStr
     }
     let res = await request('/getBooks', data)

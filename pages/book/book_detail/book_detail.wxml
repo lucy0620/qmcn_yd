@@ -3,7 +3,7 @@
 
 <view class="headTabs padding-lr-sm padding-top-xs" style="background: linear-gradient({{background}},#fff);">
   <!-- 头部 -->
-  <view class="head padding-sm text-xs">
+  <view wx:if="{{detail.length}}" class="head padding-sm text-xs">
     <view class="head_l">
       <view class="head_name ellipsis text-xl">{{detail.name}}</view>
       <view class="padding-top-xs text-sm">{{detail.author}}</view>

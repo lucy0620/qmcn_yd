@@ -50,7 +50,7 @@ Page({
     current: 0,
     sentences: [],
     recommends: [],
-    height: ''
+    height: `calc(100vh - ${app.globalData.navHeight}rpx - 100rpx - 160rpx - ${app.globalData.isIphoneX?'0rpx' : '68rpx'})`
   },
 
   /**
@@ -254,7 +254,7 @@ Page({
     query.select(`.headTabs`).boundingClientRect(function (rect) {
       let num = (rect.height).toFixed(0)
       _this.setData({
-        height: `calc(100vh - ${num}px - ${app.globalData.navHeight}rpx - 80px - ${app.globalData.isIphoneX?'0rpx' : '68rpx'})`
+        height: `calc(100vh - ${num}px - ${app.globalData.navHeight}rpx - 160rpx - ${app.globalData.isIphoneX?'0rpx' : '68rpx'})`
       })
     }).exec();
   },
