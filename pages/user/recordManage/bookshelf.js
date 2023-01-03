@@ -1,4 +1,4 @@
-// pages/user/recordManage/sentence.js
+// pages/user/recordManage/bookshelf.js
 const app = getApp()
 import {
   request
@@ -15,10 +15,11 @@ Page({
     app,
     navbarData: {
       type: 1,
-      title: '句子轴',
+      title: '读书轴',
       return: true,
       home: true
     },
+    id: '',
     background: '',
     user_info: '',
     timeline: [],
@@ -30,6 +31,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      id: 4
+    })
     this.setData({
       background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
       user_info: utilStorage.getKey('user_info'),
@@ -61,12 +65,25 @@ Page({
   },
 
   async getSentencesTimeline() {
-    const res = await request('/getUser_Sentences_timeline', {
-      user_id: this.data.user_info.id
+    const res = await request('/getUser_bookshelf_timeline', {
+      id: this.data.id
     })
-    let timeline = res.data
+    let _data = res.data.map(it => {
+      let child = it.child.map(v => {
+        let images = v.images ? v.images : ''
+        images = images.substr(images.indexOf('h'), images.indexOf('.j') == -1 ? images.indexOf('.p') : images.indexOf('.j') + 4)
+        return {
+          ...v,
+          images
+        }
+      });
+      return {
+        ...it,
+        child
+      }
+    })
     this.setData({
-      timeline
+      timeline: _data
     })
   },
 

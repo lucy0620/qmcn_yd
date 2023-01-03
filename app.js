@@ -23,7 +23,7 @@ App({
     // baseUrl: 'http://localhost:7890',
     baseUrl: 'https://www.lucy0612.asia',
   },
-  onLaunch() {
+  onLaunch() { 
     let that = this
     wx.getSystemInfo({
       success: function (res) {

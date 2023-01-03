@@ -38,6 +38,9 @@ Page({
       background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
       user_info: utilStorage.getKey('user_info'),
     })
+    wx.setBackgroundColor({
+      backgroundColor: this.data.background
+    })
   },
 
   goDetail(e) {
@@ -48,13 +51,23 @@ Page({
 
   onTab(e) {
     let current = e.currentTarget.dataset.index
+    if (current == this.data.current) {
+      this.onTop()
+      return
+    }
     this.setData({
-      current : current == undefined ? this.data.current :current
+      current: current == undefined ? this.data.current : current
     })
     wx.pageScrollTo({
       scrollTop: 0
     });
     this.onPullDownRefresh()
+  },
+
+  onTop() {
+    wx.pageScrollTo({
+      scrollTop: 0
+    });
   },
 
   async getSentences() {
@@ -65,7 +78,7 @@ Page({
       count: this.data.count[current],
       user_id: this.data.user_info.id,
     }
-    const res = await request('/getBook_Sentences', data)
+    const res = await request('/getBook_Sentences', data,true)
     if (res.data.length < this.data.count[current]) {
       status = 'nomore'
     } else {
@@ -96,7 +109,7 @@ Page({
       count: this.data.count[current],
       user_id: this.data.user_info.id,
     }
-    const res = await request('/getBook_Recommends', data)
+    const res = await request('/getBook_Recommends', data,true)
     if (res.data.length < this.data.count[current]) {
       status = 'nomore'
     } else {
@@ -170,12 +183,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-    // this.setData({
-    //   page: [ this.data.current == 0 ? 1 : 0, this.data.current == 1? 1:0],
-    //   status: ['loadmore', 'loadmore'],
-    //   sentences: [],
-    //   recommends: []
-    // })
     let current = this.data.current
     this.setData({
       [`page[${current}]`]: 1,

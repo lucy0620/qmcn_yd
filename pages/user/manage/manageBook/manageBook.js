@@ -75,7 +75,6 @@ Page({
       page: this.data.page,
       count: this.data.count,
       keyword: this.data.keyword,
-      sort: 0
     }
     let res = await request('/getBooks', data)
     if (res.data.length < this.data.count) {

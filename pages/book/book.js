@@ -232,7 +232,7 @@ Page({
       sort: this.data.active[2] == -1 ? '' : this.data.active[2] + 1,
       label_ids: label_idsStr
     }
-    let res = await request('/getBooks_filter', data)
+    let res = await request('/getBooks', data)
     if (res.data.length < this.data.count) {
       status = 'nomore'
     } else {

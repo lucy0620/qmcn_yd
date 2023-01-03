@@ -82,7 +82,6 @@ Page({
   },
 
   choose(e) {
-    console.log('choss')
     let item = e.currentTarget.dataset.item
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2]; //上一页

@@ -23,32 +23,45 @@
   <swiper-item wx:for="{{tabs}}" wx:key="index">
     <view class="padding-lr-sm text-xs" style="height: 100%;overflow-y: scroll;">
       <!-- 句子 -->
-      <view bindtap="goDetail" data-id="{{it.book_id}}" data-sentence_id="{{it.sentence_id}}" wx:if="{{item == '句子'}}" wx:for="{{sentences}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="padding-tb-sm" style="border-bottom: 1px solid #f0f0f0;">
+      <view wx:if="{{item == '句子'}}" wx:for="{{sentences}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="padding-tb-sm" style="border-bottom: 1px solid #f0f0f0;">
         <text>{{it.content}}</text>
-        <view class="padding-top-xs text-right">
-          —— {{it.book_name}}
+        <view class="padding-tb-sm text-right">
+          <text style="text-decoration: underline;" bindtap="goDetail" data-id="{{it.book_id}}" data-sentence_id="{{it.sentence_id}}">{{it.book_name}}</text>
         </view>
-        <view class="padding-top-xs acea-row flex-warp row-middle" style="line-height: 1;">
+        <view class="acea-row flex-warp row-middle" style="line-height: 1;">
           <text class="text-gray margin-right-xs" wx:for="{{it.label_names}}" wx:for-item="its" wx:for-index="is" wx:key="is">#{{its}}</text>
-          <text class="flexs cuIcon-like text-right margin-lr-xs"></text>
-          <text class="">{{it.likes}}</text>
+          <view class="flexs text-right">
+            <view bindtap="goDetail" data-id="{{it.book_id}}" data-sentence_id="{{it.sentence_id}}" style="width: max-content;display: inline-block;">
+              <text class=" cuIcon-like text-right margin-lr-xs"></text>
+              <text class="">{{it.likes}}</text>
+            </view>
+          </view>
         </view>
       </view>
 
       <!-- 推文 -->
-      <view wx:if="{{item == '推文'}}" bindtap="goDetail" data-recommend_id="{{it.recommend_id}}" data-id="{{it.book_id}}" wx:for="{{recommends}}" wx:for-item="it" wx:for-index="i" wx:key="i" class="padding-tb-sm" style="border-bottom: 1px solid #f0f0f0;">
+      <view wx:if="{{item == '推文'}}" wx:for="{{recommends}}" wx:for-item="it" wx:for-index="i" wx:key="i" class="padding-tb-sm" style="border-bottom: 1px solid #f0f0f0;">
         <view class="acea-row">
           <text class="cuIcon-evaluate margin-right-xs"></text>
           <view>
-            <view class="text-sm padding-bottom-xs" style="line-height: 1;">{{it.title}}</view>
+            <view class="text-sm padding-bottom-sm" style="line-height: 1;">{{it.title}}</view>
             <text>{{it.content}}</text>
           </view>
         </view>
-        <view class="padding-top text-right">
-          —— {{it.book_name}}
+        <view class="padding-tb-sm text-right">
+          <text bindtap="goDetail" data-recommend_id="{{it.recommend_id}}" data-id="{{it.book_id}}" style="text-decoration: underline;">{{it.book_name}}</text>
+        </view>
+        <view class="text-right">
+          <view bindtap="goDetail" data-id="{{it.book_id}}" data-sentence_id="{{it.sentence_id}}" style="width: max-content;display: inline-block;">
+            <text class=" cuIcon-like text-right margin-lr-xs"></text>
+            <text class="">{{it.likes}}</text>
+          </view>
         </view>
       </view>
 
+      <!-- 防止tabar突出挡住内容 -->
+      <view style="padding-bottom: 60rpx">
+      </view>
     </view>
   </swiper-item>
 </swiper>

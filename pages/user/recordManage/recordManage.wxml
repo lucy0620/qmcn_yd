@@ -5,46 +5,52 @@
 
 <view style="position: sticky;top: {{app.globalData.navHeight}}rpx;z-index:10">
   <!-- tbas -->
-  <view class="padding bg-white text-sm acea-row row-middle">
-    <view wx:for="{{tabs}}" wx:key="index" data-index="{{index}}" bindtap="onTab" class="padding-lr-xs {{current == index ? 'text-xl' :''}}" style="line-height: 1;">{{item}}</view>
+  <view class="bg-white text-sm acea-row row-middle">
+    <view wx:for="{{tabs}}" wx:key="index" data-index="{{index}}" bindtap="onTab" class="padding-tb flexs text-center {{current == index ? 'text-xl' :''}}" style="line-height: 1;height:  100%;border-bottom: 8rpx solid {{current == index ?background : '#fff'}};color: {{current == index ?background : ''}};">{{item}}</view>
   </view>
 </view>
 
 
 
 <view hidden="{{current != 0}}">
-  <view bindtap="goDetail" data-id="{{it.book_id}}" data-sentence_id="{{it.sentence_id}}" wx:for="{{sentences}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="padding-sm bg-white text-sm" style="border-bottom: 1px solid #f0f0f0;">
+  <view wx:for="{{sentences}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="padding bg-white text-sm" style="border-bottom: 1px solid #f0f0f0;">
     <view class="acea-row row-middle padding-bottom-xs text-gray">
       <text class="flexs">{{it.creat_time}}</text>
-      <text class="cuIcon-delete" catchtap="delete" data-id="{{it.sentence_id}}"></text>
+      <text class="cuIcon-delete padding-tb" catchtap="delete" data-id="{{it.sentence_id}}"></text>
     </view>
     <text user-select>{{it.content}}</text>
-    <view class="padding-top-xs text-right">
-      —— {{it.book_name}}
+    <view class="padding-tb text-right" style="text-decoration: underline;">
+      <text bindtap="goDetail" data-id="{{it.book_id}}">{{it.book_name}}</text>
     </view>
     <view class="padding-top-xs acea-row flex-warp row-middle" style="line-height: 1;">
       <text class="text-gray margin-right-xs" wx:for="{{it.label_names}}" wx:for-item="its" wx:for-index="is" wx:key="is">#{{its}}</text>
-      <text class="flexs cuIcon-like text-right margin-lr-xs"></text>
-      <text class="">{{it.likes}}</text>
+      <view class="flexs text-right" bindtap="goDetail" data-id="{{it.book_id}}">
+        <view style="width: max-content;display: inline-block;">
+          <text class=" cuIcon-like text-right margin-lr-xs"></text>
+          <text>{{it.likes}}</text>
+        </view>
+      </view>
     </view>
   </view>
 </view>
 
 <view hidden="{{current != 1}}">
-  <view bindtap="goDetail" data-id="{{it.book_id}}" data-recommend_id="{{it.recommend_id}}" wx:for="{{recommends}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="padding-sm bg-white text-sm" style="border-bottom: 1px solid #f0f0f0;">
+  <view wx:for="{{recommends}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="padding bg-white text-sm" style="border-bottom: 1px solid #f0f0f0;">
     <view class="acea-row row-middle padding-bottom-xs text-gray">
       <text class="flexs">{{it.creat_time}}</text>
-      <text class="cuIcon-edit margin-lr" catchtap="edit" data-id="{{it.recommend_id}}"></text>
-      <text class="cuIcon-delete" catchtap="delete" data-id="{{it.recommend_id}}"></text>
+      <!-- <text class="cuIcon-edit margin-lr" catchtap="edit" data-id="{{it.recommend_id}}"></text> -->
+      <text class="cuIcon-delete padding-tb" catchtap="delete" data-id="{{it.recommend_id}}"></text>
     </view>
     <view class="padding-tb-xs text-df">{{it.title}}</view>
     <text user-select>{{it.content}}</text>
-    <view class="padding-top-xs text-right">
-      —— {{it.book_name}}
+    <view class="padding-tb text-right" style="text-decoration: underline;">
+      <text bindtap="goDetail" data-id="{{it.book_id}}">{{it.book_name}}</text>
     </view>
-    <view class="padding-top-xs acea-row flex-warp row-middle" style="line-height: 1;">
-      <text class="flexs cuIcon-like text-right margin-lr-xs"></text>
-      <text class="">{{it.likes}}</text>
+    <view class="text-right">
+      <view bindtap="goDetail" data-id="{{it.book_id}}" style="width: max-content;display: inline-block;line-height: 1;">
+        <text class="flexs cuIcon-like text-right margin-lr-xs"></text>
+        <text>{{it.likes}}</text>
+      </view>
     </view>
   </view>
 </view>
@@ -52,6 +58,6 @@
 
 <load-more status="{{status[current]}}" iphoneX="{{app.globalData.isIphoneX}}"></load-more>
 
-<view class="topBtn" style="color: {{background}};" catchtap="onTab">
+<view class="topBtn" style="color: {{background}};" catchtap="onTop">
   <text class="cuIcon-top"></text>
 </view>

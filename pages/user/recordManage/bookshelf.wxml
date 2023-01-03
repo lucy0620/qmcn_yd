@@ -1,7 +1,4 @@
-<!--pages/user/recordManage/sentence.wxml-->
 <nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
-
-
 
 <!-- 时间 -->
 <view wx:if="{{timeline && timeline.length>0}}" style="position: sticky;top: {{app.globalData.navHeight}}rpx;z-index:10">
@@ -46,14 +43,15 @@
       </view>
       <!-- 时间 -->
       <view class="text-center text-xs padding-tb-sm color-gray" style="width: 110rpx;line-height: 1;">
-        <view>{{it.day}} - {{it.hour}}</view>
+        <view>{{it.day}}</view>
       </view>
 
       <!-- 内容 - 书名 -->
       <view class="text-sm margin-top-sm" style="margin-left: calc(110rpx / 2); padding-left: calc(110rpx / 2);border-left: 1px solid #e3e3e3;">
         <text user-select>{{it.content}}</text>
+        <!-- <image src="{{it.images}}" mode=""/> -->
         <view class="text-xs text-right margin-tb" style="text-decoration: underline;">
-          <text data-id="{{it.book_id}}" bindtap="goDetail">{{it.book_name}}</text>
+          <text data-id="{{it.book_id}}" bindtap="goDetail">{{it.name}}</text>
         </view>
       </view>
     </view>

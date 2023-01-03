@@ -20,7 +20,7 @@
 </view>
 
 <!-- 列表文字模式 -->
-<view wx:if="{{type == 'list'}}">
+<view hidden="{{type != 'list'}}">
   <swipeout obj="{{item}}" wx:for="{{books}}" wx:key="index" bind:handleBtn="delBook" btncBackground="{{ background }}">
     <view class="book_itemList padding-tb-sm margin-lr-sm" style="border-top: {{index ==0 ? '0' :''}};" data-id="{{item.book_id}}" bindtap="goDetail">
       <view class="acea-row row-middle text-sm">
@@ -38,7 +38,7 @@
 </view>
 
 <!-- 列表图片模式 -->
-<view wx:if="{{type == 'photo'}}" class="acea-row flex-warp padding-lr-sm">
+<view hidden="{{type != 'photo'}}" class="acea-row flex-warp padding-lr-sm">
   <view class="book_item box-shadow-s acea-row row-column row-between-wrapper margin-top-sm margin-right-sm padding-sm bg-img bg-mask" wx:for="{{books}}" wx:key="index" style="background-image: url({{item.images}});background-color: {{background}};" bindtap="goDetail" data-id="{{item.book_id}}">
     <view class="text-sm">{{item.name}}</view>
     <view>{{item.type_name}}</view>

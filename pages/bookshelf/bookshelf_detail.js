@@ -123,8 +123,7 @@ Page({
     let _this = this
     const res = await request('/getUser_bookshelf_detail', {
       user_id: _this.data.user_info.id,
-      id: _this.data.id,
-      sort: _this.data.canEdit == 'false' ? 1 : 0
+      id: _this.data.id
     })
     let _data = res.data.map(it => {
       let imagesStr = it.images ? it.images : ''

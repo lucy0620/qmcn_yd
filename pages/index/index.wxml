@@ -23,7 +23,7 @@
   <view class="themeTitle bookshelf_title">
     我的书架
     <view class="more" bindtap="goBookshelf"></view>
-  </view>
+  </view>  
   <view class="bookshelf box-shadow-s padding-left-sm" wx:for="{{bookshelfs}}" wx:key="index">
     <view class="padding-tb-xs padding-right text-sm" style="line-height: 1;">
       <text>{{item.name}}</text>
@@ -39,11 +39,6 @@
     </scroll-xbox>
   </view>
 </view>
-
-<!-- <view class="themeTitle">
-  精选
-</view> -->
-
 
 
 <!-- <button open-type="share">分享</button> -->

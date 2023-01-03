@@ -24,7 +24,7 @@ Page({
   },
 
   onLoad() {
-    this.getNewbooks()
+    this.getBooks()
   },
 
   onShow() {
@@ -40,12 +40,15 @@ Page({
 
   onPullDownRefresh() {
     this.getBookshelfs()
-    this.getNewbooks()
+    this.getBooks()
   },
 
   // 最新入库
-  async getNewbooks() {
-    let res = await request('/getBooks_new')
+  async getBooks() {
+    let res = await request('/getBooks', {
+      page: 1,
+      count: 5
+    })
     res = res.data.map(it => {
       return {
         ...it,
@@ -75,18 +78,19 @@ Page({
     if (!_this.data.user_info) {
       return
     }
-    const res = await request('/getUser_bookshelfs_index', {
+    const res = await request('/getUser_bookshelfs', {
       user_id: _this.data.user_info.id
     }, true)
     let _data = res.data.map(it => {
-      let imagesStr = it.images ? it.images : ''
-      return {
-        ...it,
-        images: imagesStr.substr(imagesStr.indexOf('h'), imagesStr.indexOf('.j') == -1 ? imagesStr.indexOf('.p') : imagesStr.indexOf('.j') + 4)
-      }
+      let child = it.child.map(v => {
+        let images = v.images? v.images : ''
+        images =  images.substr(images.indexOf('h'), images.indexOf('.j') == -1 ? images.indexOf('.p') : images.indexOf('.j') + 4)
+        return {...v,images}
+      });
+      return {...it,child}
     })
     this.setData({
-      bookshelfs: _this.groupList(_data)
+      bookshelfs: _data
     })
   },
 

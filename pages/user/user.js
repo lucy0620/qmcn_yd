@@ -36,21 +36,21 @@ Page({
       show: ''
     }],
     fastMenuList:[{
-      icon: 'like',
-      title: '我的句子',
-      url: '/pages/user/recordManage/sentence'
-    },{
-      icon: 'text',
-      title: '我的推文',
-      url: '/pages/user/recordManage/recordManage'
+      icon: 'read',
+      title: '我的书架',
+      url: '/pages/bookshelf/bookshelf'
     },{
       icon: 'text',
       title: '我的发布',
       url: '/pages/user/recordManage/recordManage'
     },{
-      icon: 'read',
-      title: '我的书架',
-      url: '/pages/bookshelf/bookshelf'
+      icon: 'like',
+      title: '句子轴',
+      url: '/pages/user/recordManage/sentence'
+    },{
+      icon: 'like',
+      title: '读书轴',
+      url: '/pages/user/recordManage/bookshelf'
     }],
     background: '',
     user_info: '',
@@ -132,6 +132,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: async function () {
+    this.setData({
+      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
+    })
     let user_info = utilStorage.getKey('user_info');
     let index_exit = this.data.menuList.findIndex(item =>
       item.title == '退出')
@@ -160,9 +163,6 @@ Page({
       })
     }
 
-    this.setData({
-      background: utilStorage.getKey('background') ? utilStorage.getKey('background') : app.globalData.background,
-    })
   },
 
   /**
