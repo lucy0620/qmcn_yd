@@ -92,7 +92,6 @@ Page({
           url: 'https://api.weixin.qq.com/sns/jscode2session',
           data: {
             appId: app.globalData.appId,
-            secret: app.globalData.appSecret,
             js_code: loginRes.code,
             grant_type: 'authorization_code',
           },
@@ -116,7 +115,6 @@ Page({
           url: 'https://api.weixin.qq.com/sns/jscode2session',
           data: {
             appId: app.globalData.appId,
-            secret: app.globalData.appSecret,
             js_code: loginRes.code,
             grant_type: 'authorization_code',
           },

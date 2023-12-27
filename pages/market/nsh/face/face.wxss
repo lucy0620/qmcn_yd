@@ -1,0 +1,78 @@
+/* 筛选 */
+.filter {
+  padding: 14rpx 0 14rpx 20rpx;
+}
+
+.filter view {
+  line-height: 1;
+  margin-right: 20rpx;
+}
+
+/* .filter:last-child {
+  border-bottom: 1px solid #f0f0f0;
+} */
+/* 精准筛选 */
+.filter_ex {
+  position: absolute;
+  bottom: 14rpx;
+  right: 0;
+  font-size: 25rpx;
+  width: 20vw;
+  justify-content: flex-end;
+  margin-right: 0 !important;
+}
+
+/* 列表 */
+
+.newbooks_item {
+  margin: 12rpx 0 0 0;
+  background: #fff;
+  border-radius: 8rpx;
+  overflow: hidden;
+  font-size: 20rpx;
+}
+
+.newbooks_item image {
+  width: 100%;
+  height: 260rpx;
+  vertical-align: top;
+}
+
+.newbooks_item>view {
+  /* width: 320rpx; */
+  width: calc(50vw - 20rpx - 6rpx);
+  padding: 0 10rpx;
+  margin-top: 10rpx;
+}
+
+.newbooks_name {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.newbooks_words {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+
+/* 添加按钮 */
+.addBtn {
+  line-height: 1;
+  position: fixed;
+  left: 10rpx;
+  bottom: 400rpx;
+  display: flex;
+  align-items: center;
+  font-size: 3em;
+  border-radius: 50%;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.4);
+}

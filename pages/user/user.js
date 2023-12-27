@@ -49,7 +49,7 @@ Page({
       url: '/pages/user/recordManage/sentence'
     },{
       icon: 'like',
-      title: '读书轴',
+      title: '小编读书轴',
       url: '/pages/user/recordManage/bookshelf'
     }],
     background: '',

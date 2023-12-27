@@ -1,0 +1,7 @@
+/* pages/market/nsh/face/addFace.wxss */
+/* 文本域 */
+.data {
+  width: calc(100vw - 100rpx);
+  height: 300rpx;
+  border: 1px solid #f0f0f0;
+}

@@ -19,8 +19,8 @@
 <z-box>
   <van-field wx:if="{{type == 'recommend'}}" titleWidth="max-content;" required value="{{title}}" type="text" autosize data-prop="title" clearable label="标题：" placeholder="输入标题" bindinput="editValue" maxlength="20" size="20rpx" />
 
-  <van-cell required title="{{type=='sentence'?'句子':'内容'}}（{{content.length}} / 300）：" border="{{false}}"></van-cell>
-  <textarea maxlength="300" value="{{content}}" class="content margin-left padding-xs" bindinput="editValue" data-prop="content" placeholder="{{type=='sentence'?'输入句子':'输入内容'}}">
+  <van-cell required title="{{type=='sentence'?'句子':'内容'}}（{{content.length}} / 600）：" border="{{false}}"></van-cell>
+  <textarea maxlength="600" value="{{content}}" class="content margin-left padding-xs" bindinput="editValue" data-prop="content" placeholder="{{type=='sentence'?'输入句子':'输入内容'}}">
   </textarea>
   <view wx:if="{{type == 'recommend'}}" style="height: 20rpx;">
   </view>

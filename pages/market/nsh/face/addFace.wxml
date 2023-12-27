@@ -1,0 +1,20 @@
+<!--pages/market/nsh/face/addFace.wxml-->
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}"></nav-bar>
+
+<z-box>
+  <van-field value="{{detail.name}}" type="text" autosize data-prop="name" clearable label="捏脸名称：" placeholder="请输入捏脸名称" bindinput="editValue" maxlength="20" />
+
+  <picker bindchange="chooseType" value="{{index}}" range="{{types}}">
+    <van-cell title="捏脸类型：" is-link value="{{detail.type_name ? detail.type_name:'请选择捏脸类型'}}"></van-cell>
+  </picker>
+
+  <z-upload imageList="{{ detail.images }}" data-prop="images" title="例图展示：" count="6" height="200" funName="editValue" bind:editValue="editValue" background="{{background}}" showLimit>
+  </z-upload>
+
+  <van-cell title="数据文本（{{detail.data.length}} / 200）：" border="{{false}}"></van-cell>
+  <textarea maxlength="200" value="{{detail.data}}" class="data margin-left padding-xs" bindinput="editValue" data-prop="data" placeholder="请输入数据文本">
+  </textarea>
+</z-box>
+
+
+<z-button bind:handleOperation="handleOperation" successBackground="{{background}}" disabledBackground="{{background}}" iphoneX="{{app.globalData.isIphoneX}}"></z-button>

@@ -222,11 +222,16 @@ Page({
   },
   // 去记录
   addRecord(e) {
+    
     let _this = this
     let {
       type
     } = e.currentTarget.dataset
     app.handleIsLogin(function () {
+      if(_this.data.user_info.role != 1) {
+        utilShow.showMyMsg('暂未开放')
+        return
+      }
       utilRoute.navigate('/pages/book/book_addRecord/book_addRecord', {
         id: _this.data.id,
         name: _this.data.detail.name,

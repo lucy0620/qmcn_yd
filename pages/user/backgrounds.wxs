@@ -64,6 +64,9 @@ module.exports = [{
     code: '#4286f4',
     name: '经典蓝'
   }, {
+    code: '#000000',
+    name: '经典黑'
+  }, {
     code: '#cb7799',
     name: '马卡龙黑醋栗'
   }, {

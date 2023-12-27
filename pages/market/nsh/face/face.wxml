@@ -1,0 +1,66 @@
+<nav-bar navbarData="{{ navbarData }}" backgroundColor="{{ background }}" bind:searchConfirm="onSearch"></nav-bar>
+
+<!-- 筛选 -->
+<view class="filter_wrap box-shadow-l bg-white">
+  <!-- 平台 -->
+  <view class="filter">
+    <scroll-xbox>
+      <view class="{{active[0] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{-1}}">全部类型</view>
+      <view wx:for="{{types}}" wx:key="index" class="{{active[0] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='type' data-index="{{index}}">{{item.type_name}}</view>
+    </scroll-xbox>
+  </view>
+  <!-- 顺序 -->
+  <view class="filter" style="position: relative;">
+    <scroll-xbox>
+      <view class="{{active[1] == -1 ? 'text-bold':''}}" bindtap="filterTap" data-prop='sort' data-index="{{-1}}">最新发布</view>
+      <view wx:for="{{sorts}}" wx:key="index" class="{{active[1] == index ? 'text-bold':''}}" bindtap="filterTap" data-prop='sort' data-index="{{index}}">{{item}}</view>
+    </scroll-xbox>
+    <view class="filter_ex acea-row">
+      <view bindtap="onReset" class=" cuIcon-refresh text-gray">
+        刷新
+      </view>
+    </view>
+  </view>
+</view>
+
+<scroll-view scroll-y style="height: {{height}};" enable-back-to-top bindscrolltolower="onReachBottom" scroll-top="{{scrollTop}}" scroll-with-animation refresher-enabled bindrefresherrefresh="onReset" refresher-triggered="{{triggered}}">
+  <!-- 列表 -->
+  <view class="acea-row flex-warp row-between padding-lr-sm">
+    <view class="newbooks_item box-shadow-s" wx:for="{{faces}}" wx:key="index">
+      <swiper style="height: 260rpx;">
+        <swiper-item wx:for="{{item.images}}" wx:for-item="it" wx:for-index="i" wx:key="i">
+          <image src="{{it}}" mode="aspectFill" />
+        </swiper-item>
+      </swiper>
+      <view class="newbooks_name text-sm">{{item.name}}</view>
+      <!-- <view class="newbooks_words">
+        <text wx:if="{{item.words}}" style="color: var(--gray);">{{item.words}}万字</text>
+        <text wx:else style="color: var(--gray);">暂无字数统计</text>
+        <text>{{item.author}}</text>
+      </view> -->
+      <view class="margin-bottom-xs acea-row row-middle row-between">
+        <view class="acea-row row-middle" wx:if="{{user_info.role == 1}}">
+          <view class="cuIcon-delete text-right margin-right-sm" bindtap="delete" data-id="{{item.id}}">
+          </view>
+          <view class="cuIcon-edit text-right margin-right-sm" bindtap="edit" data-id="{{item.id}}">
+          </view>
+        </view>
+
+        <view class="cuIcon-like text-right flexs" bindtap="handleCopy" data-data="{{item.data}}" data-id="{{item.id}}">
+          {{item.likes}}
+        </view>
+        <!-- <view class="cuIcon-favor text-right margin-left-xs">
+          {{item.collect}}
+        </view> -->
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态组件 -->
+  <load-more status="{{status}}" iphoneX="{{app.globalData.isIphoneX}}"></load-more>
+</scroll-view>
+
+<!-- 添加按钮 -->
+<view class="addBtn" style="color: {{background}};" catchtap="add" wx:if="{{user_info.role == 1}}">
+  <text class="cuIcon-roundadd"></text>
+</view>

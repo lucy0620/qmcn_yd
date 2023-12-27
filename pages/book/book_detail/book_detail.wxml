@@ -65,7 +65,7 @@
       <!-- 句子 -->
       <view wx:if="{{item == '句子'}}" wx:for="{{sentences}}" wx:key="i" wx:for-item="it" wx:for-index="i" class="margin-bottom-sm" style="border-bottom: 1px solid #f0f0f0;">
         <text user-select>{{it.content}}</text>
-        <view class="padding-bottom-sm padding-top-xs text-right">
+        <view class="padding-{{it.label_names.length>0 ? 'tb' : 'top'}}-sm text-right">
           <text class="text-gray margin-left-xs" wx:for="{{it.label_names}}" wx:for-item="its" wx:for-index="is" wx:key="is">#{{its}}</text>
         </view>
       </view>
@@ -75,7 +75,7 @@
         <view class="acea-row">
           <text class="cuIcon-evaluate margin-right-xs"></text>
           <view>
-            <view class="text-sm padding-bottom-xs" style="line-height: 1;">{{it.title}}</view>
+            <view class="text-sm padding-bottom-sm" style="line-height: 1;">{{it.title}}</view>
             <text user-select>{{it.content}}</text>
           </view>
         </view>

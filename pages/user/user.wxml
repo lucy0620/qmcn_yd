@@ -1,4 +1,4 @@
-<view class="blur" style="background: {{background}};">
+<view class="blur" style="background: {{user_info.avatarUrl ? 'transparent' : background}};">
   <image wx:if="{{user_info.avatarUrl}}" src="{{user_info.avatarUrl}}" mode="widthFix"></image>
 </view>
 

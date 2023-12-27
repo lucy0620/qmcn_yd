@@ -2,7 +2,7 @@
 
 <cate-view width="calc(52rpx + 5em)" list="{{ cateList }}" color="{{ background}}" bind:changeCate="changeCate">
   <!-- 只遍历active项 -->
-  <view class="item_contain padding-top-sm padding-lr-sm" wx:for="{{cateList[active].child}}" wx:key="index">
+  <view bindtap="onItem" data-url="{{item.path}}" class="item_contain padding-top-sm padding-lr-sm" wx:for="{{cateList[active].child}}" wx:key="index">
     <view class="item_bg box-shadow-l padding-lr">
       <view class="item padding-top-xl padding-bottom-xs text-sm text-gray acea-row row-column row-between">
         <text>{{item.desc}}</text>

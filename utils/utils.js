@@ -7,3 +7,13 @@ function toViewBottomFun() {
     })
   }).exec();
 }
+
+// 复制
+handleCopy: (e) => {
+  wx.setClipboardData({
+    data: `${e.target.dataset.data}`,
+    success: function (res) {
+      utilShow.showMyMsg('已复制到粘贴板')
+    }
+  })
+}

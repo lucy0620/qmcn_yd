@@ -1,6 +1,7 @@
 const app = getApp()
 import * as utilRoute from "../../utils/route"
 import * as utilStorage from "../../utils/storage"
+import * as utilShow from "../../utils/show"
 
 Page({
 
@@ -34,19 +35,27 @@ Page({
       child: [{
         title: '捏脸',
         desc: '各职业体型 宝宝捏脸',
-        path: '/'
+        path: '/pages/market/nsh/face/face'
       }, {
         title: '衣服',
+        desc: '时装查看 配色分享',
+        path: '/'
+      }, {
+        title: '发型',
         desc: '',
         path: '/'
       }, {
-        title: '发型'
-      }, {
         title: '坐骑'
       }, {
-        title: '庄园'
+        title: '庄园',
+        desc: '主题分享',
+        path: '/'
+
       }, {
-        title: '捏图'
+        title: '捏图',
+        desc: '',
+        path: '/'
+
       }, {
         title: '映画'
       }]
@@ -58,43 +67,69 @@ Page({
         path: '/'
       }, {
         title: '共享',
-        desc: '',
+        desc: 'MBCC欢迎你',
         path: '/'
       }]
     }, {
       name: '花果山捞月',
       child: [{
-        title: '花昭录',
+        title: '花诏录',
         desc: '',
         path: '/'
       }, {
         title: '共享',
-        desc: '',
+        desc: '明雍学院报到处',
         path: '/'
       }]
     }, {
       name: '灵猫传',
       child: [{
-        title: '花箴',
-        desc: '尚京四美',
+        title: '花笺',
+        desc: '尚京F4',
         path: '/'
       }, {
         title: '共享',
-        desc: '我在古代当店长',
+        desc: '云绣纺搬砖日志',
         path: '/'
       }]
     }, {
       name: '三国杀',
       child: [{
-        title: '天牢',
-        desc: '有空来坐坐',
+        title: '点将台',
+        desc: '',
+        path: '/'
+      }, {
+        title: '共享',
+        desc: '进来坐牢',
+        path: '/'
+      }]
+    }, {
+      name: '食物语',
+      child: [{
+        title: '食魂谱',
+        desc: '',
+        path: '/'
+      }, {
+        title: '共享',
+        desc: '空桑少主历险记',
         path: '/'
       }]
     }, {
       name: '食之契约',
       child: [{
-        title: '食谱',
-        desc: '飨灵录',
+        title: '飨灵百科',
+        desc: '',
+        path: '/'
+      }, {
+        title: '共享',
+        desc: '御侍爆肝实录',
+        path: '/'
+      }]
+    }, {
+      name: '忘川风华录',
+      child: [{
+        title: '名士谱',
+        desc: '',
         path: '/'
       }, {
         title: '共享',
@@ -102,11 +137,16 @@ Page({
         path: '/'
       }]
     }, {
-      name: '食物语'
-    }, {
-      name: '忘川风华录'
-    }, {
-      name: '芋泥'
+      name: '遇见逆水寒',
+      child: [{
+        title: '花笺',
+        desc: '',
+        path: '/'
+      }, {
+        title: '共享',
+        desc: '我在大宋捡破烂',
+        path: '/'
+      }]
     }],
     active: 0
   },
@@ -118,11 +158,21 @@ Page({
 
   },
 
+
   changeCate(e) {
     console.log(e.detail)
     this.setData({
       active: e.detail.active
     })
+  },
+
+  onItem(e) {
+    let path = e.currentTarget.dataset.url
+    if (path == '/') {
+      utilShow.showMyMsg('暂未开放')
+    } else {
+      utilRoute.navigate(path)
+    }
   },
 
   /**

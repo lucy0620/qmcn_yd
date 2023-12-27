@@ -22,7 +22,9 @@
     "pages/user/manage/manageSentencelabels/manageSentencelabels",
     "pages/user/recordManage/recordManage",
     "pages/user/recordManage/sentence",
-    "pages/user/recordManage/bookshelf"
+    "pages/user/recordManage/bookshelf",
+    "pages/market/nsh/face/face",
+    "pages/market/nsh/face/addFace"
   ],
   "window": {
     "navigationStyle": "custom",
